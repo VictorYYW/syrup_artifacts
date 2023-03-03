@@ -4,6 +4,7 @@ import os
 import csv
 import itertools
 import pandas as pd
+import random
 
 TIMEOUT = 120
 LOG_DIRS = ["Random", "Random+BC", "Expert", "Expert+BC"]
