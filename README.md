@@ -9,7 +9,7 @@ programs' correctness. And thus, by taking a known task name and I/O
 examples, each synthesizer not only generate a program but also report
 synthesis time and the correctness of the program.
 
-# Begin Here
+## Begin Here
 
 The following sections describe the experiment pipeline step by step
 with the later steps depending on the previous steps. Since the
@@ -18,7 +18,7 @@ arbitrary step and skip its previous steps. To produce the exact
 figures as in the paper, please skip to [the last
 step](#reproduce-figures).
 
-# Build
+## Build
 
 Assuming you have `opam` installed, you may build `SyRup`, `SMyth`, and `Burst` via
 
@@ -33,7 +33,7 @@ docker build -t syrup_artifacts .
 docker run -it syrup_artifacts
 ```
 
-# I/O example generation
+## I/O example generation
 
 We evaluate synthesizers on multiple example sets for each programming
 tasks.
@@ -48,7 +48,7 @@ outputs by evaluating our reference implementation on the inputs, and
 stores them in `experiment/random-io-nobase` and
 `experiment/random-io`.
 
-# Run Experiments
+## Run Experiments
 
 While the repo includes intermediate experiment result in
 `experiment/{Expert,Expert-BC,Random,Random-BC}`, you may rerun all
@@ -74,7 +74,7 @@ You may lower the number of I/O example sets tested on each
 synthesizer for each tasks by passing `-n 10`, and timeout by passing
 `-t 120`.
 
-# Reproduce Figures
+## Reproduce Figures
 
 To generate the exact visualizations in the paper,
 
@@ -86,7 +86,7 @@ cd experiment
 ./visualize_learnability.py --ablation --rec # Fig. 9, learnability-ablation-rec.pdf
 ```
 
-# Run SyRup on Individual Tasks
+## Run SyRup on Individual Tasks
 
 As described in the paper, necessary definitions of algebraic data
 types and background functions's Z3 encoding are built in the
