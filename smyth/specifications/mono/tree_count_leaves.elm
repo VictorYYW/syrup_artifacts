@@ -1,0 +1,17 @@
+specifyFunction tree_count_leaves
+  [ (Leaf, 1)
+  , (Node (Node (Leaf, F, Node (Leaf, T, Leaf)), F, Leaf), 4)
+  , (Node (Node (Node (Leaf, T, Node (Leaf, F, Node (Leaf, T, Leaf))), F, Node (Leaf, F, Leaf)), F, Leaf), 7)
+  , (Node (Leaf, F, Node (Node (Node (Node (Leaf, T, Leaf), T, Node (Leaf, T, Leaf)), F, Leaf), F, Leaf)), 7)
+  , (Node (Leaf, T, Node (Leaf, T, Node (Node (Node (Leaf, F, Leaf), F, Leaf), T, Node (Leaf, T, Leaf)))), 7)
+  , (Node (Node (Node (Node (Node (Leaf, T, Leaf), T, Leaf), T, Node (Leaf, F, Leaf)), F, Leaf), F, Leaf), 7)
+  , (Node (Leaf, T, Node (Node (Leaf, F, Node (Node (Leaf, T, Node (Leaf, T, Leaf)), F, Leaf)), F, Leaf)), 7)
+  , (Node (Node (Leaf, F, Node (Leaf, T, Node (Leaf, F, Node (Leaf, F, Leaf)))), T, Node (Leaf, T, Leaf)), 7)
+  , (Node (Node (Leaf, T, Leaf), F, Node (Node (Node (Node (Leaf, T, Leaf), T, Leaf), T, Leaf), F, Leaf)), 7)
+  , (Node (Leaf, F, Node (Node (Leaf, F, Node (Node (Node (Leaf, T, Leaf), F, Leaf), T, Leaf)), F, Leaf)), 7)
+  , (Node (Node (Node (Node (Leaf, T, Node (Leaf, T, Leaf)), F, Leaf), F, Leaf), T, Node (Leaf, F, Leaf)), 7)
+  , (Node (Node (Leaf, T, Node (Node (Node (Leaf, T, Leaf), T, Leaf), F, Node (Leaf, T, Leaf))), T, Leaf), 7)
+  , (Node (Leaf, T, Node (Node (Node (Leaf, F, Node (Leaf, F, Leaf)), T, Leaf), T, Node (Leaf, T, Leaf))), 7)
+  , (Node (Node (Leaf, F, Leaf), T, Node (Node (Node (Node (Leaf, T, Leaf), F, Leaf), T, Leaf), T, Leaf)), 7)
+  , (Node (Node (Leaf, F, Node (Node (Leaf, T, Node (Leaf, T, Leaf)), T, Leaf)), F, Node (Leaf, T, Leaf)), 7)
+  ]

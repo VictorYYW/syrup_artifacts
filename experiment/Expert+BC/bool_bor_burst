@@ -1,0 +1,58 @@
+bool_bor
+(T (), F ()) -> T ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) = fun (x:bool * bool) -> x . 0
+
+0.0015 false
+
+(F (), T ()) -> T ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) = fun (x:bool * bool) -> x . 1
+
+0.0015 false
+
+(F (), F ()) -> F ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) = fun (x:bool * bool) -> x . 0
+
+0.0013 false
+
+(T (), F ()) -> T ();
+(F (), T ()) -> T ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) = fun (x:bool * bool) -> T
+
+0.0030 false
+
+(T (), F ()) -> T ();
+(F (), F ()) -> F ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) = fun (x:bool * bool) -> x . 0
+
+0.0014 false
+
+(F (), T ()) -> T ();
+(F (), F ()) -> F ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) = fun (x:bool * bool) -> x . 1
+
+0.0014 false
+
+(T (), F ()) -> T ();
+(F (), T ()) -> T ();
+(F (), F ()) -> F ();
+(T (), T ()) -> T ();
+=================================
+fix (f : bool * bool -> bool) =
+  fun (x:bool * bool) -> match x . 0 with
+                           | F _ -> x . 1
+                           | T _ -> x . 0
+
+0.0039 true
+

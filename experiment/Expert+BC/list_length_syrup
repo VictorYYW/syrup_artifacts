@@ -1,0 +1,44 @@
+list_length
+[0] -> 1;
+[] -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    ( Succ hd1 )
+  
+0.0003 false
+
+[0, 0] -> 2;
+[] -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    ( Succ (f0 tl1) )
+  
+0.0094 true
+
+[0] -> 1;
+[0, 0] -> 2;
+[] -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    ( Succ (f0 tl1) )
+  
+0.0005 true
+

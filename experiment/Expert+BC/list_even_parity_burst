@@ -1,0 +1,630 @@
+list_even_parity
+[F] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) = fun (x:list) -> T
+
+0.0000 false
+
+[T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> F
+
+0.0038 false
+
+[F , F] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) = fun (x:list) -> T
+
+0.0000 false
+
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> Un_Cons x . 0
+
+0.0060 false
+
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> F
+
+0.0063 false
+
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) = fun (x:list) -> T
+
+0.0000 false
+
+[F] -> T;
+[T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0061 false
+
+[F, T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> Un_Cons x . 0
+
+0.0061 false
+
+[F] -> T;
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> T
+                     | Cons _ -> Un_Cons x . 0)
+
+0.0235 false
+
+[F] -> T;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0105 false
+
+[F] -> T;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) = fun (x:list) -> T
+
+0.0001 false
+
+[T] -> F;
+[F , F] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0101 false
+
+[T] -> F;
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> F
+
+0.0038 false
+
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> F
+
+0.0124 false
+
+[T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> F
+                     | Cons _ -> Un_Cons x . 0)
+
+0.0074 false
+
+[F , F] -> T;
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match f (Un_Cons x . 1) with
+                     | T _ -> Un_Cons x . 0
+                     | F _ -> T)
+
+0.1463 false
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0061 false
+
+[F] -> T;
+[T] -> F;
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0266 false
+
+[F] -> T;
+[T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0062 false
+
+[F] -> T;
+[T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> (match Un_Cons x . 1 with
+                                 | Nil _ -> F
+                                 | Cons _ -> Un_Cons x . 0)
+                     | F _ -> T)
+
+0.0125 false
+
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0446 false
+
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.1479 false
+
+[T] -> F;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) -> match x with
+                    | Nil _ -> T
+                    | Cons _ -> F
+
+0.0037 false
+
+[F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> T
+                     | Cons _ -> F)
+
+0.0363 false
+
+[F] -> T;
+[F, T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> T
+                     | Cons _ -> Un_Cons x . 0)
+
+0.0231 false
+
+[T] -> F;
+[F , F] -> T;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0166 false
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0254 false
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> T)
+
+0.0061 false
+
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0448 false
+
+[F] -> T;
+[T] -> F;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0267 false
+
+[F] -> T;
+[T] -> F;
+[F, T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> (match Un_Cons x . 0 with
+                                   | T _ -> F
+                                   | F _ -> T)
+                     | Cons _ -> Un_Cons x . 0)
+
+0.0322 false
+
+[F] -> T;
+[T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> (match f (Un_Cons x . 1) with
+                                 | T _ -> F
+                                 | F _ -> Un_Cons x . 0)
+                     | F _ -> T)
+
+0.0462 false
+
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> (match Un_Cons x . 1 with
+                                 | Nil _ -> F
+                                 | Cons _ -> Un_Cons x . 0)
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0850 false
+
+[F] -> T;
+[F , F] -> T;
+[F, T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> T
+                     | Cons _ -> (match Un_Cons (Un_Cons x . 1) . 0 with
+                                    | T _ -> Un_Cons x . 0
+                                    | F _ -> T))
+
+0.0746 false
+
+[T] -> F;
+[F, T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> (match f (Un_Cons x . 1) with
+                                 | T _ -> F
+                                 | F _ -> Un_Cons x . 0)
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0804 true
+
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> f (Un_Cons x . 1)
+                     | F _ -> (match f (Un_Cons x . 1) with
+                                 | T _ -> Un_Cons x . 0
+                                 | F _ -> T))
+
+0.2128 false
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> F
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0262 false
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> (match Un_Cons x . 1 with
+                                 | Nil _ -> F
+                                 | Cons _ -> Un_Cons x . 0)
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0429 false
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match f (Un_Cons x . 1) with
+                     | T _ -> (match Un_Cons x . 0 with
+                                 | T _ -> F
+                                 | F _ -> T)
+                     | F _ -> Un_Cons x . 0)
+
+0.0616 true
+
+[F] -> T;
+[T] -> F;
+[F, T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match f (Un_Cons x . 1) with
+                     | T _ -> (match Un_Cons x . 0 with
+                                 | T _ -> F
+                                 | F _ -> T)
+                     | F _ -> Un_Cons x . 0)
+
+0.0417 true
+
+[F] -> T;
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match f (Un_Cons x . 1) with
+                     | T _ -> (match Un_Cons x . 0 with
+                                 | T _ -> F
+                                 | F _ -> T)
+                     | F _ -> Un_Cons x . 0)
+
+0.1127 true
+
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match f (Un_Cons x . 1) with
+                     | T _ -> (match Un_Cons x . 0 with
+                                 | T _ -> F
+                                 | F _ -> T)
+                     | F _ -> Un_Cons x . 0)
+
+0.0792 true
+
+[F] -> T;
+[T] -> F;
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+fix (f : list -> bool) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> T
+      | Cons _ -> (match Un_Cons x . 0 with
+                     | T _ -> (match f (Un_Cons x . 1) with
+                                 | T _ -> F
+                                 | F _ -> Un_Cons x . 0)
+                     | F _ -> f (Un_Cons x . 1))
+
+0.0585 true
+

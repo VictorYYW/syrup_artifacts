@@ -1,0 +1,32 @@
+list_length
+[0] -> 1;
+[] -> 0;
+=================================
+fix (f : list -> nat) =
+  fun (x:list) -> match x with
+                    | Nil _ -> 0
+                    | Cons _ -> S (Un_Cons x . 0)
+
+0.0040 false
+
+[0, 0] -> 2;
+[] -> 0;
+=================================
+fix (f : list -> nat) =
+  fun (x:list) -> match x with
+                    | Nil _ -> 0
+                    | Cons _ -> S (f (Un_Cons x . 1))
+
+0.0468 true
+
+[0] -> 1;
+[0, 0] -> 2;
+[] -> 0;
+=================================
+fix (f : list -> nat) =
+  fun (x:list) -> match x with
+                    | Nil _ -> 0
+                    | Cons _ -> S (f (Un_Cons x . 1))
+
+0.0139 true
+

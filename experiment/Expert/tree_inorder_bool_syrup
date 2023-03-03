@@ -1,0 +1,552 @@
+Leaf () -> [];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0. ( Nil )
+0.0004 false
+
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  (append_bool
+    ( ( Nil ),
+      ( Cons ( True )
+        ( Nil ) ) ))
+0.0212 false
+
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  (append_bool
+    ( ( Nil ),
+      ( Cons ( False )
+        ( Nil ) ) ))
+0.0210 false
+
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf ->
+    ( Cons ( True )
+      ( Cons ( False )
+        ( Nil ) ) )
+  | Node(v1,l1,r1) ->
+    (f0 l1)
+  
+0.1169 false
+
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf ->
+    ( Cons ( False )
+      ( Cons ( True )
+        ( Nil ) ) )
+  | Node(v1,l1,r1) ->
+    (f0 l1)
+  
+0.1157 false
+
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1
+      (append_bool
+        ( (f0 l1),
+          (f0 r1) )) )
+  
+0.1158 false
+
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( ( Nil ),
+        ( Cons v1 ( Nil )
+          ) ))
+  
+0.0013 false
+
+Leaf () -> [];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( ( Nil ),
+        ( Cons v1 ( Nil )
+          ) ))
+  
+0.0013 false
+
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1
+      (append_bool
+        ( (f0 l1),
+          (f0 r1) )) )
+  
+0.0405 false
+
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1 (f0 l1) )
+  
+0.0350 false
+
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf ->
+    ( Cons ( False )
+      ( Cons ( True )
+        ( Nil ) ) )
+  | Node(v1,l1,r1) ->
+    (f0 r1)
+  
+0.2499 false
+
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1
+      (append_bool
+        ( (f0 l1),
+          (f0 r1) )) )
+  
+0.0633 false
+
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1 (f0 r1) )
+  
+0.1249 false
+
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 ( Nil )
+          ) ))
+  
+0.0044 false
+
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1 (f0 r1) )
+  
+0.0022 false
+
+Leaf () -> [];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 ( Nil )
+          ) ))
+  
+0.0045 false
+
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons ( False )
+      (append_bool
+        ( ( Nil ),
+          ( Cons ( True )
+            ( Nil ) ) ))
+      )
+  
+0.0826 false
+
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 ( Nil )
+          ) ))
+  
+0.0067 false
+
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    ( Cons v1 (f0 r1) )
+  
+0.0029 false
+
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 (f0 r1)
+          ) ))
+  
+0.0185 true
+
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 ( Nil )
+          ) ))
+  
+0.0090 false
+
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 (f0 r1)
+          ) ))
+  
+0.0231 true
+
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 (f0 r1)
+          ) ))
+  
+0.0274 true
+
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+b'start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\nVSA done\nfail to find a solution\nstart synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)\n (totalHeight 0))\n'
+Leaf () -> [];
+Node (Leaf (), T (), Leaf ()) -> [T ()];
+Node (Leaf (), F (), Leaf ()) -> [F ()];
+Node (Node (Leaf (), T (), Leaf ()), F (), Leaf ()) -> [T (), F ()];
+Node (Node (Leaf (), F (), Leaf ()), T (), Leaf ()) -> [F (), T ()];
+Node (Leaf (), F (), Node (Leaf (), T (), Leaf ())) -> [F (), T ()];
+=================================
+start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | Leaf -> ( Nil )
+  | Node(v1,l1,r1) ->
+    (append_bool
+      ( (f0 l1),
+        ( Cons v1 (f0 r1)
+          ) ))
+  
+0.0304 true
+

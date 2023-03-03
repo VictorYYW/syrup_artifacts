@@ -1,0 +1,101 @@
+[] -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0. ( Zero )
+0.0002 false
+
+[1] -> 1;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    ( Succ (f0 tl1) )
+  
+0.0091 false
+
+[2, 1] -> 3;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] ->
+    ( Succ ( Zero ) )
+  | hd1::tl1 ->
+    ( Succ (f0 tl1) )
+  
+0.0116 false
+
+[] -> 0;
+[1] -> 1;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0005 false
+
+[] -> 0;
+[2, 1] -> 3;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    ( Succ hd1 )
+  
+0.0102 false
+
+[1] -> 1;
+[2, 1] -> 3;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    (add
+      ( hd1, (f0 tl1) ))
+  
+0.0128 true
+
+[] -> 0;
+[1] -> 1;
+[2, 1] -> 3;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fail to find a solution
+start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 ->
+    (add
+      ( hd1, (f0 tl1) ))
+  
+0.0023 true
+

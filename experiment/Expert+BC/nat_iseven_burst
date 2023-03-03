@@ -1,0 +1,79 @@
+nat_iseven
+1 -> F ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) = fun (x:nat) -> match x with
+                                         | O _ -> T
+                                         | S _ -> F
+
+0.0032 false
+
+2 -> T ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) = fun (x:nat) -> T
+
+0.0000 false
+
+3 -> F ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) = fun (x:nat) -> match x with
+                                         | O _ -> T
+                                         | S _ -> F
+
+0.0179 false
+
+1 -> F ();
+2 -> T ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) =
+  fun (x:nat) ->
+    match x with
+      | O _ -> T
+      | S _ -> (match Un_S x with
+                  | O _ -> F
+                  | S _ -> T)
+
+0.0050 false
+
+1 -> F ();
+3 -> F ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) = fun (x:nat) -> match x with
+                                         | O _ -> T
+                                         | S _ -> F
+
+0.0045 false
+
+2 -> T ();
+3 -> F ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) =
+  fun (x:nat) ->
+    match x with
+      | O _ -> T
+      | S _ -> (match Un_S (Un_S x) with
+                  | O _ -> T
+                  | S _ -> F)
+
+0.0350 false
+
+1 -> F ();
+2 -> T ();
+3 -> F ();
+0 -> T ();
+=================================
+fix (f : nat -> bool) =
+  fun (x:nat) ->
+    match x with
+      | O _ -> T
+      | S _ -> (match Un_S x with
+                  | O _ -> F
+                  | S _ -> f Un_S (Un_S x))
+
+0.0193 true
+

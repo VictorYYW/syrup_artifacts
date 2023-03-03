@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $# -ne 5 ]]; then
+  echo "usage:" $0 "<trial-count> <max_k> <timeout> <suite-name> <sketch-name>"
+  exit 1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+$DIR/smyth json-fuzz $1 \
+  $2 \
+  $5 \
+  $DIR/suites/$4/specifications/$5.elm \
+  $DIR/suites/$4/sketches/$5.elm \
+  --timeout=$3

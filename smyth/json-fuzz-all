@@ -1,0 +1,47 @@
+#!/bin/bash
+ 
+if [[ $# -ne 2 ]]; then
+  echo "usage:" $0 "<trial-count> <max_k>"
+  exit 1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+SUITE="no-sketch"
+
+TIMEOUT=60
+
+for f in \
+    list_append \
+    list_compress \
+    list_concat \
+    list_drop \
+    list_even_parity \
+    list_filter \
+    list_fold \
+    list_hd \
+    list_inc \
+    list_last \
+    list_length \
+    list_map \
+    list_nth \
+    list_pairwise_swap \
+    list_rev_append \
+    list_rev_fold \
+    list_rev_snoc \
+    list_rev_tailcall \
+    list_snoc \
+    list_sort_sorted_insert \
+    list_sorted_insert \
+    list_stutter \
+    list_sum \
+    list_take \
+    list_tl \
+   ; do
+    $DIR/json-fuzz $1 \
+    $2 \
+    $TIMEOUT \
+    $SUITE \
+    $f
+    printf "\n"
+done

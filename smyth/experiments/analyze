@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+import sys
+import glob
+import os
+import csv
+
+if len(sys.argv) != 3 or (sys.argv[1] != "nosketch" and sys.argv[1] != "sketch"):
+    print("usage:", sys.argv[0], "<nosketch|sketch> <experiment-name>")
+    sys.exit(1)
+
+has_sketch = sys.argv[1] == "sketch"
+
+experiment = sys.argv[2]
+
+prefix = "1+" if has_sketch else ""
+
+p_col = 2 if has_sketch else 1
+
+def show_k(k):
+    if k:
+        return prefix + str(k)
+    else:
+        return "---"
+
+print("task,k50,k90")
+for filename in sorted(glob.glob("data/" + experiment + "/csv/*.csv")):
+    k90 = None
+    k50 = None
+    with open(filename) as csvfile:
+        task = os.path.basename(filename[:-4])
+        try:
+            reader = csv.reader(csvfile, delimiter=',')
+            # Skip first four rows
+            next(reader)
+            next(reader)
+            next(reader)
+            next(reader)
+            k50 = 0
+            k90 = 0
+            kMax = -1
+            for row in reader:
+                kMax += 1
+                k = int(row[0])
+                p = float(row[p_col])
+                if p < 0.5:
+                    k50 = k
+                if p < 0.9:
+                    k90 = k
+            k50 += 1
+            k90 += 1
+            if k50 > kMax:
+                k50 = None
+            if k90 > kMax:
+                k90 = None
+        except Exception as e:
+            print("%", task, "(ERROR)")
+            continue
+    print(task, show_k(k50), show_k(k90), sep=",")

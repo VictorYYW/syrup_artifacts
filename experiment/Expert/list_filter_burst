@@ -1,0 +1,1137 @@
+(isEven, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isEven, [0]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0037 false
+
+(isEven, [1]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isEven , [2]) -> [2];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0042 false
+
+(isEven, [0, 0]) -> [0, 0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0057 false
+
+(isEven, [0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> Cons (Un_Cons (x . 1) . 0, Nil)
+
+0.0406 false
+
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> Cons (0, Nil)
+
+0.1190 false
+
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0038 false
+
+(isEven, [0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match Un_Cons (x . 1) . 1 with
+      | Nil _ -> Un_Cons (x . 1) . 1
+      | Cons _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+
+0.0642 false
+
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> Cons (0, Nil)
+
+0.0561 false
+
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, Nil)
+
+0.1430 false
+
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 0 (Un_Cons (x . 1) . 0) with
+      | T _ -> x . 1
+      | F _ -> Un_Cons (x . 1) . 1
+
+0.0093 false
+
+(isEven, [1]) -> [];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match Un_Cons (x . 1) . 1 with
+      | Nil _ -> Un_Cons (x . 1) . 1
+      | Cons _ -> Cons (0, Nil)
+
+0.0691 false
+
+(isEven, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isEven, [1]) -> [];
+(isEven, [0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match Un_Cons (x . 1) . 1 with
+      | Nil _ -> Un_Cons (x . 1) . 1
+      | Cons _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+
+0.0306 false
+
+(isEven, [0, 0]) -> [0, 0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0056 false
+
+(isEven, [1]) -> [];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match Un_Cons (x . 1) . 1 with
+      | Nil _ -> Un_Cons (x . 1) . 1
+      | Cons _ -> Cons (0, Nil)
+
+0.0689 false
+
+(isEven, [1]) -> [];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 0 with
+                     | O _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | S _ -> Un_Cons (x . 1) . 1)
+
+0.2581 false
+
+(isEven, [0]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, Nil)
+
+0.0985 false
+
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0038 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) = fun (x:(nat -> bool) * list) -> Nil
+
+0.0001 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0037 false
+
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) -> x . 1
+
+0.0044 false
+
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match Un_Cons (x . 1) . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, Nil)
+
+0.3156 false
+
+(isEven, [0]) -> [0];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match Un_Cons (x . 1) . 0 with
+      | O _ -> x . 1
+      | S _ -> Cons (0, Nil)
+
+0.2966 false
+
+(isEven, []) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+
+0.0251 false
+
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 1 with
+                     | Nil _ -> x . 1
+                     | Cons _ -> Cons (0, Nil))
+
+0.4662 false
+
+(isEven, [1]) -> [];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 0 with
+                     | O _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | S _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+1.3037 false
+
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 0 with
+                     | O _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | S _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+1.9629 false
+
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven, [0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 0 (Un_Cons (x . 1) . 0) with
+      | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+      | F _ -> Un_Cons (x . 1) . 1
+
+0.0504 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_S (Un_Cons (x . 1) . 0) with
+                     | O _ -> Un_Cons (x . 1) . 1
+                     | S _ -> x . 1)
+
+0.0168 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0889 false
+
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 0 with
+                     | O _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | S _ -> Un_Cons (x . 1) . 1)
+
+0.0522 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 1 with
+                     | Nil _ -> Un_Cons (x . 1) . 1
+                     | Cons _ -> Cons (0, Nil))
+
+0.0825 false
+
+(isEven, []) -> [];
+(isEven , [2]) -> [2];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3324 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, Nil)
+
+0.0362 false
+
+(isEven, [0]) -> [0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 0 0 with
+      | T _ -> Cons (0, Nil)
+      | F _ -> Nil
+
+0.1012 false
+
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> x . 1
+                     | F _ -> Cons (0, Nil))
+
+0.6038 false
+
+(isEven, []) -> [];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7716 true
+
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+7.7309 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.0279 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match Un_Cons (x . 1) . 0 with
+                     | O _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | S _ -> Un_Cons (x . 1) . 1)
+
+0.0855 false
+
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> x . 1
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.0292 false
+
+(isEven, []) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+1.1661 false
+
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3046 true
+
+(isEven, [0]) -> [0];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.2468 false
+
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 0 (Un_Cons (x . 1) . 0) with
+      | T _ -> x . 1
+      | F _ -> (match Un_Cons (x . 1) . 1 with
+                  | Nil _ -> Un_Cons (x . 1) . 1
+                  | Cons _ -> Cons (0, Nil))
+
+0.4087 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.0479 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.0283 false
+
+(isEven, []) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match isEven (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+1.4027 false
+
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1910 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0869 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1744 true
+
+(isEven, []) -> [];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7784 true
+
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.5432 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.1148 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1149 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match isEven (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.0666 false
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0525 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1605 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1781 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> x . 1
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.0401 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0730 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1540 false
+
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3143 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1563 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1160 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1271 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> Un_Cons (x . 1) . 1)
+
+0.1213 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1949 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0, Nil)
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0790 false
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1318 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1781 true
+
+(isEven, []) -> [];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1590 true
+
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3063 true
+
+(isEven, []) -> [];
+(isEven, [0]) -> [0];
+(isEven, [1]) -> [];
+(isEven , [2]) -> [2];
+(isEven, [0, 0]) -> [0, 0];
+(isEven, [0, 1]) -> [0];
+(isEven, [1, 0, 1]) -> [0];
+(isNonzero, []) -> [];
+(isNonzero, [0]) -> [];
+=================================
+fix (f : (nat -> bool) * list -> list) =
+  fun (x:(nat -> bool) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> (match x . 0 (Un_Cons (x . 1) . 0) with
+                     | T _ -> Cons (Un_Cons (x . 1) . 0,
+                                     f (x . 0, Un_Cons (x . 1) . 1))
+                     | F _ -> f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1218 true
+

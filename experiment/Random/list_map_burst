@@ -1,0 +1,4248 @@
+list_map
+(inc,[1,0]) -> [2,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    Cons (x . 0 (Un_Cons (x . 1) . 0), Cons (Un_Cons (x . 1) . 0, Nil))
+
+0.0763 false
+
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) = fun (x:(nat -> nat) * list) -> Nil
+
+0.0001 false
+
+(zero,[3,2,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7898 false
+
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) = fun (x:(nat -> nat) * list) -> Nil
+
+0.0001 false
+
+(zero,[1,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) -> Cons (0, Cons (0, Nil))
+
+0.2206 false
+
+(inc,[0,1,2]) -> [1,2,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (inc (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3294 false
+
+(zero,[1]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) -> Cons (0, Un_Cons (x . 1) . 1)
+
+0.0087 false
+
+(zero,[2,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) -> Cons (0, Un_Cons (x . 1) . 1)
+
+0.0158 false
+
+(inc,[1,0,2]) -> [2,1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3066 true
+
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) -> Cons (0, Un_Cons (x . 1) . 1)
+
+0.0096 false
+
+(zero,[0,3,1]) -> [0,0,0];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7568 false
+
+(zero,[3]) -> [0];
+(zero,[1,2,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+11.9209 false
+
+(zero,[]) -> [];
+(inc,[0,2,0]) -> [1,3,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (inc (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2353 false
+
+(zero,[1,1]) -> [0,0];
+(inc,[3]) -> [4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2299 true
+
+(inc,[2,1]) -> [3,2];
+(zero,[1]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0978 true
+
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[2]) -> [3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8642 true
+
+(inc,[0]) -> [1];
+(inc,[2,2,3]) -> [3,3,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8761 true
+
+(inc,[3,2]) -> [4,3];
+(zero,[3]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1484 true
+
+(inc,[0,0,2]) -> [1,1,3];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2832 true
+
+(zero,[1,1]) -> [0,0];
+(zero,[1,1,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3617 false
+
+(zero,[3]) -> [0];
+(zero,[3,2,2]) -> [0,0,0];
+(zero,[0,1,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+14.8724 false
+
+(zero,[]) -> [];
+(zero,[2,1,1]) -> [0,0,0];
+(inc,[1,0]) -> [2,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.6408 true
+
+(zero,[2,3]) -> [0,0];
+(zero,[]) -> [];
+(zero,[0,2,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3337 false
+
+(zero,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(zero,[3,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1550 false
+
+(inc,[1,2]) -> [2,3];
+(inc,[1,3,3]) -> [2,4,4];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0877 true
+
+(zero,[]) -> [];
+(zero,[0,3,2]) -> [0,0,0];
+(inc,[0,0,2]) -> [1,1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+2.5161 true
+
+(zero,[3,2,2]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.4583 true
+
+(inc,[1,2]) -> [2,3];
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0896 true
+
+(inc,[1,2]) -> [2,3];
+(zero,[1,3]) -> [0,0];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0894 true
+
+(zero,[3,1,0]) -> [0,0,0];
+(zero,[3,0,2]) -> [0,0,0];
+(zero,[2,2,3]) -> [0,0,0];
+
+=================================
+None
+(inc,[3]) -> [4];
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[]) -> [];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5128 true
+
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(inc,[3,3]) -> [4,4];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0787 true
+
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[1,1]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0375 true
+
+(zero,[1,3]) -> [0,0];
+(zero,[3,2,1]) -> [0,0,0];
+(zero,[2,1]) -> [0,0];
+(zero,[0]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+2.9085 false
+
+(inc,[]) -> [];
+(zero,[2,1,3]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[3]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2864 false
+
+(inc,[3,1,3]) -> [4,2,4];
+(inc,[0]) -> [1];
+(zero,[0,0,3]) -> [0,0,0];
+(zero,[3,3,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.6215 true
+
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[2]) -> [3];
+(zero,[2]) -> [0];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7085 true
+
+(zero,[1]) -> [0];
+(inc,[3]) -> [4];
+(inc,[3,2]) -> [4,3];
+(inc,[2,1]) -> [3,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5031 true
+
+(inc,[2,1,3]) -> [3,2,4];
+(inc,[1,2,0]) -> [2,3,1];
+(zero,[3,0]) -> [0,0];
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5341 true
+
+(zero,[1,3,0]) -> [0,0,0];
+(zero,[2,2,0]) -> [0,0,0];
+(inc,[2,0]) -> [3,1];
+(zero,[3,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    Cons (x . 0 (Un_Cons (x . 1) . 0),
+           Cons (x . 0 0, Un_Cons (Un_Cons (x . 1) . 1) . 1))
+
+0.3796 false
+
+(inc,[3,2,2]) -> [4,3,3];
+(inc,[2,2]) -> [3,3];
+(zero,[1]) -> [0];
+(zero,[]) -> [];
+(zero,[0,3,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3411 true
+
+(inc,[1,2,3]) -> [2,3,4];
+(inc,[]) -> [];
+(inc,[2,3]) -> [3,4];
+(zero,[1]) -> [0];
+(inc,[2,0,2]) -> [3,1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3465 true
+
+(inc,[2]) -> [3];
+(inc,[0,1]) -> [1,2];
+(zero,[1]) -> [0];
+(zero,[3]) -> [0];
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0862 true
+
+(inc,[3,3,0]) -> [4,4,1];
+(inc,[0,1,2]) -> [1,2,3];
+(inc,[2]) -> [3];
+(zero,[1,2]) -> [0,0];
+(inc,[1,3,2]) -> [2,4,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8260 true
+
+(zero,[2]) -> [0];
+(inc,[1,0,3]) -> [2,1,4];
+(inc,[]) -> [];
+(zero,[0,0]) -> [0,0];
+(inc,[3,3,3]) -> [4,4,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7952 true
+
+(inc,[0]) -> [1];
+(zero,[2,1,2]) -> [0,0,0];
+(zero,[3]) -> [0];
+(inc,[1,3]) -> [2,4];
+(zero,[1,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+5.9104 true
+
+(zero,[0,2]) -> [0,0];
+(zero,[1,2]) -> [0,0];
+(zero,[3,3,0]) -> [0,0,0];
+(zero,[2]) -> [0];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3067 false
+
+(inc,[0]) -> [1];
+(inc,[1,3,3]) -> [2,4,4];
+(zero,[0]) -> [0];
+(zero,[]) -> [];
+(zero,[0,2,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.9449 true
+
+(inc,[1,2,0]) -> [2,3,1];
+(inc,[2,2]) -> [3,3];
+(zero,[]) -> [];
+(inc,[1,0]) -> [2,1];
+(inc,[2,2,3]) -> [3,3,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2470 true
+
+(zero,[]) -> [];
+(inc,[2]) -> [3];
+(inc,[1]) -> [2];
+(zero,[3,3]) -> [0,0];
+(zero,[0,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0641 true
+
+(inc,[1]) -> [2];
+(zero,[3,0,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+(inc,[]) -> [];
+(inc,[0]) -> [1];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0), Un_Cons (x . 1) . 1)
+
+0.0123 false
+
+(zero,[2]) -> [0];
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[2,3,3]) -> [3,4,4];
+(inc,[1,0,1]) -> [2,1,2];
+(inc,[2,1,3]) -> [3,2,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2902 true
+
+(inc,[3,2]) -> [4,3];
+(inc,[3,0]) -> [4,1];
+(inc,[0]) -> [1];
+(inc,[]) -> [];
+(zero,[2]) -> [0];
+(inc,[2,1]) -> [3,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1958 true
+
+(inc,[]) -> [];
+(inc,[3,2]) -> [4,3];
+(zero,[1,1]) -> [0,0];
+(zero,[1,2]) -> [0,0];
+(inc,[3]) -> [4];
+(zero,[2,2,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1229 true
+
+(inc,[1,0,2]) -> [2,1,3];
+(zero,[3]) -> [0];
+(inc,[3]) -> [4];
+(zero,[1,2]) -> [0,0];
+(zero,[]) -> [];
+(inc,[0,2]) -> [1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2655 true
+
+(inc,[]) -> [];
+(inc,[2,0]) -> [3,1];
+(zero,[]) -> [];
+(inc,[1,0]) -> [2,1];
+(zero,[1,3,1]) -> [0,0,0];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2698 true
+
+(inc,[2,3]) -> [3,4];
+(inc,[0,1,3]) -> [1,2,4];
+(zero,[0,0,0]) -> [0,0,0];
+(zero,[2]) -> [0];
+(inc,[0]) -> [1];
+(zero,[1,3]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1626 true
+
+(zero,[0]) -> [0];
+(zero,[2]) -> [0];
+(zero,[3]) -> [0];
+(zero,[]) -> [];
+(inc,[1,1,2]) -> [2,2,3];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1370 true
+
+(inc,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(zero,[2,1,1]) -> [0,0,0];
+(zero,[1,1]) -> [0,0];
+(inc,[3,2]) -> [4,3];
+(inc,[3]) -> [4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2285 true
+
+(inc,[2]) -> [3];
+(inc,[3,2]) -> [4,3];
+(zero,[2,3,3]) -> [0,0,0];
+(zero,[3]) -> [0];
+(inc,[1]) -> [2];
+(inc,[0,2,0]) -> [1,3,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2112 true
+
+(inc,[]) -> [];
+(inc,[0,1]) -> [1,2];
+(zero,[]) -> [];
+(zero,[3,2]) -> [0,0];
+(inc,[3,1]) -> [4,2];
+(zero,[1,2,0]) -> [0,0,0];
+(zero,[3]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0645 true
+
+(inc,[]) -> [];
+(inc,[3,0,3]) -> [4,1,4];
+(zero,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(zero,[3]) -> [0];
+(inc,[0,1]) -> [1,2];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4698 true
+
+(inc,[]) -> [];
+(inc,[1,0,1]) -> [2,1,2];
+(inc,[1]) -> [2];
+(inc,[2]) -> [3];
+(inc,[3]) -> [4];
+(zero,[2,1,3]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1660 true
+
+(zero,[0,0]) -> [0,0];
+(zero,[3]) -> [0];
+(zero,[0,3,2]) -> [0,0,0];
+(inc,[0,0]) -> [1,1];
+(zero,[1]) -> [0];
+(zero,[]) -> [];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 0, f (x . 0, Un_Cons (x . 1) . 1))
+
+5.9040 false
+
+(zero,[2]) -> [0];
+(zero,[1,0,2]) -> [0,0,0];
+(zero,[2,3]) -> [0,0];
+(zero,[0,1,0]) -> [0,0,0];
+(inc,[]) -> [];
+(zero,[]) -> [];
+(zero,[0]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1157 false
+
+(zero,[3]) -> [0];
+(zero,[3,0]) -> [0,0];
+(zero,[0,3]) -> [0,0];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[1]) -> [0];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1213 true
+
+(zero,[2]) -> [0];
+(zero,[0,2]) -> [0,0];
+(zero,[3]) -> [0];
+(zero,[1,3,0]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[3,2]) -> [0,0];
+(zero,[2,0,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (0, f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0500 false
+
+(inc,[0,2,0]) -> [1,3,1];
+(zero,[3]) -> [0];
+(zero,[1,1]) -> [0,0];
+(zero,[0,1,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+(inc,[]) -> [];
+(zero,[2,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3533 true
+
+(inc,[]) -> [];
+(zero,[1,0]) -> [0,0];
+(inc,[2,2]) -> [3,3];
+(inc,[3,0,0]) -> [4,1,1];
+(inc,[1,0,0]) -> [2,1,1];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[2]) -> [3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0535 true
+
+(zero,[]) -> [];
+(inc,[1]) -> [2];
+(zero,[0,1]) -> [0,0];
+(inc,[]) -> [];
+(inc,[0,3,0]) -> [1,4,1];
+(zero,[3]) -> [0];
+(inc,[1,3,3]) -> [2,4,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0303 true
+
+(zero,[]) -> [];
+(inc,[2,1,2]) -> [3,2,3];
+(zero,[0,0]) -> [0,0];
+(zero,[3,0]) -> [0,0];
+(inc,[3,2,1]) -> [4,3,2];
+(inc,[3,1,1]) -> [4,2,2];
+(inc,[3,1,0]) -> [4,2,1];
+(inc,[2]) -> [3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2730 true
+
+(zero,[0,2]) -> [0,0];
+(inc,[3,0]) -> [4,1];
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(zero,[0,1]) -> [0,0];
+(zero,[]) -> [];
+(inc,[1,0,3]) -> [2,1,4];
+(inc,[3,1]) -> [4,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2997 true
+
+(zero,[2,1,0]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[1]) -> [2];
+(inc,[2,0]) -> [3,1];
+(inc,[]) -> [];
+(zero,[2,2]) -> [0,0];
+(zero,[3,3]) -> [0,0];
+(zero,[1,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.6139 true
+
+(inc,[1,3,1]) -> [2,4,2];
+(zero,[2,2]) -> [0,0];
+(inc,[0,3,1]) -> [1,4,2];
+(zero,[2]) -> [0];
+(inc,[1]) -> [2];
+(inc,[]) -> [];
+(zero,[3]) -> [0];
+(inc,[2,1,1]) -> [3,2,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3051 true
+
+(zero,[]) -> [];
+(inc,[]) -> [];
+(zero,[0]) -> [0];
+(zero,[1,3]) -> [0,0];
+(inc,[3,2,1]) -> [4,3,2];
+(inc,[0]) -> [1];
+(inc,[0,1,1]) -> [1,2,2];
+(inc,[1,2]) -> [2,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.7112 true
+
+(zero,[2,2,2]) -> [0,0,0];
+(zero,[2,3,2]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(inc,[0,0]) -> [1,1];
+(zero,[3]) -> [0];
+(inc,[3,1]) -> [4,2];
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.3075 true
+
+(zero,[2]) -> [0];
+(zero,[3]) -> [0];
+(inc,[3]) -> [4];
+(zero,[0,0,0]) -> [0,0,0];
+(inc,[]) -> [];
+(zero,[1,2]) -> [0,0];
+(zero,[1,3,2]) -> [0,0,0];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0789 true
+
+(zero,[1,0]) -> [0,0];
+(zero,[]) -> [];
+(zero,[0,2]) -> [0,0];
+(inc,[0,2]) -> [1,3];
+(inc,[3,0,0]) -> [4,1,1];
+(inc,[1,2]) -> [2,3];
+(inc,[1]) -> [2];
+(inc,[1,0,2]) -> [2,1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.8772 true
+
+(zero,[1,2,0]) -> [0,0,0];
+(zero,[3,1]) -> [0,0];
+(inc,[3]) -> [4];
+(inc,[1,1,2]) -> [2,2,3];
+(zero,[1,2]) -> [0,0];
+(inc,[0,3]) -> [1,4];
+(zero,[]) -> [];
+(zero,[2,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8741 true
+
+(zero,[3]) -> [0];
+(inc,[]) -> [];
+(zero,[3,1]) -> [0,0];
+(inc,[1,0,3]) -> [2,1,4];
+(zero,[1]) -> [0];
+(inc,[3]) -> [4];
+(zero,[]) -> [];
+(zero,[0,1,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1194 true
+
+(inc,[]) -> [];
+(zero,[]) -> [];
+(inc,[1,0,0]) -> [2,1,1];
+(inc,[0,3,1]) -> [1,4,2];
+(inc,[1,3,1]) -> [2,4,2];
+(zero,[1]) -> [0];
+(inc,[2,3]) -> [3,4];
+(inc,[1,3]) -> [2,4];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1318 true
+
+(zero,[]) -> [];
+(zero,[0]) -> [0];
+(zero,[3,3,1]) -> [0,0,0];
+(inc,[2,3,3]) -> [3,4,4];
+(zero,[0,2,0]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(zero,[2,1,3]) -> [0,0,0];
+(inc,[2,1]) -> [3,2];
+(inc,[2]) -> [3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+25.0968 true
+
+(zero,[]) -> [];
+(zero,[0,2]) -> [0,0];
+(zero,[0,1,1]) -> [0,0,0];
+(zero,[3,1]) -> [0,0];
+(inc,[]) -> [];
+(zero,[0]) -> [0];
+(inc,[1]) -> [2];
+(zero,[2,0,0]) -> [0,0,0];
+(zero,[3,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1692 true
+
+(zero,[0]) -> [0];
+(zero,[2]) -> [0];
+(zero,[3,0]) -> [0,0];
+(inc,[2,2]) -> [3,3];
+(zero,[3]) -> [0];
+(zero,[2,2]) -> [0,0];
+(zero,[1,1,2]) -> [0,0,0];
+(inc,[1,1,2]) -> [2,2,3];
+(inc,[3]) -> [4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2234 true
+
+(zero,[]) -> [];
+(inc,[0,3,0]) -> [1,4,1];
+(zero,[3,2]) -> [0,0];
+(inc,[1]) -> [2];
+(inc,[1,2,1]) -> [2,3,2];
+(inc,[3,3,1]) -> [4,4,2];
+(inc,[2]) -> [3];
+(zero,[2]) -> [0];
+(zero,[1,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3577 true
+
+(zero,[]) -> [];
+(zero,[1,2,1]) -> [0,0,0];
+(zero,[2,0]) -> [0,0];
+(zero,[3]) -> [0];
+(inc,[0,2,1]) -> [1,3,2];
+(inc,[1,0]) -> [2,1];
+(inc,[1,2]) -> [2,3];
+(inc,[3,1]) -> [4,2];
+(zero,[3,0,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.1952 true
+
+(zero,[2]) -> [0];
+(zero,[0,1,1]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[1,0,0]) -> [2,1,1];
+(inc,[]) -> [];
+(zero,[2,3]) -> [0,0];
+(zero,[3,1]) -> [0,0];
+(zero,[2,2,3]) -> [0,0,0];
+(zero,[3]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.2924 true
+
+(inc,[1,0,2]) -> [2,1,3];
+(zero,[]) -> [];
+(inc,[0,2]) -> [1,3];
+(zero,[3,1]) -> [0,0];
+(inc,[1,0]) -> [2,1];
+(inc,[2]) -> [3];
+(zero,[1]) -> [0];
+(inc,[]) -> [];
+(zero,[3,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1728 true
+
+(zero,[3]) -> [0];
+(zero,[]) -> [];
+(inc,[2,1]) -> [3,2];
+(zero,[2,2,3]) -> [0,0,0];
+(inc,[3]) -> [4];
+(zero,[2,1,0]) -> [0,0,0];
+(zero,[1,2]) -> [0,0];
+(zero,[2]) -> [0];
+(zero,[1,1,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0425 true
+
+(inc,[3,2]) -> [4,3];
+(inc,[]) -> [];
+(inc,[2]) -> [3];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[3,0,2]) -> [4,1,3];
+(inc,[1,2,1]) -> [2,3,2];
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+(inc,[0,0,1]) -> [1,1,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (inc (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1014 false
+
+(zero,[]) -> [];
+(zero,[2,3]) -> [0,0];
+(inc,[1,1,0]) -> [2,2,1];
+(zero,[1,2,0]) -> [0,0,0];
+(inc,[1,3,2]) -> [2,4,3];
+(zero,[2,1]) -> [0,0];
+(inc,[]) -> [];
+(zero,[3,3]) -> [0,0];
+(inc,[2,2,2]) -> [3,3,3];
+(inc,[2,0,1]) -> [3,1,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4777 true
+
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(zero,[1,1,1]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[3,0,1]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[1,2,2]) -> [0,0,0];
+(inc,[1]) -> [2];
+(inc,[0]) -> [1];
+(inc,[3,2,2]) -> [4,3,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0552 true
+
+(inc,[0,1,2]) -> [1,2,3];
+(zero,[2,2]) -> [0,0];
+(zero,[0]) -> [0];
+(zero,[3,3]) -> [0,0];
+(inc,[2,0,3]) -> [3,1,4];
+(inc,[0,1]) -> [1,2];
+(inc,[1]) -> [2];
+(inc,[3,1]) -> [4,2];
+(zero,[2,1]) -> [0,0];
+(inc,[3]) -> [4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3304 true
+
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(zero,[1]) -> [0];
+(zero,[0,1,0]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[2]) -> [0];
+(inc,[0,1]) -> [1,2];
+(zero,[1,2]) -> [0,0];
+(zero,[]) -> [];
+(inc,[3]) -> [4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0435 true
+
+(zero,[0,0]) -> [0,0];
+(zero,[2,3,2]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[3,3]) -> [0,0];
+(zero,[]) -> [];
+(inc,[1]) -> [2];
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(zero,[0,0,1]) -> [0,0,0];
+(zero,[0,3,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+2.8894 true
+
+(zero,[0,1]) -> [0,0];
+(inc,[0,0,2]) -> [1,1,3];
+(inc,[]) -> [];
+(inc,[3,3]) -> [4,4];
+(zero,[2,1,1]) -> [0,0,0];
+(inc,[0,0]) -> [1,1];
+(zero,[0]) -> [0];
+(zero,[2,2,0]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[0,3,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.1328 true
+
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+(zero,[2]) -> [0];
+(zero,[0,3,0]) -> [0,0,0];
+(inc,[3,2]) -> [4,3];
+(zero,[0,0]) -> [0,0];
+(zero,[0]) -> [0];
+(inc,[2,2,1]) -> [3,3,2];
+(inc,[]) -> [];
+(zero,[2,2,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0683 true
+
+(zero,[1]) -> [0];
+(zero,[2]) -> [0];
+(zero,[1,1,2]) -> [0,0,0];
+(inc,[0,3,1]) -> [1,4,2];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(inc,[3,0]) -> [4,1];
+(inc,[0,0,3]) -> [1,1,4];
+(inc,[2,3,1]) -> [3,4,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.6674 true
+
+(inc,[0,1,1]) -> [1,2,2];
+(inc,[]) -> [];
+(inc,[0,1,0]) -> [1,2,1];
+(zero,[2,3,0]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[3,1]) -> [0,0];
+(inc,[2,0]) -> [3,1];
+(inc,[2,1,0]) -> [3,2,1];
+(inc,[2,1]) -> [3,2];
+(inc,[2]) -> [3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2108 true
+
+(inc,[3]) -> [4];
+(zero,[0,2]) -> [0,0];
+(inc,[0]) -> [1];
+(zero,[]) -> [];
+(inc,[1,1,1]) -> [2,2,2];
+(inc,[1,0]) -> [2,1];
+(zero,[0]) -> [0];
+(inc,[2,2,2]) -> [3,3,3];
+(zero,[1,1,3]) -> [0,0,0];
+(inc,[1,2]) -> [2,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+2.5682 true
+
+(zero,[]) -> [];
+(inc,[2,3,3]) -> [3,4,4];
+(inc,[1,3]) -> [2,4];
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(inc,[2]) -> [3];
+(inc,[0,0,1]) -> [1,1,2];
+(inc,[2,0]) -> [3,1];
+(zero,[2,3,1]) -> [0,0,0];
+(zero,[3,0]) -> [0,0];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3927 true
+
+(inc,[3,1]) -> [4,2];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[0,3,1]) -> [1,4,2];
+(zero,[1]) -> [0];
+(zero,[0,3,1]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(inc,[2]) -> [3];
+(zero,[2,2,1]) -> [0,0,0];
+(inc,[1]) -> [2];
+(zero,[2,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0821 true
+
+(inc,[3,2]) -> [4,3];
+(inc,[2,1,0]) -> [3,2,1];
+(zero,[1,1,2]) -> [0,0,0];
+(inc,[1,0,2]) -> [2,1,3];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[0,0,2]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[0,3]) -> [0,0];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4846 true
+
+(zero,[3,0]) -> [0,0];
+(inc,[3,2]) -> [4,3];
+(inc,[0,2]) -> [1,3];
+(inc,[2,0,2]) -> [3,1,3];
+(inc,[3]) -> [4];
+(inc,[0,1,0]) -> [1,2,1];
+(inc,[1]) -> [2];
+(inc,[]) -> [];
+(zero,[0]) -> [0];
+(inc,[0]) -> [1];
+(inc,[1,3,1]) -> [2,4,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+3.2894 true
+
+(inc,[1]) -> [2];
+(zero,[1,3]) -> [0,0];
+(zero,[3,3,0]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(zero,[3]) -> [0];
+(inc,[1,1,0]) -> [2,2,1];
+(zero,[0,1,1]) -> [0,0,0];
+(zero,[3,1]) -> [0,0];
+(inc,[0]) -> [1];
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0760 true
+
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[1,0,1]) -> [2,1,2];
+(zero,[1,1]) -> [0,0];
+(inc,[3]) -> [4];
+(inc,[1,1]) -> [2,2];
+(zero,[3,1,0]) -> [0,0,0];
+(zero,[3,1,1]) -> [0,0,0];
+(inc,[3,3]) -> [4,4];
+(zero,[1,3,2]) -> [0,0,0];
+(zero,[3]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2054 true
+
+(inc,[3,1,3]) -> [4,2,4];
+(zero,[]) -> [];
+(inc,[0]) -> [1];
+(zero,[0,3,1]) -> [0,0,0];
+(inc,[1,2]) -> [2,3];
+(inc,[2]) -> [3];
+(zero,[0]) -> [0];
+(inc,[2,2]) -> [3,3];
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(zero,[2,2,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5232 true
+
+(inc,[]) -> [];
+(zero,[2,0,0]) -> [0,0,0];
+(inc,[0,0]) -> [1,1];
+(zero,[]) -> [];
+(zero,[0,1]) -> [0,0];
+(zero,[3,1]) -> [0,0];
+(inc,[3,2,1]) -> [4,3,2];
+(zero,[3]) -> [0];
+(zero,[3,2]) -> [0,0];
+(inc,[3,0,0]) -> [4,1,1];
+(zero,[1,0,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0812 true
+
+(zero,[]) -> [];
+(zero,[0,3,1]) -> [0,0,0];
+(zero,[2,2]) -> [0,0];
+(zero,[0,3,2]) -> [0,0,0];
+(inc,[]) -> [];
+(inc,[0]) -> [1];
+(zero,[3]) -> [0];
+(inc,[1,0,2]) -> [2,1,3];
+(inc,[1]) -> [2];
+(zero,[3,3,3]) -> [0,0,0];
+(inc,[1,3,3]) -> [2,4,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.9974 true
+
+(inc,[3,0]) -> [4,1];
+(zero,[3,2,3]) -> [0,0,0];
+(zero,[3,2,0]) -> [0,0,0];
+(zero,[3]) -> [0];
+(inc,[2]) -> [3];
+(inc,[]) -> [];
+(zero,[1,2]) -> [0,0];
+(inc,[0,2,2]) -> [1,3,3];
+(zero,[]) -> [];
+(inc,[0,3]) -> [1,4];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2081 true
+
+(zero,[3,3]) -> [0,0];
+(inc,[]) -> [];
+(zero,[0,3,2]) -> [0,0,0];
+(zero,[0,2,3]) -> [0,0,0];
+(inc,[2]) -> [3];
+(zero,[3,1]) -> [0,0];
+(zero,[2,0]) -> [0,0];
+(zero,[2,1]) -> [0,0];
+(zero,[1]) -> [0];
+(inc,[1]) -> [2];
+(zero,[2]) -> [0];
+(zero,[0,0,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3954 true
+
+(inc,[1,3,0]) -> [2,4,1];
+(inc,[1,1]) -> [2,2];
+(zero,[0,1,0]) -> [0,0,0];
+(zero,[0,3]) -> [0,0];
+(zero,[1]) -> [0];
+(inc,[]) -> [];
+(zero,[3,0,1]) -> [0,0,0];
+(zero,[3,1]) -> [0,0];
+(inc,[0,0]) -> [1,1];
+(zero,[1,1]) -> [0,0];
+(inc,[3,3]) -> [4,4];
+(inc,[2,1]) -> [3,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3373 true
+
+(inc,[0,3,1]) -> [1,4,2];
+(zero,[3,0]) -> [0,0];
+(inc,[]) -> [];
+(zero,[0]) -> [0];
+(zero,[3,0,1]) -> [0,0,0];
+(zero,[0,1,3]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[3,1,2]) -> [4,2,3];
+(inc,[2,1,3]) -> [3,2,4];
+(inc,[3,3,0]) -> [4,4,1];
+(zero,[1,2]) -> [0,0];
+(zero,[3]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3815 true
+
+(inc,[0,2]) -> [1,3];
+(inc,[0]) -> [1];
+(zero,[1,0]) -> [0,0];
+(inc,[]) -> [];
+(inc,[3,2]) -> [4,3];
+(inc,[3]) -> [4];
+(zero,[3,1]) -> [0,0];
+(zero,[1,1,3]) -> [0,0,0];
+(zero,[0,3,3]) -> [0,0,0];
+(inc,[3,0,1]) -> [4,1,2];
+(inc,[0,2,2]) -> [1,3,3];
+(inc,[3,0]) -> [4,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1082 true
+
+(inc,[]) -> [];
+(inc,[2,2]) -> [3,3];
+(inc,[1]) -> [2];
+(zero,[3,2]) -> [0,0];
+(zero,[0]) -> [0];
+(zero,[0,0]) -> [0,0];
+(inc,[2,3]) -> [3,4];
+(zero,[2]) -> [0];
+(zero,[2,1]) -> [0,0];
+(zero,[2,3]) -> [0,0];
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[3]) -> [4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0810 true
+
+(inc,[2]) -> [3];
+(inc,[3]) -> [4];
+(zero,[3]) -> [0];
+(zero,[2,0,0]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[1,1,3]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[0]) -> [0];
+(inc,[0]) -> [1];
+(inc,[1]) -> [2];
+(zero,[1,2,1]) -> [0,0,0];
+(zero,[2,1]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1399 true
+
+(zero,[1]) -> [0];
+(inc,[3,0,0]) -> [4,1,1];
+(zero,[3,0]) -> [0,0];
+(zero,[0]) -> [0];
+(inc,[1,1,2]) -> [2,2,3];
+(zero,[2,3]) -> [0,0];
+(inc,[3]) -> [4];
+(inc,[1,1]) -> [2,2];
+(inc,[]) -> [];
+(inc,[2,0,2]) -> [3,1,3];
+(inc,[0,1,0]) -> [1,2,1];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1595 true
+
+(inc,[]) -> [];
+(inc,[0,0,1]) -> [1,1,2];
+(inc,[3,2]) -> [4,3];
+(inc,[2]) -> [3];
+(inc,[3,2,1]) -> [4,3,2];
+(zero,[1]) -> [0];
+(inc,[2,3]) -> [3,4];
+(zero,[]) -> [];
+(inc,[0,2,0]) -> [1,3,1];
+(zero,[0,2,2]) -> [0,0,0];
+(inc,[0,3,1]) -> [1,4,2];
+(inc,[2,2,2]) -> [3,3,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1898 true
+
+(inc,[]) -> [];
+(inc,[0,0,2]) -> [1,1,3];
+(zero,[3]) -> [0];
+(inc,[2,1]) -> [3,2];
+(zero,[1,3,0]) -> [0,0,0];
+(zero,[2,3]) -> [0,0];
+(inc,[2,1,3]) -> [3,2,4];
+(inc,[0,1]) -> [1,2];
+(zero,[1,0]) -> [0,0];
+(inc,[3,1]) -> [4,2];
+(zero,[]) -> [];
+(zero,[3,1,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2709 true
+
+(inc,[]) -> [];
+(zero,[1,1,1]) -> [0,0,0];
+(zero,[3]) -> [0];
+(inc,[1,1,2]) -> [2,2,3];
+(zero,[3,2,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+(inc,[0,3,1]) -> [1,4,2];
+(inc,[3,2,3]) -> [4,3,4];
+(inc,[3,3]) -> [4,4];
+(zero,[1,2]) -> [0,0];
+(zero,[1,2,3]) -> [0,0,0];
+(zero,[1,3,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5219 true
+
+(inc,[3,1]) -> [4,2];
+(inc,[0,3,1]) -> [1,4,2];
+(zero,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[1,2]) -> [2,3];
+(inc,[]) -> [];
+(zero,[0,1]) -> [0,0];
+(zero,[0,0]) -> [0,0];
+(inc,[0]) -> [1];
+(zero,[2,1]) -> [0,0];
+(zero,[2]) -> [0];
+(inc,[2]) -> [3];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1054 true
+
+(zero,[2,1,3]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[3,0]) -> [0,0];
+(inc,[1,0]) -> [2,1];
+(inc,[2,3]) -> [3,4];
+(zero,[]) -> [];
+(zero,[2,2]) -> [0,0];
+(inc,[2]) -> [3];
+(inc,[]) -> [];
+(zero,[1,1]) -> [0,0];
+(zero,[0,1]) -> [0,0];
+(inc,[2,0]) -> [3,1];
+(zero,[0,0,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.9314 true
+
+(inc,[3,2]) -> [4,3];
+(inc,[3]) -> [4];
+(zero,[1,3]) -> [0,0];
+(zero,[2,3]) -> [0,0];
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(zero,[3]) -> [0];
+(inc,[0,3,2]) -> [1,4,3];
+(inc,[3,0]) -> [4,1];
+(inc,[2,0]) -> [3,1];
+(zero,[1,2]) -> [0,0];
+(inc,[1,2]) -> [2,3];
+(zero,[1,3,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1461 true
+
+(zero,[3,3]) -> [0,0];
+(zero,[2]) -> [0];
+(inc,[0,0]) -> [1,1];
+(zero,[0]) -> [0];
+(zero,[1]) -> [0];
+(inc,[0,2,3]) -> [1,3,4];
+(inc,[3]) -> [4];
+(zero,[2,2]) -> [0,0];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[1]) -> [2];
+(inc,[]) -> [];
+(inc,[0]) -> [1];
+(zero,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8108 true
+
+(inc,[3]) -> [4];
+(inc,[0,3,3]) -> [1,4,4];
+(inc,[3,3,0]) -> [4,4,1];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(zero,[3,1]) -> [0,0];
+(inc,[2,3,1]) -> [3,4,2];
+(zero,[1,2]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[3,2,0]) -> [0,0,0];
+(zero,[3,0,0]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(zero,[3,1,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2700 true
+
+(inc,[2,2,2]) -> [3,3,3];
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[2]) -> [3];
+(zero,[]) -> [];
+(zero,[2]) -> [0];
+(zero,[3,1]) -> [0,0];
+(inc,[2,0,1]) -> [3,1,2];
+(zero,[2,0]) -> [0,0];
+(zero,[0,0,2]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(inc,[3]) -> [4];
+(zero,[2,1,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3093 true
+
+(inc,[3,1,3]) -> [4,2,4];
+(zero,[]) -> [];
+(zero,[3]) -> [0];
+(inc,[]) -> [];
+(zero,[1,1,2]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[2]) -> [0];
+(inc,[0,3]) -> [1,4];
+(zero,[1,2]) -> [0,0];
+(zero,[0,1]) -> [0,0];
+(inc,[1,1]) -> [2,2];
+(zero,[2,2,1]) -> [0,0,0];
+(zero,[3,0,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5311 true
+
+(zero,[3,0]) -> [0,0];
+(zero,[2]) -> [0];
+(inc,[1,2,1]) -> [2,3,2];
+(zero,[3,2,0]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[1,0,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+(inc,[2]) -> [3];
+(zero,[0]) -> [0];
+(inc,[3,1,1]) -> [4,2,2];
+(zero,[3,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7657 true
+
+(inc,[2]) -> [3];
+(zero,[]) -> [];
+(zero,[3]) -> [0];
+(inc,[1,1,3]) -> [2,2,4];
+(inc,[2,3,1]) -> [3,4,2];
+(inc,[1]) -> [2];
+(inc,[2,3,2]) -> [3,4,3];
+(inc,[2,1]) -> [3,2];
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(zero,[0,1,0]) -> [0,0,0];
+(inc,[3,1,2]) -> [4,2,3];
+(zero,[1,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1990 true
+
+(zero,[0,0,3]) -> [0,0,0];
+(zero,[2]) -> [0];
+(zero,[2,1,1]) -> [0,0,0];
+(zero,[1,0]) -> [0,0];
+(inc,[1,1,0]) -> [2,2,1];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[3,0]) -> [0,0];
+(zero,[2,3]) -> [0,0];
+(zero,[0,3,1]) -> [0,0,0];
+(inc,[2,1]) -> [3,2];
+(inc,[1,2]) -> [2,3];
+(inc,[0]) -> [1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8873 true
+
+(inc,[3]) -> [4];
+(zero,[3,2,3]) -> [0,0,0];
+(inc,[1]) -> [2];
+(inc,[]) -> [];
+(zero,[3]) -> [0];
+(zero,[1]) -> [0];
+(zero,[3,2]) -> [0,0];
+(inc,[3,1]) -> [4,2];
+(zero,[3,1]) -> [0,0];
+(inc,[2,0,3]) -> [3,1,4];
+(zero,[2]) -> [0];
+(inc,[0,2,3]) -> [1,3,4];
+(inc,[1,0]) -> [2,1];
+(zero,[1,3]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3360 true
+
+(inc,[1]) -> [2];
+(zero,[2,1]) -> [0,0];
+(inc,[2]) -> [3];
+(zero,[]) -> [];
+(zero,[3,3]) -> [0,0];
+(zero,[2]) -> [0];
+(zero,[1,0,3]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+(inc,[1,2,3]) -> [2,3,4];
+(zero,[3,1,3]) -> [0,0,0];
+(inc,[3,2,3]) -> [4,3,4];
+(inc,[3]) -> [4];
+(zero,[1]) -> [0];
+(inc,[2,0]) -> [3,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0854 true
+
+(inc,[2,3]) -> [3,4];
+(inc,[0,0,2]) -> [1,1,3];
+(inc,[3]) -> [4];
+(zero,[0,0]) -> [0,0];
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(zero,[0,2,2]) -> [0,0,0];
+(zero,[2]) -> [0];
+(zero,[1]) -> [0];
+(zero,[]) -> [];
+(inc,[2,2,0]) -> [3,3,1];
+(inc,[1,0]) -> [2,1];
+(inc,[1,0,0]) -> [2,1,1];
+(zero,[2,2,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0830 true
+
+(inc,[2,0]) -> [3,1];
+(zero,[3]) -> [0];
+(inc,[3,2,2]) -> [4,3,3];
+(inc,[]) -> [];
+(zero,[0,0,3]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[0,2,3]) -> [1,3,4];
+(zero,[0,2,1]) -> [0,0,0];
+(inc,[2]) -> [3];
+(inc,[3]) -> [4];
+(inc,[0]) -> [1];
+(zero,[0,2,3]) -> [0,0,0];
+(inc,[0,3]) -> [1,4];
+(inc,[3,2,1]) -> [4,3,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0760 true
+
+(inc,[3]) -> [4];
+(zero,[]) -> [];
+(zero,[3,1,3]) -> [0,0,0];
+(zero,[1,1]) -> [0,0];
+(zero,[0,0,2]) -> [0,0,0];
+(inc,[1,3]) -> [2,4];
+(zero,[3,3]) -> [0,0];
+(inc,[3,1]) -> [4,2];
+(inc,[3,3]) -> [4,4];
+(zero,[2,3,1]) -> [0,0,0];
+(zero,[1,1,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+(inc,[]) -> [];
+(inc,[3,0]) -> [4,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1962 true
+
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(inc,[3,1,3]) -> [4,2,4];
+(inc,[1,2]) -> [2,3];
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+(zero,[2,0,2]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+(zero,[1]) -> [0];
+(zero,[0,0,3]) -> [0,0,0];
+(inc,[0,2,3]) -> [1,3,4];
+(zero,[1,0]) -> [0,0];
+(inc,[0,3]) -> [1,4];
+(zero,[2,3,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+2.6193 true
+
+(zero,[1,2,3]) -> [0,0,0];
+(inc,[]) -> [];
+(zero,[3,0]) -> [0,0];
+(zero,[3,1,2]) -> [0,0,0];
+(inc,[2,2,0]) -> [3,3,1];
+(inc,[0]) -> [1];
+(inc,[1,1,0]) -> [2,2,1];
+(zero,[1,3,3]) -> [0,0,0];
+(inc,[3]) -> [4];
+(zero,[0,0,3]) -> [0,0,0];
+(zero,[2]) -> [0];
+(zero,[]) -> [];
+(inc,[0,1,0]) -> [1,2,1];
+(inc,[3,2]) -> [4,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.7439 true
+
+(zero,[]) -> [];
+(inc,[1,1,0]) -> [2,2,1];
+(zero,[2]) -> [0];
+(inc,[3]) -> [4];
+(zero,[3,2,1]) -> [0,0,0];
+(zero,[0]) -> [0];
+(inc,[]) -> [];
+(inc,[0,1,2]) -> [1,2,3];
+(inc,[2,2]) -> [3,3];
+(zero,[3,0,3]) -> [0,0,0];
+(zero,[3]) -> [0];
+(zero,[1,3,1]) -> [0,0,0];
+(inc,[3,2,1]) -> [4,3,2];
+(inc,[1,1]) -> [2,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1864 true
+
+(inc,[0,1]) -> [1,2];
+(inc,[1,2,3]) -> [2,3,4];
+(zero,[0,3]) -> [0,0];
+(inc,[2,0,0]) -> [3,1,1];
+(inc,[3]) -> [4];
+(zero,[1]) -> [0];
+(inc,[0]) -> [1];
+(zero,[]) -> [];
+(inc,[2,0,2]) -> [3,1,3];
+(inc,[1,1]) -> [2,2];
+(inc,[3,0]) -> [4,1];
+(zero,[0,1,3]) -> [0,0,0];
+(inc,[2]) -> [3];
+(zero,[2,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0700 true
+
+(zero,[3,0]) -> [0,0];
+(zero,[1]) -> [0];
+(inc,[1,2]) -> [2,3];
+(inc,[3]) -> [4];
+(zero,[2,3]) -> [0,0];
+(inc,[3,0,0]) -> [4,1,1];
+(zero,[0,2,2]) -> [0,0,0];
+(inc,[2]) -> [3];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(inc,[2,0,2]) -> [3,1,3];
+(inc,[2,3]) -> [3,4];
+(zero,[0,1]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2761 true
+
+(zero,[2,0]) -> [0,0];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(zero,[3,2,3]) -> [0,0,0];
+(inc,[3,1]) -> [4,2];
+(zero,[2]) -> [0];
+(inc,[3,2]) -> [4,3];
+(inc,[2]) -> [3];
+(zero,[1]) -> [0];
+(zero,[2,2]) -> [0,0];
+(inc,[0,3,0]) -> [1,4,1];
+(zero,[2,2,0]) -> [0,0,0];
+(zero,[3]) -> [0];
+(inc,[1]) -> [2];
+(inc,[3,1,0]) -> [4,2,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7745 true
+
+(inc,[0,3,1]) -> [1,4,2];
+(inc,[3]) -> [4];
+(zero,[]) -> [];
+(zero,[2,1]) -> [0,0];
+(zero,[0,2]) -> [0,0];
+(inc,[1,2]) -> [2,3];
+(inc,[2]) -> [3];
+(inc,[]) -> [];
+(inc,[3,1,3]) -> [4,2,4];
+(zero,[0]) -> [0];
+(inc,[0,3]) -> [1,4];
+(zero,[1]) -> [0];
+(inc,[1,3]) -> [2,4];
+(zero,[3,1]) -> [0,0];
+(inc,[3,3]) -> [4,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.6135 true
+
+(inc,[0]) -> [1];
+(zero,[1,0,1]) -> [0,0,0];
+(zero,[3,0]) -> [0,0];
+(inc,[]) -> [];
+(inc,[2,3]) -> [3,4];
+(zero,[1]) -> [0];
+(inc,[2,3,2]) -> [3,4,3];
+(zero,[2,1]) -> [0,0];
+(inc,[2]) -> [3];
+(zero,[3,1,2]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[2,0,1]) -> [0,0,0];
+(zero,[0]) -> [0];
+(inc,[2,1]) -> [3,2];
+(zero,[3,1]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1074 true
+
+(inc,[2]) -> [3];
+(zero,[2,3,2]) -> [0,0,0];
+(zero,[2,1]) -> [0,0];
+(zero,[0]) -> [0];
+(inc,[3,1,3]) -> [4,2,4];
+(inc,[3,2]) -> [4,3];
+(inc,[]) -> [];
+(inc,[1,1,0]) -> [2,2,1];
+(inc,[0,1,2]) -> [1,2,3];
+(inc,[0]) -> [1];
+(zero,[1,1]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+(inc,[3,1,2]) -> [4,2,3];
+(inc,[3,1,1]) -> [4,2,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.6325 true
+
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[]) -> [];
+(zero,[2,2,0]) -> [0,0,0];
+(zero,[0]) -> [0];
+(inc,[1,0]) -> [2,1];
+(zero,[1,0,3]) -> [0,0,0];
+(inc,[1]) -> [2];
+(inc,[1,2,0]) -> [2,3,1];
+(zero,[3,3]) -> [0,0];
+(inc,[0]) -> [1];
+(inc,[3,1]) -> [4,2];
+(zero,[]) -> [];
+(inc,[3]) -> [4];
+(inc,[1,2]) -> [2,3];
+(zero,[2,2,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4716 true
+
+(zero,[]) -> [];
+(inc,[2,3]) -> [3,4];
+(inc,[0]) -> [1];
+(inc,[3]) -> [4];
+(zero,[3,3,1]) -> [0,0,0];
+(inc,[2,1,0]) -> [3,2,1];
+(inc,[]) -> [];
+(zero,[1,1,3]) -> [0,0,0];
+(zero,[2]) -> [0];
+(zero,[2,1]) -> [0,0];
+(zero,[3]) -> [0];
+(inc,[1,2]) -> [2,3];
+(inc,[2,2,1]) -> [3,3,2];
+(zero,[2,3]) -> [0,0];
+(zero,[3,3]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0846 true
+
+(inc,[0,2]) -> [1,3];
+(inc,[1,0]) -> [2,1];
+(zero,[0,0,0]) -> [0,0,0];
+(zero,[0,1,2]) -> [0,0,0];
+(inc,[2]) -> [3];
+(zero,[3,3,3]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[0,2,1]) -> [0,0,0];
+(zero,[0,0,3]) -> [0,0,0];
+(inc,[0,1,1]) -> [1,2,2];
+(zero,[0,1,3]) -> [0,0,0];
+(zero,[1,1]) -> [0,0];
+(zero,[3,0,3]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[2,1]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1106 true
+
+(inc,[3,0]) -> [4,1];
+(inc,[3,1,3]) -> [4,2,4];
+(zero,[1,3]) -> [0,0];
+(zero,[2]) -> [0];
+(zero,[1]) -> [0];
+(inc,[1]) -> [2];
+(inc,[3,1,2]) -> [4,2,3];
+(zero,[3]) -> [0];
+(zero,[1,0,0]) -> [0,0,0];
+(inc,[0,2,3]) -> [1,3,4];
+(inc,[]) -> [];
+(inc,[2,2,3]) -> [3,3,4];
+(zero,[3,0]) -> [0,0];
+(inc,[0]) -> [1];
+(zero,[3,2,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0990 true
+
+(zero,[3,1]) -> [0,0];
+(zero,[1]) -> [0];
+(zero,[]) -> [];
+(inc,[3,0,0]) -> [4,1,1];
+(zero,[1,0]) -> [0,0];
+(inc,[0,0,0]) -> [1,1,1];
+(inc,[0,2]) -> [1,3];
+(zero,[3,0,1]) -> [0,0,0];
+(zero,[0,2,0]) -> [0,0,0];
+(inc,[]) -> [];
+(inc,[2,3]) -> [3,4];
+(zero,[2]) -> [0];
+(zero,[0,3,1]) -> [0,0,0];
+(zero,[0,0]) -> [0,0];
+(zero,[2,2,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1581 true
+
+(zero,[2,3,1]) -> [0,0,0];
+(inc,[3,0,2]) -> [4,1,3];
+(zero,[]) -> [];
+(inc,[2]) -> [3];
+(zero,[1]) -> [0];
+(inc,[1]) -> [2];
+(inc,[3,0]) -> [4,1];
+(zero,[2,3,0]) -> [0,0,0];
+(zero,[0,0]) -> [0,0];
+(zero,[1,3,3]) -> [0,0,0];
+(zero,[3]) -> [0];
+(zero,[2,0]) -> [0,0];
+(inc,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(zero,[3,2,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4301 true
+
+(zero,[]) -> [];
+(zero,[0,0]) -> [0,0];
+(inc,[2]) -> [3];
+(inc,[0,0]) -> [1,1];
+(inc,[1,2]) -> [2,3];
+(zero,[1]) -> [0];
+(zero,[0]) -> [0];
+(inc,[3]) -> [4];
+(inc,[0,3,1]) -> [1,4,2];
+(inc,[]) -> [];
+(inc,[2,0]) -> [3,1];
+(inc,[2,1,2]) -> [3,2,3];
+(zero,[2,0]) -> [0,0];
+(inc,[2,3,2]) -> [3,4,3];
+(zero,[1,2]) -> [0,0];
+(inc,[0,3]) -> [1,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0595 true
+
+(inc,[0]) -> [1];
+(zero,[2,0]) -> [0,0];
+(inc,[1,0,2]) -> [2,1,3];
+(inc,[]) -> [];
+(zero,[0,2]) -> [0,0];
+(zero,[]) -> [];
+(zero,[2,2]) -> [0,0];
+(inc,[0,2]) -> [1,3];
+(inc,[0,1,0]) -> [1,2,1];
+(inc,[3,1]) -> [4,2];
+(inc,[0,2,0]) -> [1,3,1];
+(inc,[2]) -> [3];
+(inc,[1,3,1]) -> [2,4,2];
+(zero,[2,1]) -> [0,0];
+(zero,[2]) -> [0];
+(zero,[0]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1986 true
+
+(zero,[3,3,3]) -> [0,0,0];
+(zero,[0,0]) -> [0,0];
+(inc,[3,0,0]) -> [4,1,1];
+(zero,[2,0]) -> [0,0];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(zero,[3,1]) -> [0,0];
+(zero,[1,2]) -> [0,0];
+(inc,[2]) -> [3];
+(inc,[2,1,0]) -> [3,2,1];
+(zero,[2,3,3]) -> [0,0,0];
+(zero,[3]) -> [0];
+(inc,[3]) -> [4];
+(inc,[2,2]) -> [3,3];
+(zero,[2]) -> [0];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4663 true
+
+(zero,[3]) -> [0];
+(inc,[]) -> [];
+(zero,[3,1]) -> [0,0];
+(zero,[2]) -> [0];
+(inc,[2,1,3]) -> [3,2,4];
+(inc,[0]) -> [1];
+(zero,[0,2,2]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[1,2,2]) -> [0,0,0];
+(zero,[0,0,0]) -> [0,0,0];
+(inc,[0,0,3]) -> [1,1,4];
+(zero,[0,1,0]) -> [0,0,0];
+(inc,[0,3]) -> [1,4];
+(zero,[1,2]) -> [0,0];
+(zero,[0,3]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5387 true
+
+(inc,[]) -> [];
+(zero,[2]) -> [0];
+(zero,[0,1]) -> [0,0];
+(inc,[3,3]) -> [4,4];
+(zero,[0]) -> [0];
+(zero,[1,3,3]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[3,2]) -> [0,0];
+(inc,[2,0]) -> [3,1];
+(inc,[1,2]) -> [2,3];
+(zero,[2,2]) -> [0,0];
+(zero,[1,1,2]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[0,0]) -> [0,0];
+(inc,[3]) -> [4];
+(inc,[2]) -> [3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0647 true
+
+(zero,[]) -> [];
+(inc,[1]) -> [2];
+(inc,[2]) -> [3];
+(inc,[3]) -> [4];
+(zero,[2]) -> [0];
+(zero,[2,3]) -> [0,0];
+(zero,[2,0]) -> [0,0];
+(inc,[2,3]) -> [3,4];
+(zero,[1,2,3]) -> [0,0,0];
+(inc,[3,0,1]) -> [4,1,2];
+(inc,[]) -> [];
+(zero,[2,0,2]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(zero,[1,1]) -> [0,0];
+(inc,[3,3]) -> [4,4];
+(zero,[2,3,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0684 true
+
+(zero,[2]) -> [0];
+(zero,[2,1]) -> [0,0];
+(zero,[]) -> [];
+(zero,[0,2]) -> [0,0];
+(inc,[1,0,3]) -> [2,1,4];
+(inc,[2,3,1]) -> [3,4,2];
+(zero,[0]) -> [0];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(inc,[2,2]) -> [3,3];
+(inc,[2,0,3]) -> [3,1,4];
+(inc,[2,2,3]) -> [3,3,4];
+(zero,[0,0,1]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(zero,[3]) -> [0];
+(zero,[2,1,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.8327 true
+
+(zero,[1,0,1]) -> [0,0,0];
+(inc,[3,1,2]) -> [4,2,3];
+(inc,[1,3,2]) -> [2,4,3];
+(zero,[1,3,1]) -> [0,0,0];
+(inc,[1,2,1]) -> [2,3,2];
+(inc,[1,2]) -> [2,3];
+(inc,[1]) -> [2];
+(inc,[2]) -> [3];
+(zero,[2,0]) -> [0,0];
+(zero,[1]) -> [0];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[1,1,2]) -> [2,2,3];
+(zero,[3,0,2]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(zero,[0,1,3]) -> [0,0,0];
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3306 true
+
+(zero,[]) -> [];
+(inc,[0]) -> [1];
+(inc,[1,1]) -> [2,2];
+(zero,[2,0,2]) -> [0,0,0];
+(inc,[2,2,1]) -> [3,3,2];
+(inc,[3]) -> [4];
+(inc,[2,2,3]) -> [3,3,4];
+(zero,[3]) -> [0];
+(zero,[3,0,3]) -> [0,0,0];
+(zero,[2,0]) -> [0,0];
+(inc,[]) -> [];
+(zero,[0,3,3]) -> [0,0,0];
+(inc,[0,3]) -> [1,4];
+(inc,[1,3,0]) -> [2,4,1];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[2,0]) -> [3,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.9718 true
+
+(inc,[2,1]) -> [3,2];
+(inc,[]) -> [];
+(zero,[0]) -> [0];
+(zero,[]) -> [];
+(inc,[1,3]) -> [2,4];
+(zero,[2,0,3]) -> [0,0,0];
+(inc,[2]) -> [3];
+(inc,[1]) -> [2];
+(inc,[2,2,3]) -> [3,3,4];
+(zero,[1]) -> [0];
+(zero,[3]) -> [0];
+(inc,[2,0]) -> [3,1];
+(inc,[0,2]) -> [1,3];
+(inc,[0,3,3]) -> [1,4,4];
+(inc,[2,1,2]) -> [3,2,3];
+(inc,[3,0,2]) -> [4,1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0851 true
+
+(inc,[1,2,3]) -> [2,3,4];
+(inc,[3,3]) -> [4,4];
+(zero,[1,1,0]) -> [0,0,0];
+(inc,[1,0,3]) -> [2,1,4];
+(zero,[1,0]) -> [0,0];
+(zero,[]) -> [];
+(zero,[1,0,3]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(zero,[3]) -> [0];
+(inc,[3,1,1]) -> [4,2,2];
+(zero,[0,2,1]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[2]) -> [0];
+(zero,[3,3]) -> [0,0];
+(inc,[]) -> [];
+(zero,[0,0,1]) -> [0,0,0];
+(inc,[2,3,3]) -> [3,4,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5396 true
+
+(inc,[3,3,1]) -> [4,4,2];
+(zero,[2,2,1]) -> [0,0,0];
+(zero,[2]) -> [0];
+(inc,[0,3,2]) -> [1,4,3];
+(inc,[0]) -> [1];
+(zero,[]) -> [];
+(inc,[2]) -> [3];
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(zero,[1,1]) -> [0,0];
+(inc,[1,3]) -> [2,4];
+(inc,[1,1]) -> [2,2];
+(zero,[1,3,3]) -> [0,0,0];
+(zero,[0,0]) -> [0,0];
+(zero,[3,2]) -> [0,0];
+(zero,[0,3]) -> [0,0];
+(inc,[2,1,2]) -> [3,2,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3553 true
+
+(zero,[3,0]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+(inc,[0,0,3]) -> [1,1,4];
+(zero,[2,1]) -> [0,0];
+(zero,[1,1,3]) -> [0,0,0];
+(inc,[2,3]) -> [3,4];
+(zero,[2,1,2]) -> [0,0,0];
+(zero,[1]) -> [0];
+(zero,[2]) -> [0];
+(inc,[3,0]) -> [4,1];
+(inc,[0,0]) -> [1,1];
+(zero,[2,3]) -> [0,0];
+(zero,[0,3]) -> [0,0];
+(zero,[1,1,1]) -> [0,0,0];
+(zero,[0,2]) -> [0,0];
+(zero,[1,2,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+1.9308 true
+
+(zero,[]) -> [];
+(inc,[2,0,0]) -> [3,1,1];
+(zero,[2,0]) -> [0,0];
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(inc,[1,2]) -> [2,3];
+(inc,[0]) -> [1];
+(zero,[3]) -> [0];
+(inc,[1,2,0]) -> [2,3,1];
+(zero,[0,2]) -> [0,0];
+(zero,[0,3]) -> [0,0];
+(inc,[2,2]) -> [3,3];
+(inc,[1]) -> [2];
+(zero,[1,0,3]) -> [0,0,0];
+(zero,[2,2]) -> [0,0];
+(inc,[2]) -> [3];
+(zero,[3,0,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2222 true
+
+(inc,[1,2,1]) -> [2,3,2];
+(inc,[]) -> [];
+(inc,[0]) -> [1];
+(inc,[1,2,2]) -> [2,3,3];
+(inc,[3]) -> [4];
+(zero,[1]) -> [0];
+(zero,[1,1,1]) -> [0,0,0];
+(inc,[1,1,2]) -> [2,2,3];
+(zero,[2]) -> [0];
+(zero,[2,1]) -> [0,0];
+(zero,[0,0,3]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[0]) -> [0];
+(inc,[1]) -> [2];
+(zero,[0,0]) -> [0,0];
+(inc,[2]) -> [3];
+(zero,[3,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2365 true
+
+(zero,[]) -> [];
+(inc,[1,0]) -> [2,1];
+(inc,[1,0,3]) -> [2,1,4];
+(zero,[1,0]) -> [0,0];
+(zero,[3,0,1]) -> [0,0,0];
+(inc,[0,1]) -> [1,2];
+(inc,[2]) -> [3];
+(zero,[2,1]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[3]) -> [0];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(zero,[2,0,3]) -> [0,0,0];
+(zero,[0,2]) -> [0,0];
+(zero,[2,3,1]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+(zero,[1]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0662 true
+
+(zero,[0]) -> [0];
+(inc,[3,0]) -> [4,1];
+(inc,[0]) -> [1];
+(zero,[2,2,0]) -> [0,0,0];
+(inc,[3,2,2]) -> [4,3,3];
+(zero,[]) -> [];
+(inc,[3]) -> [4];
+(inc,[]) -> [];
+(inc,[1]) -> [2];
+(zero,[1,2]) -> [0,0];
+(zero,[3]) -> [0];
+(zero,[2,0,3]) -> [0,0,0];
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[3,3]) -> [4,4];
+(inc,[0,0]) -> [1,1];
+(inc,[0,1,1]) -> [1,2,2];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0838 true
+
+(zero,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(inc,[3,0,1]) -> [4,1,2];
+(zero,[0]) -> [0];
+(inc,[1,1,2]) -> [2,2,3];
+(inc,[1]) -> [2];
+(inc,[2]) -> [3];
+(zero,[3]) -> [0];
+(zero,[1,3,3]) -> [0,0,0];
+(inc,[3]) -> [4];
+(inc,[0,1,2]) -> [1,2,3];
+(zero,[3,1,2]) -> [0,0,0];
+(inc,[0,1]) -> [1,2];
+(inc,[3,2,3]) -> [4,3,4];
+(zero,[0,2,1]) -> [0,0,0];
+(zero,[2,3]) -> [0,0];
+(inc,[3,3,1]) -> [4,4,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1570 true
+
+(inc,[1,2,0]) -> [2,3,1];
+(zero,[2,2]) -> [0,0];
+(inc,[3]) -> [4];
+(zero,[]) -> [];
+(inc,[2,3]) -> [3,4];
+(zero,[0]) -> [0];
+(zero,[3,2,0]) -> [0,0,0];
+(inc,[2]) -> [3];
+(inc,[]) -> [];
+(zero,[0,2,0]) -> [0,0,0];
+(zero,[0,3,2]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+(zero,[2,2,1]) -> [0,0,0];
+(zero,[3]) -> [0];
+(zero,[2,0]) -> [0,0];
+(zero,[1]) -> [0];
+(inc,[2,1]) -> [3,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4296 true
+
+(zero,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[2,1]) -> [3,2];
+(inc,[0,1,0]) -> [1,2,1];
+(inc,[3]) -> [4];
+(zero,[3,0]) -> [0,0];
+(inc,[0,0]) -> [1,1];
+(inc,[]) -> [];
+(inc,[0,1,3]) -> [1,2,4];
+(inc,[2,0]) -> [3,1];
+(zero,[3]) -> [0];
+(zero,[2,0,2]) -> [0,0,0];
+(inc,[2,1,3]) -> [3,2,4];
+(inc,[1,2,1]) -> [2,3,2];
+(zero,[0,1,2]) -> [0,0,0];
+(zero,[2,1,1]) -> [0,0,0];
+(zero,[1,3,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0381 true
+
+(zero,[]) -> [];
+(inc,[0]) -> [1];
+(inc,[2,1]) -> [3,2];
+(zero,[3,1]) -> [0,0];
+(zero,[2,3]) -> [0,0];
+(inc,[2,0]) -> [3,1];
+(inc,[3,0]) -> [4,1];
+(inc,[]) -> [];
+(zero,[2,1,1]) -> [0,0,0];
+(inc,[2,2,1]) -> [3,3,2];
+(zero,[1,1]) -> [0,0];
+(zero,[2,2,2]) -> [0,0,0];
+(inc,[1,1]) -> [2,2];
+(zero,[3]) -> [0];
+(inc,[0,0]) -> [1,1];
+(zero,[0,2,2]) -> [0,0,0];
+(inc,[0,2,1]) -> [1,3,2];
+(zero,[2,2,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0924 true
+
+(zero,[0,2,0]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[0,3]) -> [1,4];
+(inc,[]) -> [];
+(inc,[2]) -> [3];
+(inc,[2,3,0]) -> [3,4,1];
+(zero,[1,3]) -> [0,0];
+(zero,[0,0]) -> [0,0];
+(inc,[3,2]) -> [4,3];
+(zero,[3,1,0]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[1]) -> [0];
+(inc,[3]) -> [4];
+(zero,[0,3,0]) -> [0,0,0];
+(zero,[2,0,2]) -> [0,0,0];
+(zero,[2]) -> [0];
+(inc,[1,3]) -> [2,4];
+(inc,[2,3,2]) -> [3,4,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.7470 true
+
+(zero,[1,1]) -> [0,0];
+(zero,[]) -> [];
+(zero,[3,0,0]) -> [0,0,0];
+(zero,[2,1,1]) -> [0,0,0];
+(zero,[2,2]) -> [0,0];
+(inc,[2]) -> [3];
+(inc,[1,2]) -> [2,3];
+(inc,[1]) -> [2];
+(inc,[]) -> [];
+(inc,[3,0]) -> [4,1];
+(zero,[1,3]) -> [0,0];
+(inc,[2,3,3]) -> [3,4,4];
+(zero,[3]) -> [0];
+(inc,[2,0,2]) -> [3,1,3];
+(zero,[1,1,3]) -> [0,0,0];
+(inc,[3,3,1]) -> [4,4,2];
+(inc,[3]) -> [4];
+(zero,[1,2,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1926 true
+
+(inc,[3,1,3]) -> [4,2,4];
+(zero,[2]) -> [0];
+(inc,[0]) -> [1];
+(zero,[1,1]) -> [0,0];
+(inc,[0,1,3]) -> [1,2,4];
+(zero,[]) -> [];
+(zero,[2,3,0]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[1,3,2]) -> [0,0,0];
+(zero,[0,1,0]) -> [0,0,0];
+(zero,[3]) -> [0];
+(zero,[2,0,0]) -> [0,0,0];
+(inc,[3,0]) -> [4,1];
+(zero,[0]) -> [0];
+(zero,[0,0,2]) -> [0,0,0];
+(zero,[2,2,0]) -> [0,0,0];
+(inc,[]) -> [];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5691 true
+
+(inc,[2,2]) -> [3,3];
+(zero,[2]) -> [0];
+(zero,[1,0]) -> [0,0];
+(inc,[]) -> [];
+(zero,[3]) -> [0];
+(zero,[1,2]) -> [0,0];
+(zero,[]) -> [];
+(inc,[3]) -> [4];
+(inc,[0,2]) -> [1,3];
+(inc,[2]) -> [3];
+(inc,[0,1]) -> [1,2];
+(zero,[3,0]) -> [0,0];
+(zero,[0]) -> [0];
+(inc,[0,3]) -> [1,4];
+(inc,[2,1,3]) -> [3,2,4];
+(zero,[1,0,0]) -> [0,0,0];
+(zero,[3,2,0]) -> [0,0,0];
+(inc,[3,2]) -> [4,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0916 true
+
+(zero,[2]) -> [0];
+(zero,[3,1]) -> [0,0];
+(zero,[]) -> [];
+(inc,[]) -> [];
+(inc,[2]) -> [3];
+(inc,[0,1]) -> [1,2];
+(inc,[1,0,0]) -> [2,1,1];
+(zero,[0,2,1]) -> [0,0,0];
+(inc,[2,3]) -> [3,4];
+(zero,[3,1,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+(inc,[2,1]) -> [3,2];
+(zero,[3]) -> [0];
+(inc,[2,2]) -> [3,3];
+(inc,[3,1,3]) -> [4,2,4];
+(inc,[0,0,2]) -> [1,1,3];
+(inc,[1]) -> [2];
+(zero,[0,3,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1004 true
+
+(inc,[]) -> [];
+(zero,[]) -> [];
+(inc,[3,0]) -> [4,1];
+(zero,[3]) -> [0];
+(zero,[1,2]) -> [0,0];
+(zero,[3,1]) -> [0,0];
+(zero,[2,0]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[0,2,0]) -> [0,0,0];
+(zero,[2,1,1]) -> [0,0,0];
+(zero,[3,1,3]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+(zero,[1]) -> [0];
+(inc,[0]) -> [1];
+(zero,[3,3]) -> [0,0];
+(zero,[2,2]) -> [0,0];
+(zero,[1,1]) -> [0,0];
+(zero,[3,1,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0654 true
+
+(zero,[3,2]) -> [0,0];
+(zero,[]) -> [];
+(zero,[2]) -> [0];
+(zero,[3]) -> [0];
+(inc,[0]) -> [1];
+(inc,[2,2]) -> [3,3];
+(inc,[3,1,0]) -> [4,2,1];
+(zero,[3,1]) -> [0,0];
+(inc,[2]) -> [3];
+(zero,[0,1]) -> [0,0];
+(inc,[2,2,0]) -> [3,3,1];
+(inc,[]) -> [];
+(inc,[2,0,1]) -> [3,1,2];
+(zero,[1]) -> [0];
+(zero,[0]) -> [0];
+(inc,[1,3,1]) -> [2,4,2];
+(zero,[3,1,3]) -> [0,0,0];
+(inc,[3,0,0]) -> [4,1,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1740 true
+
+(zero,[]) -> [];
+(inc,[0,2]) -> [1,3];
+(inc,[3,3]) -> [4,4];
+(inc,[]) -> [];
+(inc,[3,1]) -> [4,2];
+(zero,[3,3]) -> [0,0];
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[0]) -> [1];
+(zero,[1,1]) -> [0,0];
+(zero,[1,3,1]) -> [0,0,0];
+(zero,[2]) -> [0];
+(inc,[3,3,1]) -> [4,4,2];
+(zero,[1]) -> [0];
+(zero,[0]) -> [0];
+(zero,[2,1]) -> [0,0];
+(zero,[2,2,3]) -> [0,0,0];
+(inc,[0,2,1]) -> [1,3,2];
+(zero,[0,3,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0764 true
+
+(inc,[1,2,0]) -> [2,3,1];
+(inc,[]) -> [];
+(zero,[2,2]) -> [0,0];
+(inc,[0]) -> [1];
+(zero,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[2,3]) -> [3,4];
+(zero,[0,0,0]) -> [0,0,0];
+(zero,[1,3,0]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(inc,[3,1,2]) -> [4,2,3];
+(inc,[1]) -> [2];
+(zero,[1,3,1]) -> [0,0,0];
+(inc,[3]) -> [4];
+(inc,[0,2]) -> [1,3];
+(zero,[0,2]) -> [0,0];
+(zero,[2]) -> [0];
+(inc,[1,1,1]) -> [2,2,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2162 true
+
+(inc,[1,0,2]) -> [2,1,3];
+(inc,[0]) -> [1];
+(zero,[0,3]) -> [0,0];
+(zero,[2,2,3]) -> [0,0,0];
+(inc,[]) -> [];
+(inc,[2,3]) -> [3,4];
+(zero,[0,1]) -> [0,0];
+(inc,[3,2,1]) -> [4,3,2];
+(zero,[3,2,3]) -> [0,0,0];
+(zero,[0,3,1]) -> [0,0,0];
+(zero,[0]) -> [0];
+(inc,[1]) -> [2];
+(zero,[1,3]) -> [0,0];
+(zero,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[3]) -> [4];
+(zero,[0,3,0]) -> [0,0,0];
+(zero,[2,3]) -> [0,0];
+(zero,[0,1,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3411 true
+
+(zero,[3,2]) -> [0,0];
+(zero,[]) -> [];
+(zero,[0,1,1]) -> [0,0,0];
+(zero,[0,3,2]) -> [0,0,0];
+(inc,[0,2,0]) -> [1,3,1];
+(zero,[1,1]) -> [0,0];
+(zero,[3]) -> [0];
+(inc,[0,3,2]) -> [1,4,3];
+(inc,[1,2]) -> [2,3];
+(inc,[0]) -> [1];
+(zero,[1]) -> [0];
+(inc,[1,0,1]) -> [2,1,2];
+(zero,[1,2,3]) -> [0,0,0];
+(inc,[1,0,3]) -> [2,1,4];
+(inc,[3]) -> [4];
+(zero,[2]) -> [0];
+(inc,[]) -> [];
+(inc,[3,2]) -> [4,3];
+(zero,[1,0]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3467 true
+
+(inc,[2]) -> [3];
+(inc,[3,1]) -> [4,2];
+(inc,[2,2]) -> [3,3];
+(inc,[0]) -> [1];
+(zero,[3,0]) -> [0,0];
+(inc,[1,2,0]) -> [2,3,1];
+(inc,[1,3,2]) -> [2,4,3];
+(inc,[]) -> [];
+(inc,[3]) -> [4];
+(inc,[2,3,1]) -> [3,4,2];
+(zero,[]) -> [];
+(inc,[3,3]) -> [4,4];
+(zero,[1,0,0]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(zero,[3,3]) -> [0,0];
+(zero,[1,1,2]) -> [0,0,0];
+(inc,[0,2]) -> [1,3];
+(zero,[2]) -> [0];
+(inc,[1]) -> [2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0709 true
+
+(inc,[3,3]) -> [4,4];
+(zero,[0,3]) -> [0,0];
+(inc,[1,1,0]) -> [2,2,1];
+(inc,[]) -> [];
+(inc,[1,3]) -> [2,4];
+(zero,[2]) -> [0];
+(zero,[3,1,2]) -> [0,0,0];
+(zero,[]) -> [];
+(inc,[0,1,1]) -> [1,2,2];
+(inc,[2,2,2]) -> [3,3,3];
+(inc,[1]) -> [2];
+(inc,[0,0,3]) -> [1,1,4];
+(inc,[0]) -> [1];
+(inc,[0,1]) -> [1,2];
+(inc,[0,0]) -> [1,1];
+(zero,[1,0]) -> [0,0];
+(inc,[2,2,3]) -> [3,3,4];
+(zero,[2,3,0]) -> [0,0,0];
+(zero,[1]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1037 true
+
+(inc,[]) -> [];
+(zero,[3]) -> [0];
+(zero,[1,1]) -> [0,0];
+(inc,[2,2]) -> [3,3];
+(zero,[]) -> [];
+(zero,[2,1]) -> [0,0];
+(inc,[0]) -> [1];
+(inc,[1]) -> [2];
+(inc,[1,2,1]) -> [2,3,2];
+(zero,[0]) -> [0];
+(zero,[0,2,0]) -> [0,0,0];
+(inc,[2,1]) -> [3,2];
+(inc,[0,2]) -> [1,3];
+(zero,[2]) -> [0];
+(zero,[0,1,3]) -> [0,0,0];
+(inc,[1,0]) -> [2,1];
+(inc,[2]) -> [3];
+(zero,[3,2]) -> [0,0];
+(zero,[1,1,2]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0726 true
+
+(zero,[0,3,3]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(zero,[1]) -> [0];
+(zero,[2,0]) -> [0,0];
+(inc,[0]) -> [1];
+(zero,[0,0,3]) -> [0,0,0];
+(inc,[1,0]) -> [2,1];
+(zero,[1,1,2]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[2,2,0]) -> [0,0,0];
+(inc,[]) -> [];
+(inc,[2,0]) -> [3,1];
+(zero,[3]) -> [0];
+(zero,[0]) -> [0];
+(zero,[0,2]) -> [0,0];
+(inc,[1,1,0]) -> [2,2,1];
+(zero,[1,3]) -> [0,0];
+(inc,[0,1,0]) -> [1,2,1];
+(zero,[2]) -> [0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3179 true
+
+(inc,[]) -> [];
+(inc,[3,0,0]) -> [4,1,1];
+(zero,[]) -> [];
+(inc,[2]) -> [3];
+(zero,[0,2]) -> [0,0];
+(inc,[3,1,1]) -> [4,2,2];
+(zero,[0,0]) -> [0,0];
+(zero,[2,1]) -> [0,0];
+(zero,[2,1,2]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[3]) -> [0];
+(zero,[3,0]) -> [0,0];
+(inc,[1,1]) -> [2,2];
+(zero,[3,1,0]) -> [0,0,0];
+(inc,[2,2,1]) -> [3,3,2];
+(inc,[3,0]) -> [4,1];
+(inc,[3,2,2]) -> [4,3,3];
+(zero,[2,2,0]) -> [0,0,0];
+(inc,[2,3]) -> [3,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2235 true
+
+(zero,[]) -> [];
+(zero,[0]) -> [0];
+(inc,[2,2]) -> [3,3];
+(inc,[2,2,2]) -> [3,3,3];
+(zero,[1,2]) -> [0,0];
+(inc,[1]) -> [2];
+(zero,[3,2]) -> [0,0];
+(inc,[0,3,1]) -> [1,4,2];
+(zero,[2,0,1]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(inc,[1,3]) -> [2,4];
+(inc,[0,0,3]) -> [1,1,4];
+(zero,[1]) -> [0];
+(inc,[1,3,3]) -> [2,4,4];
+(inc,[3]) -> [4];
+(zero,[2,0,0]) -> [0,0,0];
+(inc,[]) -> [];
+(zero,[3,0]) -> [0,0];
+(inc,[0,1]) -> [1,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1105 true
+
+(inc,[1]) -> [2];
+(zero,[2,0,3]) -> [0,0,0];
+(zero,[0,0]) -> [0,0];
+(inc,[]) -> [];
+(inc,[1,3]) -> [2,4];
+(zero,[0]) -> [0];
+(zero,[]) -> [];
+(inc,[2,1,3]) -> [3,2,4];
+(zero,[0,0,2]) -> [0,0,0];
+(zero,[0,3,0]) -> [0,0,0];
+(inc,[1,2,3]) -> [2,3,4];
+(inc,[1,3,0]) -> [2,4,1];
+(inc,[0,3,2]) -> [1,4,3];
+(zero,[2,1]) -> [0,0];
+(inc,[3,2,2]) -> [4,3,3];
+(inc,[0]) -> [1];
+(zero,[2]) -> [0];
+(zero,[1]) -> [0];
+(zero,[0,1,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.4284 true
+
+(inc,[0,2,3]) -> [1,3,4];
+(inc,[0,3]) -> [1,4];
+(inc,[0,2]) -> [1,3];
+(inc,[0]) -> [1];
+(zero,[1,2]) -> [0,0];
+(inc,[]) -> [];
+(zero,[1,1,1]) -> [0,0,0];
+(zero,[1,1,2]) -> [0,0,0];
+(zero,[3,0]) -> [0,0];
+(zero,[]) -> [];
+(inc,[3,0]) -> [4,1];
+(inc,[3]) -> [4];
+(inc,[2]) -> [3];
+(zero,[0,0,1]) -> [0,0,0];
+(zero,[1,1]) -> [0,0];
+(inc,[2,1]) -> [3,2];
+(zero,[2,3,2]) -> [0,0,0];
+(zero,[0]) -> [0];
+(inc,[0,0,2]) -> [1,1,3];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.2968 true
+
+(inc,[]) -> [];
+(zero,[3,1]) -> [0,0];
+(zero,[2,0]) -> [0,0];
+(inc,[1,2]) -> [2,3];
+(zero,[]) -> [];
+(inc,[0]) -> [1];
+(zero,[3]) -> [0];
+(inc,[0,2]) -> [1,3];
+(zero,[0,0]) -> [0,0];
+(inc,[3,2]) -> [4,3];
+(inc,[0,1]) -> [1,2];
+(zero,[2,0,3]) -> [0,0,0];
+(zero,[1,2]) -> [0,0];
+(zero,[1]) -> [0];
+(zero,[1,0]) -> [0,0];
+(zero,[3,1,2]) -> [0,0,0];
+(zero,[0,0,2]) -> [0,0,0];
+(zero,[0,2]) -> [0,0];
+(inc,[3,2,3]) -> [4,3,4];
+(inc,[2,3]) -> [3,4];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1231 true
+
+(inc,[3,1,3]) -> [4,2,4];
+(inc,[2,0,0]) -> [3,1,1];
+(zero,[0,1,3]) -> [0,0,0];
+(inc,[2,1,0]) -> [3,2,1];
+(zero,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[2,3,3]) -> [3,4,4];
+(zero,[1,3]) -> [0,0];
+(zero,[0,3,0]) -> [0,0,0];
+(inc,[2]) -> [3];
+(zero,[1,1,1]) -> [0,0,0];
+(inc,[1,1]) -> [2,2];
+(zero,[0,0,2]) -> [0,0,0];
+(inc,[]) -> [];
+(inc,[1,2,1]) -> [2,3,2];
+(zero,[1,0]) -> [0,0];
+(zero,[2,1,0]) -> [0,0,0];
+(inc,[3]) -> [4];
+(inc,[0,2]) -> [1,3];
+(zero,[1,3,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.3475 true
+
+(inc,[0,2]) -> [1,3];
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[0,0]) -> [1,1];
+(zero,[]) -> [];
+(zero,[2,3,0]) -> [0,0,0];
+(zero,[2,2]) -> [0,0];
+(zero,[1,2,0]) -> [0,0,0];
+(zero,[1,1]) -> [0,0];
+(inc,[0,1,3]) -> [1,2,4];
+(zero,[0]) -> [0];
+(inc,[2]) -> [3];
+(inc,[2,0]) -> [3,1];
+(zero,[2,2,3]) -> [0,0,0];
+(zero,[0,0,3]) -> [0,0,0];
+(inc,[1,3,2]) -> [2,4,3];
+(inc,[3,0]) -> [4,1];
+(inc,[1,1,3]) -> [2,2,4];
+(inc,[1,0,1]) -> [2,1,2];
+(zero,[2,2,0]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0886 true
+
+(inc,[1]) -> [2];
+(zero,[1,3,2]) -> [0,0,0];
+(inc,[]) -> [];
+(zero,[]) -> [];
+(zero,[0,3]) -> [0,0];
+(inc,[2,1]) -> [3,2];
+(inc,[1,1,1]) -> [2,2,2];
+(zero,[3,0,0]) -> [0,0,0];
+(zero,[0,1,1]) -> [0,0,0];
+(zero,[3,0]) -> [0,0];
+(zero,[0,2,2]) -> [0,0,0];
+(zero,[2,3,0]) -> [0,0,0];
+(zero,[0,0]) -> [0,0];
+(inc,[0]) -> [1];
+(zero,[3]) -> [0];
+(inc,[3,3]) -> [4,4];
+(inc,[3]) -> [4];
+(zero,[2,2]) -> [0,0];
+(zero,[0,2]) -> [0,0];
+(zero,[2,0,3]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.5845 true
+
+(inc,[1,3]) -> [2,4];
+(zero,[2,2,3]) -> [0,0,0];
+(inc,[2,1]) -> [3,2];
+(inc,[]) -> [];
+(zero,[]) -> [];
+(zero,[3,2,1]) -> [0,0,0];
+(inc,[0]) -> [1];
+(zero,[3,1,1]) -> [0,0,0];
+(inc,[1]) -> [2];
+(inc,[3]) -> [4];
+(inc,[2,3]) -> [3,4];
+(inc,[0,2,0]) -> [1,3,1];
+(inc,[0,2,2]) -> [1,3,3];
+(inc,[2,0,1]) -> [3,1,2];
+(zero,[3,1]) -> [0,0];
+(inc,[0,3]) -> [1,4];
+(zero,[1,2]) -> [0,0];
+(zero,[0]) -> [0];
+(inc,[1,0,2]) -> [2,1,3];
+(zero,[0,3]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0811 true
+
+(inc,[3,1]) -> [4,2];
+(inc,[]) -> [];
+(zero,[0]) -> [0];
+(zero,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[0]) -> [1];
+(inc,[2,0]) -> [3,1];
+(zero,[2]) -> [0];
+(inc,[2,1,0]) -> [3,2,1];
+(zero,[3,0]) -> [0,0];
+(inc,[1]) -> [2];
+(inc,[3]) -> [4];
+(zero,[0,2,0]) -> [0,0,0];
+(zero,[1,1,2]) -> [0,0,0];
+(zero,[3,1]) -> [0,0];
+(zero,[0,0]) -> [0,0];
+(inc,[0,3]) -> [1,4];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[2,3]) -> [3,4];
+(inc,[1,1]) -> [2,2];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0990 true
+
+(inc,[]) -> [];
+(zero,[1]) -> [0];
+(inc,[1]) -> [2];
+(zero,[]) -> [];
+(zero,[2,1]) -> [0,0];
+(inc,[0,3]) -> [1,4];
+(zero,[1,2,0]) -> [0,0,0];
+(inc,[3,1,0]) -> [4,2,1];
+(inc,[3,1,1]) -> [4,2,2];
+(zero,[3,0,2]) -> [0,0,0];
+(zero,[0]) -> [0];
+(zero,[3]) -> [0];
+(inc,[0]) -> [1];
+(inc,[3,2]) -> [4,3];
+(inc,[0,2]) -> [1,3];
+(inc,[3,3]) -> [4,4];
+(inc,[2,1,1]) -> [3,2,2];
+(inc,[0,3,0]) -> [1,4,1];
+(inc,[2,0]) -> [3,1];
+(inc,[1,2,0]) -> [2,3,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.0336 true
+
+(zero,[3]) -> [0];
+(inc,[0,0]) -> [1,1];
+(inc,[1]) -> [2];
+(zero,[2,3,1]) -> [0,0,0];
+(zero,[3,0]) -> [0,0];
+(zero,[2,2,1]) -> [0,0,0];
+(zero,[3,3,0]) -> [0,0,0];
+(inc,[3,1,0]) -> [4,2,1];
+(zero,[1]) -> [0];
+(inc,[3,0,1]) -> [4,1,2];
+(zero,[]) -> [];
+(inc,[0,1]) -> [1,2];
+(zero,[0]) -> [0];
+(zero,[1,2]) -> [0,0];
+(inc,[]) -> [];
+(zero,[2]) -> [0];
+(zero,[1,0,3]) -> [0,0,0];
+(zero,[0,3]) -> [0,0];
+(inc,[0,2]) -> [1,3];
+(zero,[0,0,1]) -> [0,0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1099 true
+
+(zero,[]) -> [];
+(inc,[0,2,0]) -> [1,3,1];
+(zero,[0,1]) -> [0,0];
+(inc,[1,3,1]) -> [2,4,2];
+(inc,[1]) -> [2];
+(zero,[0]) -> [0];
+(inc,[3]) -> [4];
+(inc,[0]) -> [1];
+(zero,[2]) -> [0];
+(zero,[0,2]) -> [0,0];
+(inc,[2,1,0]) -> [3,2,1];
+(zero,[2,3]) -> [0,0];
+(inc,[]) -> [];
+(inc,[3,2]) -> [4,3];
+(zero,[1,0,0]) -> [0,0,0];
+(inc,[2,2]) -> [3,3];
+(inc,[1,0]) -> [2,1];
+(inc,[2,1,3]) -> [3,2,4];
+(inc,[3,2,0]) -> [4,3,1];
+(inc,[0,0]) -> [1,1];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1984 true
+
+(inc,[0,1,0]) -> [1,2,1];
+(zero,[2,3]) -> [0,0];
+(zero,[2,2,1]) -> [0,0,0];
+(zero,[]) -> [];
+(zero,[0,2,2]) -> [0,0,0];
+(zero,[1,3]) -> [0,0];
+(zero,[3,2]) -> [0,0];
+(zero,[0,3,1]) -> [0,0,0];
+(inc,[1,3,0]) -> [2,4,1];
+(zero,[1,1,1]) -> [0,0,0];
+(inc,[3]) -> [4];
+(inc,[3,1,3]) -> [4,2,4];
+(inc,[1,2,2]) -> [2,3,3];
+(zero,[1,3,0]) -> [0,0,0];
+(zero,[3,3]) -> [0,0];
+(inc,[0]) -> [1];
+(inc,[]) -> [];
+(zero,[3]) -> [0];
+(inc,[1]) -> [2];
+(zero,[1,2]) -> [0,0];
+
+=================================
+fix (f : (nat -> nat) * list -> list) =
+  fun (x:(nat -> nat) * list) ->
+    match x . 1 with
+      | Nil _ -> x . 1
+      | Cons _ -> Cons (x . 0 (Un_Cons (x . 1) . 0),
+                         f (x . 0, Un_Cons (x . 1) . 1))
+
+0.1570 true
+

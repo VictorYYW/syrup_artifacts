@@ -1,0 +1,29 @@
+( executable
+  ( name
+      main
+  )
+  ( libraries
+      ; user libraries
+      stdlib2 smyth
+
+      ; opam libraries
+      bark js_of_ocaml
+  )
+  ( flags
+      ; (-open Pervasives2)
+      (-open Pervasives2 -w +a-4-9-42-48 -warn-error -a+1..66-3-33-40)
+  )
+  ( ocamlopt_flags
+      (-O3)
+  )
+  ( js_of_ocaml
+      ( flags
+          --debug-info
+      )
+  )
+  ( preprocess
+      ( pps
+          js_of_ocaml-ppx
+      )
+  )
+)

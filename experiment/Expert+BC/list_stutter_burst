@@ -1,0 +1,36 @@
+list_stutter
+[0] -> [0, 0];
+[] -> [];
+=================================
+fix (f : list -> list) =
+  fun (x:list) -> match x with
+                    | Nil _ -> x
+                    | Cons _ -> Cons (Un_Cons x . 0, x)
+
+0.0226 false
+
+[1, 0] -> [1, 1, 0, 0];
+[] -> [];
+=================================
+fix (f : list -> list) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> x
+      | Cons _ -> Cons (Un_Cons x . 0,
+                         Cons (Un_Cons x . 0, f (Un_Cons x . 1)))
+
+6.2194 true
+
+[0] -> [0, 0];
+[1, 0] -> [1, 1, 0, 0];
+[] -> [];
+=================================
+fix (f : list -> list) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> x
+      | Cons _ -> Cons (Un_Cons x . 0,
+                         Cons (Un_Cons x . 0, f (Un_Cons x . 1)))
+
+2.6261 true
+

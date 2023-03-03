@@ -1,0 +1,53 @@
+[] -> [];
+=================================
+fix (f : list -> list) = fun (x:list) -> Nil
+
+0.0000 false
+
+[0] -> [];
+=================================
+fix (f : list -> list) = fun (x:list) -> Nil
+
+0.0000 false
+
+[0, 0] -> [0];
+=================================
+fix (f : list -> list) = fun (x:list) -> Un_Cons x . 1
+
+0.0044 false
+
+[] -> [];
+[0] -> [];
+=================================
+fix (f : list -> list) = fun (x:list) -> Nil
+
+0.0000 false
+
+[] -> [];
+[0, 0] -> [0];
+=================================
+fix (f : list -> list) =
+  fun (x:list) -> match x with
+                    | Nil _ -> x
+                    | Cons _ -> Un_Cons x . 1
+
+0.0077 true
+
+[0] -> [];
+[0, 0] -> [0];
+=================================
+fix (f : list -> list) = fun (x:list) -> Un_Cons x . 1
+
+0.0038 false
+
+[] -> [];
+[0] -> [];
+[0, 0] -> [0];
+=================================
+fix (f : list -> list) =
+  fun (x:list) -> match x with
+                    | Nil _ -> x
+                    | Cons _ -> Un_Cons x . 1
+
+0.0062 true
+

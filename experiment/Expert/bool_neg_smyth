@@ -1,0 +1,22 @@
+T () -> F ();
+=================================
+(\bool_neg -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let bool_neg = \p -> F in bool_neg) : Boolean -> Boolean)
+0.00222200000007 false false
+
+F () -> T ();
+=================================
+(\bool_neg -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let bool_neg = \p -> T in bool_neg) : Boolean -> Boolean)
+0.00206800000001 false false
+
+T () -> F ();
+F () -> T ();
+=================================
+(\bool_neg -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let bool_neg = \p -> case p of
+    T y1 -> 
+      F
+
+    F y1 -> 
+      T in bool_neg) : Boolean -> Boolean)
+0.0028749999999 true false
+

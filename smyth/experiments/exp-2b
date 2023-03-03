@@ -1,0 +1,82 @@
+#!/bin/bash
+
+if [[ $# -ne 1 ]]; then
+  echo "usage:" $0 "<trial-count>"
+  exit 1
+fi
+
+echo "Experiment 2b"
+
+mkdir -p data/exp-2b/csv
+mkdir -p data-backup/exp-2b/csv
+mv data/exp-2b/csv/*.csv data-backup/exp-2b/csv 2> /dev/null
+
+trial_count=$1
+
+run() {
+  echo -n "(2b; N=$trial_count; t=$1) Running $2... "
+  ../fuzz $trial_count $1 no-sketch $2 > data/exp-2b/csv/$2.csv
+  if [ $? -eq 0 ]; then
+    echo "completed."
+  else
+    echo "failed! Trying again:"
+    echo -n "(2b; N=$trial_count; t=$1) Running $2... "
+    ../fuzz $trial_count $1 no-sketch $2 > data/exp-2b/csv/$2.csv
+    if [ $? -eq 0 ]; then
+      echo "completed."
+    else
+      echo "failed again! Moving on..."
+    fi
+  fi
+}
+
+run 1 bool_band
+run 1 bool_bor
+run 1 bool_impl
+run 1 bool_neg
+run 1 bool_xor
+
+run 1 list_append
+# run 1 list_compress
+run 1 list_concat
+run 1 list_drop
+run 1 list_even_parity
+# run 1 list_filter
+# run 1 list_fold
+run 1 list_hd
+run 1 list_inc
+run 1 list_last
+run 1 list_length
+# run 1 list_map
+run 1 list_nth
+# run 1 list_pairwise_swap
+run 1 list_rev_append
+run 1 list_rev_fold
+run 1 list_rev_snoc
+run 1 list_rev_tailcall
+run 1 list_snoc
+run 1 list_sort_sorted_insert
+# run 1 list_sorted_insert
+run 1 list_stutter
+run 1 list_sum
+run 1 list_take
+run 1 list_tl
+
+run 1 nat_add
+run 1 nat_iseven
+run 1 nat_max
+run 1 nat_pred
+
+# run 1 tree_binsert
+# run 1 tree_count_leaves
+run 1 tree_inorder
+# run 1 tree_map
+# run 1 tree_nodes_at_level
+# run 1 tree_postorder
+
+# Benchmarks requiring longer timeout
+
+run 3 tree_collect_leaves
+run 3 tree_preorder
+
+run 10 tree_count_nodes
