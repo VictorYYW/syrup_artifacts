@@ -48,7 +48,7 @@ os.makedirs(LOG_DIR, exist_ok=True)
 with open(os.path.join(LOG_DIR, "result.csv"), "w", newline="") as f:
     csv_writer = csv.writer(f)
     csv_writer.writerow(["cardinality of set"] +
-                        list(range(1, MAX_NUM_OF_EXS + 1)))
+                        list(range(MAX_NUM_OF_EXS + 1)))
     for name in benchmarks:
         with ExitStack() as stack:
             f_alts = [
