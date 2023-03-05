@@ -51,16 +51,16 @@ stores them in `experiment/random-io-nobase` and
 ## Run Experiments
 
 While the repo includes intermediate experiment result in
-`experiment/{Expert,Expert-BC,Random,Random-BC}`, you may rerun all
+`experiment/{Expert,Expert+BC,Random,Random+BC}`, you may rerun all
 the experiments to overwrite the existing result in the folders as
 follows.
 
 ```shell
 cd experiment
 ./run_expert.py --ablation > expert.out 2>&1 & # --ablation flag is necessary to generate Fig. 9
-./run_expert.py -include-base-case > expert-bc.out 2>&1 &
+./run_expert.py -bc > expert+bc.out 2>&1 &
 ./run_random.py > random.out 2>&1 &
-./run_random.py -include-base-case > random-bc.out 2>&1 &
+./run_random.py -bc > random+bc.out 2>&1 &
 ```
 
 Please bear in mind that, it may take a few days to finish all the

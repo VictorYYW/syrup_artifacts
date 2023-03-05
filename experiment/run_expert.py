@@ -20,7 +20,7 @@ parser.add_argument('-n', '--number-of-instances',
 parser.add_argument('-t', '--timeout',
                     help='Timeout for each synthesizer',
                     type=int, default=120)
-parser.add_argument("--include-base-case",
+parser.add_argument('-bc', '--include-base-case',
                     help="Enforce inclusion of the base case \
                     in the I/O examples", action="store_true")
 parser.add_argument("--ablation",
@@ -37,7 +37,7 @@ else:
 
 EXS_DIR = os.path.relpath('io-myth')
 LOG_DIR = os.path.relpath('Expert' +
-                          ('-BC' if INCLUDE_BASE_CASE else ''))
+                          ('+BC' if INCLUDE_BASE_CASE else ''))
 
 
 os.makedirs(LOG_DIR, exist_ok=True)
