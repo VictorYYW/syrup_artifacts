@@ -104,36 +104,34 @@ module ParameterizedSpace = struct
               3
           in
           let allowance_n = 4 in
+          let max_n =
+            if Typ.is_relevant_to_tree input_ty then
+              7
+            else
+              5
+          in
           let init_d = 1 in
           let max_d = 2 in
-          List.concat_map (List.range ~start:`inclusive ~stop:`inclusive 1 3)
-            ~f:(fun cond ->
-              List.concat_map
-                (List.range ~start:`inclusive ~stop:`inclusive init_d max_d)
-                ~f:(fun d ->
-                  List.map
-                    (List.range ~start:`inclusive ~stride:2 ~stop:`inclusive 3 9)
-                    ~f:(fun n -> ps_syrup n d cond)))
-        (* List.concat_map *)
-        (*   (List.range ~start:`inclusive ~stop:`inclusive init_d arity) *)
-        (*   ~f:(fun d -> *)
-        (*     List.map *)
-        (*       (List.range ~start:`inclusive ~stop:`inclusive init_n *)
-        (*          (init_n + allowance_n - (2 * (d - init_d)))) *)
-        (*       ~f:(fun n -> ps_syrup n d 1)) *)
-        (* @ List.map *)
-        (*     (List.range ~start:`inclusive ~stop:`inclusive init_d max_d) *)
-        (*     ~f:(fun d -> ps_syrup init_n d 2) *)
-        (* @ List.concat_map *)
-        (*     (List.range ~start:`inclusive ~stop:`inclusive (arity + 1) max_d) *)
-        (*     ~f:(fun d -> *)
-        (*       List.map *)
-        (*         (List.range ~start:`inclusive ~stop:`inclusive init_n *)
-        (*            (init_n + allowance_n - (2 * (d - init_d)))) *)
-        (*         ~f:(fun n -> ps_syrup n d 1)) *)
-        (* @ List.map *)
-        (*     (List.range ~start:`inclusive ~stop:`inclusive init_d max_d) *)
-        (*     ~f:(fun d -> ps_syrup init_n d 3) *)
+          List.concat_map
+            (List.range ~start:`inclusive ~stop:`inclusive init_d arity)
+            ~f:(fun d ->
+              List.map
+                (List.range ~start:`inclusive ~stop:`inclusive init_n
+                   (init_n + allowance_n - (2 * (d - init_d))))
+                ~f:(fun n -> ps_syrup n d 1))
+          @ List.map
+              (List.range ~start:`inclusive ~stop:`inclusive init_d max_d)
+              ~f:(fun d -> ps_syrup init_n d 2)
+          @ List.concat_map
+              (List.range ~start:`inclusive ~stop:`inclusive (arity + 1) max_d)
+              ~f:(fun d ->
+                List.map
+                  (List.range ~start:`inclusive ~stop:`inclusive init_n
+                     (init_n + allowance_n - (2 * (d - init_d))))
+                  ~f:(fun n -> ps_syrup n d 1))
+          @ List.map
+              (List.range ~start:`inclusive ~stop:`inclusive init_d max_d)
+              ~f:(fun d -> ps_syrup init_n d 3)
     | `Height ->
         fun _ ->
           List.map
