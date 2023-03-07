@@ -17,14 +17,33 @@ Assuming you have `opam` installed, you may build the artifacts (i.e., `SyRup`, 
 ./build.sh
 ```
 
-Alternatively, you may use [Docker](https://www.docker.com/get-started/).
+### Use Docker
+
+Alternatively, you may use the pre-built [Docker](https://www.docker.com/get-started/) image.
 
 ```
-docker build -t syrup_artifacts .
-docker run -it syrup_artifacts
+docker pull victoryuan/syrup_artifacts:pldi23v1
 ```
 
-## Experiment
+Or build the the Docker image on your own.
+
+```
+docker build . -t victoryuan/syrup_artifacts:pldi23v1
+```
+
+And launch a shell in the Docker image.
+
+```
+docker run --name syrup -it victoryuan/syrup_artifacts:pldi23v1
+```
+
+Tip: to open a pdf in a Docker, you will have to first copy it to the host machine with the docker image running.
+
+```
+docker cp syrup:/home/opam/experiment/learnability.pdf .
+```
+
+## Experiments
 
 The following sections describe the experiment pipeline step by step
 with the later steps depending on the previous steps. Since the
