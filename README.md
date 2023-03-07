@@ -9,18 +9,9 @@ programs' correctness. And thus, by taking a known task name and I/O
 examples, each synthesizer not only generate a program but also report
 synthesis time and the correctness of the program.
 
-## Begin Here
-
-The following sections describe the experiment pipeline step by step
-with the later steps depending on the previous steps. Since the
-intermediate result are already in the repo, you may start from an
-arbitrary step and skip its previous steps. To produce the exact
-figures as in the paper, please skip to [the last
-step](#reproduce-figures).
-
 ## Build
 
-Assuming you have `opam` installed, you may build `SyRup`, `SMyth`, and `Burst` via
+Assuming you have `opam` installed, you may build the artifacts (i.e., `SyRup`, `SMyth`, and `Burst`) via
 
 ```
 ./build.sh
@@ -33,7 +24,15 @@ docker build -t syrup_artifacts .
 docker run -it syrup_artifacts
 ```
 
-## I/O example generation
+## Experiment
+
+The following sections describe the experiment pipeline step by step
+with the later steps depending on the previous steps. Since the
+intermediate result are already in the repo, you may start from an
+arbitrary step and skip its previous steps. To reproduce the *exact*
+figures as in the paper, please skip to [the last step](#reproduce-figures).
+
+### I/O example generation
 
 We evaluate synthesizers on multiple example sets for each programming
 tasks.
@@ -48,7 +47,7 @@ outputs by evaluating our reference implementation on the inputs, and
 stores them in `experiment/random-io-nobase` and
 `experiment/random-io`.
 
-## Run Experiments
+### Run Experiments
 
 While the repo includes intermediate experiment result in
 `experiment/{Expert,Expert+BC,Random,Random+BC}`, you may rerun all
@@ -74,14 +73,14 @@ You may lower the number of I/O example sets tested on each
 synthesizer for each tasks by passing `-n 10`, and timeout by passing
 `-t 120`.
 
-## Reproduce Figures
+### Reproduce Figures
 
 To generate the exact visualizations in the paper,
 
 ```shell
 cd experiment
 ./visualize_learnability.py # Fig. 7, learnability.pdf
-./gen_table.py #Table 1, learnability.csv
+./gen_table.py # Table 1, learnability.csv
 ./visualize_sensitivity.py # Fig. 8, sensitivity3.pdf
 ./visualize_learnability.py --ablation --rec # Fig. 9, learnability-ablation-rec.pdf
 ```
@@ -91,7 +90,8 @@ cd experiment
 As described in the paper, necessary definitions of algebraic data
 types and background functions's Z3 encoding are built in the
 implementation of `SyRup`.  As a result, we currently only support
-synthesis for known tasks (given in `syrup/lib/references.ml`).
+synthesis for known tasks (given in `syrup/lib/references.ml`, one may
+supply additional task as well).
 
 ```
 syrup/syrup syrup nat_add "(8, 5) -> 13"
