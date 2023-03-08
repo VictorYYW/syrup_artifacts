@@ -31,16 +31,29 @@ Or build the the Docker image on your own.
 docker build . -t victoryuan/syrup_artifacts:pldi23v1
 ```
 
-And launch a shell in the Docker image.
+And run a Docker container in background.
 
 ```
-docker run --name syrup -it victoryuan/syrup_artifacts:pldi23v1
+docker run -itd --name syrup victoryuan/syrup_artifacts:pldi23v1
 ```
 
-Tip: to open a pdf in a Docker, you will have to first copy it to the host machine with the docker image running.
+To execute command in the docker container,
+
+```
+docker exec -t syrup bash -c 'cd experiment && ./visualize_learnability.py'
+docker exec -t syrup bash -c 'syrup/syrup syrup nat_add "(8, 5) -> 13"'
+```
+
+Tip: to open a pdf in the docker container, first copy it to the host machine.
 
 ```
 docker cp syrup:/home/opam/experiment/learnability.pdf .
+```
+
+When done with the docker,
+
+```
+docker stop syrup && docker rm syrup
 ```
 
 ## Experiments
@@ -68,33 +81,46 @@ stores them in `experiment/random-io-nobase` and
 
 ### Run Experiments
 
-While the repo includes intermediate experiment result in
-`experiment/{Expert,Expert+BC,Random,Random+BC}`, you may rerun all
-the experiments to overwrite the existing result in the folders as
-follows.
-
-```shell
-cd experiment
-./run_expert.py --ablation > expert.out 2>&1 & # --ablation flag is necessary to generate Fig. 9
-./run_expert.py -bc > expert+bc.out 2>&1 &
-./run_random.py > random.out 2>&1 &
-./run_random.py -bc > random+bc.out 2>&1 &
-```
-
-Please bear in mind that, it may take a few days to finish all the
+Our evaluation invokes dozens of instances of synthesizers on each
+programming tasks, and it may take a few days to finish all the
 experiments (the one on expert examples took us over a day, the one on
-randomly generated I/O examples took us over a week).  This is because
-our evaluation invokes dozens of instances of synthesizers on each
-programming tasks. And some tasks may take longer than a few seconds,
-and even time out (120 seconds).
-
+randomly generated I/O examples took us over a week). And some tasks
+may take longer than a few seconds, and even time out (120 seconds).
 You may lower the number of I/O example sets tested on each
 synthesizer for each tasks by passing `-n 10`, and timeout by passing
 `-t 120`.
 
+Therefore, it is recommended to run the experiments in background in
+parallel with `nohup`, on a server or a spare desktop, and inspect
+`*.out` files to see check the progress of the experiment. The
+experiments were performed on a department-wide shared Linux server
+equipped with two 2.90GHz Intel Xeon E5-2690 2.90GHz 8-core processors
+and 192GB of RAM.
+
+```shell
+cd experiment
+nohup ./run_expert.py --ablation > expert.out 2>&1 &
+nohup ./run_expert.py -bc > expert+bc.out 2>&1 &
+nohup ./run_random.py > random.out 2>&1 &
+nohup ./run_random.py -bc > random+bc.out 2>&1 &
+```
+
+To run experiments inside a Docker container,
+
+```shell
+docker exec -td syrup bash -c 'cd experiment && ./run_expert.py --ablation > expert.out 2>&1'
+docker exec -td syrup bash -c 'cd experiment && ./run_expert.py -bc > expert+bc.out 2>&1'
+docker exec -td syrup bash -c 'cd experiment && ./run_random.py > random.out 2>&1'
+docker exec -td syrup bash -c 'cd experiment && ./run_random.py -bc > random+bc.out 2>&1'
+docker attach syrup # Launch shell to check if the experiments are finished, press "CTRL-p CTRL-q" to detach again
+```
+
 ### Reproduce Figures
 
-To generate the exact visualizations in the paper,
+The experiment results from the previous section are already included
+in the repo under
+`experiment/{Expert,Expert+BC,Random,Random+BC}`. You can directly
+generate the exact visualizations in the paper.
 
 ```shell
 cd experiment
