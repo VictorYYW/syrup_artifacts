@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 from common import grouper, mean_of_matrix, benchmarks_nonrec
 
-matplotlib.use('tkagg')
+matplotlib.use('agg')
 matplotlib.rc('font', size=15)
 plt.rcParams.update({
     "text.usetex": True,

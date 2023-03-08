@@ -2,18 +2,7 @@
 import os
 import csv
 from collections import defaultdict
-import matplotlib
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mtick
-from common import grouper, mean_of_matrix, benchmarks, benchmarks_nonrec
-
-matplotlib.use('tkagg')
-matplotlib.rc('font', size=15)
-plt.rcParams.update({
-    "text.usetex": True,
-    "font.family": "Helvetica"
-})
-# plt.style.use('_mpl-gallery')
+from common import grouper
 
 LOG_DIR = "Expert"
 colors = ['tab:blue', 'tab:orange', 'tab:green']

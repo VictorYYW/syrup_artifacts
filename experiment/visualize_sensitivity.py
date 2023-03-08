@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 from common import parse_result_csv, LOG_DIRS
 
-matplotlib.use('tkagg')
+matplotlib.use('agg')
 matplotlib.rc('font', size=15)
 plt.rcParams.update({
     "text.usetex": True,
