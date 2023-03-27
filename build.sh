@@ -2,7 +2,8 @@
 OCAML_VERSION=4.10.0+flambda
 if ! command -v opam &> /dev/null
 then
-	echo "OPAM could not be found. Please visit https://opam.ocaml.org/doc/Install.html"
+    echo "OPAM could not be found. Please visit https://opam.ocaml.org/doc/Install.html"
+    exit 1
 fi
 opam switch create $OCAML_VERSION
 eval $(opam env)

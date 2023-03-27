@@ -213,4 +213,34 @@ def parse_result_csv():
                 ])
 
                 results[i][exs] = benchmark
+            if i != len(benchmarks) - 1:
+                raise RuntimeError(f'Experiment on {exs} is unfinished ({i + 1} out of {len(benchmarks)} finished), see {csv_path} for intermediate results.')
     return results
+
+
+# adapted from https://stackoverflow.com/a/55465138
+def draw_hlines(fig, axs2d, indices):
+    r = fig.canvas.get_renderer()
+    bboxes = np.array(
+        list(map(lambda ax:
+                 ax.get_tightbbox(r).transformed(fig.transFigure.inverted()),
+                 axs2d.flat)),
+        dtype=mtrans.Bbox).reshape(axs2d.shape)
+    # Get the minimum and maximum extent, get the coordinate half-way between those
+    ymax = np.array(list(map(lambda b: b.y1, bboxes.flat))) \
+             .reshape(axs2d.shape).max(axis=1)
+    ymin = np.array(list(map(lambda b: b.y0, bboxes.flat))) \
+             .reshape(axs2d.shape).min(axis=1)
+    ys = np.c_[ymax[1:], ymin[:-1]].mean(axis=1)
+    ys = np.append(ys, ymin[-1])
+    # Draw a horizontal lines at those coordinates
+    leftmost = 0.05
+    downmost = 0.05
+    for i in indices:
+        line = plt.Line2D([leftmost, 1], [ys[i], ys[i]],
+                          transform=fig.transFigure, color="black")
+        fig.add_artist(line)
+
+    vline = plt.Line2D([leftmost, leftmost], [downmost, 1],
+                       transform=fig.transFigure, color="black")
+    fig.add_artist(vline)

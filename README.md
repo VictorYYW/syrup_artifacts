@@ -11,11 +11,31 @@ synthesis time and the correctness of the program.
 
 ## Build
 
-Assuming you have `opam` installed, you may build the artifacts (i.e., `SyRup`, `SMyth`, and `Burst`) via
+To run the python scripts for reproduction of the visualizations in
+the paper, make sure `python3` (as well as `pandas`, `numpy`, and
+`matplotlib`) and `latex` is installed, and properly set up. If you
+are on a Debian-based Linux distribution, the following commands
+should do the job.
+
+```
+sudo apt install -y python3 python3-pip texlive-full
+pip install pandas numpy matplotlib
+```
+
+You may also need to install `libgmp-dev` for `z3` before moving on
+building the tools.
+
+```
+sudo apt instlal -y libgmp-dev
+```
+
+Assuming you have `opam` installed, you may build the tools (i.e.,
+`SyRup`, `SMyth`, and `Burst`) via
 
 ```
 ./build.sh
 ```
+
 
 ### Use Docker
 
@@ -91,11 +111,12 @@ synthesizer for each tasks by passing `-n 10`, and timeout by passing
 `-t 120`.
 
 Therefore, it is recommended to run the experiments in background in
-parallel with `nohup`, on a server or a spare desktop, and inspect
-`*.out` files to see check the progress of the experiment. The
-experiments were performed on a department-wide shared Linux server
-equipped with two 2.90GHz Intel Xeon E5-2690 2.90GHz 8-core processors
-and 192GB of RAM.
+parallel with `nohup`, on a server or a spare desktop (preferrably
+equiped with at least 32GB RAM, especially for `./run_random.py`), and
+inspect `*.out` files to check the progress of the experiment as it
+prints out benchmark names (43 in total). The experiments were
+performed on a department-wide shared Linux server equipped with two
+2.90GHz Intel Xeon E5-2690 2.90GHz 8-core processors and 192GB of RAM.
 
 ```shell
 cd experiment
