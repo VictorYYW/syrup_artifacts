@@ -160,5 +160,9 @@ synthesis for known tasks (given in `syrup/lib/references.ml`, one may
 supply additional task as well).
 
 ```
+syrup/syrup syrup bool_band "(T (), T ()) -> T (); (T (), F ()) -> F (); (F (), T ()) -> F ();"
 syrup/syrup syrup nat_add "(8, 5) -> 13"
+syrup/syrup syrup list_concat "[[0],[0]] -> [0,0]; [[1]] -> [1];"
+syrup/syrup syrup list_drop "([1, 0], 1) -> [0]; ([0, 1], 0) -> [0, 1];"
+syrup/syrup syrup tree_count_leaves "Node (Leaf (), T (), Node (Leaf (), T (), Leaf ())) -> 3; Node (Node (Node (Leaf (), T (), Leaf ()), T (), Leaf ()), T (), Leaf ()) -> 4;"
 ```
