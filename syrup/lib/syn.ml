@@ -1869,5 +1869,5 @@ let main ?(gamma = TCtx.empty ()) ?(sigma = VCtx.empty ()) (oc : Out_channel.t)
              SmartPrint.to_out_channel 25 2 oc (Exp.pp e);
              Some e
          | None ->
-             Printf.fprintf oc "fail to find a solution\n";
+             (* Printf.fprintf oc "fail to find a solution\n"; *)
              None)

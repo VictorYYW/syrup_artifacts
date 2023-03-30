@@ -1,3 +1,4 @@
+(** the file is mostly borrowed from Smyth *)
 open Core
 open Lang
 
@@ -52,10 +53,12 @@ type ('i, 'o) reference = {
   k_max : int;
   d_in : 'i Denotation.t;
   d_out : 'o Denotation.t;
-  expert : ('i * 'o) list;
-  assertion : ('i * 'o) list;
-  input : 'i Sample2.gen;
-  func : 'i -> 'o;
+  (* extensive test cases to check the correctness of synthesized programs *)
+  assertion : ('i * 'o) list; 
+  (* random input generator *)
+  input : 'i Sample2.gen; 
+  (* reference implementation for generating corresponding outputs for randomly generated inputs *)
+  func : 'i -> 'o; 
   background : string list;
 }
 
@@ -71,12 +74,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           k_max = 4;
           d_in = Denotation.args2 Denotation.bool Denotation.bool;
           d_out = Denotation.bool;
-          expert =
-            [
-              ((true, true), true);
-              ((true, false), false);
-              ((false, true), false);
-            ];
           assertion =
             [
               ((true, true), true);
@@ -97,13 +94,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           k_max = 4;
           d_in = Denotation.args2 Denotation.bool Denotation.bool;
           d_out = Denotation.bool;
-          expert =
-            [
-              ((true, true), true);
-              ((true, false), true);
-              ((false, true), true);
-              ((false, false), false);
-            ];
           assertion =
             [
               ((true, true), true);
@@ -124,13 +114,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           k_max = 4;
           d_in = Denotation.args2 Denotation.bool Denotation.bool;
           d_out = Denotation.bool;
-          expert =
-            [
-              ((true, true), true);
-              ((true, false), false);
-              ((false, true), true);
-              ((false, false), true);
-            ];
           assertion =
             [
               ((true, true), true);
@@ -151,7 +134,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           k_max = 2;
           d_in = Denotation.bool;
           d_out = Denotation.bool;
-          expert = [ (true, false); (false, true) ];
           assertion = [ (true, false); (false, true) ];
           input = Sample2.bool;
           func =
@@ -166,13 +148,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           k_max = 4;
           d_in = Denotation.args2 Denotation.bool Denotation.bool;
           d_out = Denotation.bool;
-          expert =
-            [
-              ((true, true), false);
-              ((true, false), true);
-              ((false, true), true);
-              ((false, false), false);
-            ];
           assertion =
             [
               ((true, true), false);
@@ -194,7 +169,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.int;
           d_out = Denotation.bool;
           input = Sample2.nat;
-          expert = [ (2, true); (3, false) ];
           assertion = [ (0, true); (1, false); (2, true); (3, false) ];
           func =
             (let rec f : int -> bool =
@@ -217,7 +191,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.args2 Denotation.int Denotation.int;
           d_out = Denotation.int;
           input = Sample2.pair Sample2.nat Sample2.nat;
-          expert = [ ((2, 3), 3); ((3, 2), 3); ((1, 2), 2) ];
           assertion =
             [
               ((0, 0), 0);
@@ -255,7 +228,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.int;
           d_out = Denotation.int;
           input = Sample2.nat;
-          expert = [ (2, 1); (3, 2) ];
           assertion = [ (0, 0); (1, 0); (3, 2); (2, 1) ];
           func =
             (let f : int -> int =
@@ -276,7 +248,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.args2 Denotation.int Denotation.int;
           d_out = Denotation.int;
           input = Sample2.pair Sample2.nat Sample2.nat;
-          expert = [ ((4, 5), 9) ];
           assertion =
             [
               ((0, 0), 0);
@@ -305,10 +276,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               (Denotation.list Denotation.int);
           d_out = Denotation.list Denotation.int;
           input = Sample2.pair Sample2.nat_list Sample2.nat_list;
-          expert =
-            [
-              (([ 1; 2 ], [ 3; 4 ]), [ 1; 2; 3; 4 ]); (([], [ 3; 4 ]), [ 3; 4 ]);
-            ];
           assertion =
             [
               (([ 3; 0; 1; 2 ], [ 0 ]), [ 3; 0; 1; 2; 0 ]);
@@ -347,11 +314,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert =
-            [
-              ([ 1; 2; 2; 3; 3 ], [ 1; 2; 3 ])
-              (* ([ 1; 3; 3; 2; 2 ], [ 1; 3; 2 ]); *);
-            ];
           assertion =
             [
               ([ 1; 2; 3; 1 ], [ 1; 2; 3; 1 ]);
@@ -388,11 +350,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.nested_list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nested_nat_list;
-          expert =
-            [
-              ([ [ 1; 2 ]; [ 3; 4 ]; [ 5; 6 ] ], [ 1; 2; 3; 4; 5; 6 ])
-              (* ([ [ 1; 2 ] ], [ 1; 2 ]); *);
-            ];
           assertion =
             [
               ([ [ 0; 1 ]; [ 3; 2 ]; [ 3 ]; [ 0 ] ], [ 0; 1; 3; 2; 3; 0 ]);
@@ -430,12 +387,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.pair Sample2.nat_list Sample2.nat;
-          expert =
-            [
-              (* (([ 1; 2; 3; 4; 5 ], 3), [ 4; 5 ]); *)
-              (* (([ 1; 2; 3; 4; 5 ], 2), [ 3; 4; 5 ]); *)
-              (([ 2; 3; 4; 5 ], 2), [ 4; 5 ]);
-            ];
           assertion =
             [
               (([ 0; 0 ], 0), [ 0; 0 ]);
@@ -474,13 +425,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.bool;
           d_out = Denotation.bool;
           input = Sample2.bool_list;
-          expert =
-            [
-              ([], true);
-              ([ true; false; true ], true);
-              ([ true; false; false; true ], true);
-              ([ true; false; false; true; true ], false);
-            ];
           assertion =
             [
               ([ false; true ], false);
@@ -516,11 +460,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Sample2.pair
               (Sample2.from ("isEven", [ "isNonzero" ]))
               Sample2.nat_list;
-          expert =
-            [
-              (("isEven", [ 2; 3; 4; 5 ]), [ 2; 4 ]);
-              (("isEven", [ 2; 1; 4 ]), [ 2; 4 ]);
-            ];
           assertion =
             [
               (("isEven", [ 1; 2; 0 ]), [ 2; 0 ]);
@@ -571,8 +510,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Sample2.triple
               (Sample2.from ("add", [ "countOdd" ]))
               Sample2.nat Sample2.nat_list;
-          expert =
-            [ (("add", 3, [ 2; 3 ]), 8); (("countOdd", 1, [ 2; 3; 4 ]), 2) ];
           assertion =
             [
               (("countOdd", 2, [ 2 ]), 2);
@@ -623,7 +560,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 3; 2; 1; 0 ], 3) ];
           assertion =
             [
               ([ 0; 3; 3; 0 ], 0);
@@ -655,7 +591,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 2; 3 ], [ 2; 3; 4 ]) ];
           assertion =
             [
               ([ 2; 0 ], [ 3; 1 ]);
@@ -684,7 +619,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.opt Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 2; 3 ], Some 3) ];
           assertion =
             [
               ([ 3; 2; 3 ], Some 3);
@@ -727,7 +661,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 3; 2 ], 3) ];
           assertion =
             [
               ([ 0; 3; 1; 0 ], 4);
@@ -751,11 +684,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_out = Denotation.list Denotation.int;
           input =
             Sample2.pair (Sample2.from ("inc", [ "zero" ])) Sample2.nat_list;
-          expert =
-            [
-              (("inc", [ 1; 2; 3 ]), [ 2; 3; 4 ]);
-              (("zero", [ 1; 2; 3 ]), [ 0; 0; 0 ]);
-            ];
           assertion =
             [
               (("zero", [ 1 ]), [ 0 ]);
@@ -802,7 +730,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int;
           d_out = Denotation.int;
           input = Sample2.pair Sample2.nat_list Sample2.nat;
-          expert = [ (([ 11; 22; 33; 44 ], 2), 33) ];
           assertion =
             [
               (([ 2 ], 0), 2);
@@ -848,11 +775,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert =
-            [
-              (* ([ 3; 4 ], [ 4; 3 ]); *)
-              ([ 1; 2; 3; 4 ], [ 2; 1; 4; 3 ]) (* ([ 1; 2; 1 ], []) *);
-            ];
           assertion =
             [
               ([ 2; 0 ], [ 0; 2 ]);
@@ -897,7 +819,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 3; 2 ], [ 2; 3; 1 ]); ([ 3; 0; 1 ], [ 1; 0; 3 ]) ];
           assertion =
             [
               ([ 3 ], [ 3 ]);
@@ -929,7 +850,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 3; 2 ], [ 2; 3; 1 ]); ([ 3; 0; 1 ], [ 1; 0; 3 ]) ];
           assertion =
             [
               ([ 1 ], [ 1 ]);
@@ -961,7 +881,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 3; 2 ], [ 2; 3; 1 ]) ];
           assertion =
             [
               ([ 2; 1; 0 ], [ 0; 1; 2 ]);
@@ -996,10 +915,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               (Denotation.list Denotation.int);
           d_out = Denotation.list Denotation.int;
           input = Sample2.pair Sample2.nat_list Sample2.nat_list;
-          expert =
-            [
-              (([ 2; 3 ], []), [ 3; 2 ]); (([ 2; 3 ], [ 2; 3 ]), [ 3; 2; 2; 3 ]);
-            ];
           assertion =
             [
               (([ 2; 2; 2; 2 ], [ 1; 3; 1 ]), [ 2; 2; 2; 2; 1; 3; 1 ]);
@@ -1042,7 +957,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.pair Sample2.nat_list Sample2.nat;
-          expert = [ (([ 1; 3 ], 2), [ 1; 3; 2 ]) ];
           assertion =
             [
               (([ 1 ], 0), [ 1; 0 ]);
@@ -1079,11 +993,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert =
-            [
-              ([ 3; 1; 4; 2 ], [ 1; 2; 3; 4 ])
-              (* ([ 3; 1; 2; 2 ], [ 1; 2; 3 ]); *);
-            ];
           assertion =
             [
               ([ 3 ], [ 3 ]);
@@ -1123,13 +1032,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Denotation.args2 (Denotation.list Denotation.int) Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.pair Sample2.nat_list Sample2.nat;
-          expert =
-            [
-              (* (([ 1; 2; 4 ], 3), [ 1; 2; 3; 4 ]); *)
-              (([ 2; 4; 3 ], 3), [ 2; 3; 4; 3 ]);
-              (([ 2; 3 ], 3), [ 2; 3 ]);
-              (([], 2), [ 2 ]);
-            ];
           assertion =
             [
               (([ 2 ], 0), [ 0; 2 ]);
@@ -1168,7 +1070,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 3; 4; 2 ], [ 3; 3; 4; 4; 2; 2 ]) ];
           assertion =
             [
               ([ 2; 3; 1; 2 ], [ 2; 2; 3; 3; 1; 1; 2; 2 ]);
@@ -1200,13 +1101,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.int;
           input = Sample2.nat_list;
-          expert =
-            [
-              ([ 1; 2; 3 ], 6);
-              ([ 3; 2; 2 ], 7)
-              (* ([ 1; 4; 2; 3 ], 10); *)
-              (* ([ 3; 2; 4 ], 9) *);
-            ];
           assertion =
             [
               ([ 0; 0; 3; 3 ], 6);
@@ -1236,11 +1130,6 @@ let all : 'a reference_projection -> (string * 'a) list =
             Denotation.args2 Denotation.int (Denotation.list Denotation.int);
           d_out = Denotation.list Denotation.int;
           input = Sample2.pair Sample2.nat Sample2.nat_list;
-          expert =
-            [
-              (* ((3, [ 2; 4; 3; 1; 5 ]), [ 2; 4; 3 ]); *)
-              ((2, [ 2; 4; 3; 1 ]), [ 2; 4 ]);
-            ];
           assertion =
             [
               ((2, [ 3 ]), [ 3 ]);
@@ -1279,7 +1168,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           d_in = Denotation.list Denotation.int;
           d_out = Denotation.list Denotation.int;
           input = Sample2.nat_list;
-          expert = [ ([ 1; 2; 3 ], [ 2; 3 ]) ];
           assertion =
             [
               ([ 0; 3 ], [ 3 ]);
@@ -1317,7 +1205,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun (tree, y) -> Tree2.binsert y tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( (Node (Node (Leaf, 0, Node (Leaf, 0, Leaf)), 0, Leaf), 2),
@@ -1450,7 +1337,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun tree -> Tree2.in_order tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( Node
@@ -1647,7 +1533,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun tree -> Tree2.count_leaves tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( Node (Node (Leaf, false, Node (Leaf, true, Leaf)), false, Leaf),
@@ -1819,7 +1704,6 @@ let all : 'a reference_projection -> (string * 'a) list =
           func =
             (let f : int Tree2.t -> int = fun tree -> Tree2.count_nodes tree in
              f);
-          expert = [];
           assertion =
             [
               ( Node
@@ -1873,7 +1757,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun tree -> Tree2.in_order tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( Node
@@ -1938,7 +1821,6 @@ let all : 'a reference_projection -> (string * 'a) list =
                Tree2.map mapper t
              in
              f);
-          expert = [];
           assertion =
             [
               ( ( "div2",
@@ -2073,7 +1955,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun (tree, level) -> Tree2.count_nodes_at_level level tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( ( Node
@@ -2321,7 +2202,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun tree -> Tree2.post_order tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( Node
@@ -2382,7 +2262,6 @@ let all : 'a reference_projection -> (string * 'a) list =
               fun tree -> Tree2.pre_order tree
              in
              f);
-          expert = [];
           assertion =
             [
               ( Node

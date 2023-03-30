@@ -42,19 +42,19 @@ Assuming you have `opam` installed, you may build the tools (i.e.,
 Alternatively, you may use the pre-built [Docker](https://www.docker.com/get-started/) image.
 
 ```
-docker pull victoryuan/syrup_artifacts:pldi23v1
+docker pull victoryuan/syrup_artifacts:pldi23phase1
 ```
 
 Or build the the Docker image on your own.
 
 ```
-docker build . -t victoryuan/syrup_artifacts:pldi23v1
+docker build . -t victoryuan/syrup_artifacts:pldi23phase1
 ```
 
 And run a Docker container in background.
 
 ```
-docker run -itd --name syrup victoryuan/syrup_artifacts:pldi23v1
+docker run -itd --name syrup victoryuan/syrup_artifacts:pldi23phase1
 ```
 
 To execute command in the docker container,
@@ -153,11 +153,18 @@ cd experiment
 
 ## Run SyRup on Individual Tasks
 
-As described in the paper, necessary definitions of algebraic data
-types and background functions's Z3 encoding are built in the
-implementation of `SyRup`.  As a result, we currently only support
-synthesis for known tasks (given in `syrup/lib/references.ml`, one may
-supply additional task as well).
+Our tool takes a synthesis mode (`syrup`, `height`, or `naive`, where
+the last two modes correspond to our synthesis algorithm's variants
+used in Sec 7.4 Ablation Study), a programming task name, and a set of
+input-output examples. Then it will return a solution, followed by a
+line that prints out the synthesis time and the correctness of the
+solution.
+
+Note that the supported programming tasks are limited to those
+specified in `syrup/lib/references.ml` (one may supply additional task
+as well).  This is because necessary definitions of algebraic data
+types and background functions's Z3 encoding are built in our
+implementation, as described in the paper.
 
 ```
 syrup/syrup syrup bool_band "(T (), T ()) -> T (); (T (), F ()) -> F (); (F (), T ()) -> F ();"

@@ -6,7 +6,7 @@ let () =
   let argv = Sys.get_argv () in
   let mode_str = argv.(1) in
   let builtin = argv.(2) in
-  let exs_json_str = argv.(3) in
+  let exs_str = argv.(3) in
   let mode =
     match mode_str with
     | "syrup" -> `SyRup
@@ -22,7 +22,7 @@ let () =
         (assertion : (Exp.t * Exp.t) list) ) =
     match
       List.Assoc.find
-        (References.all (Fuzz.parse_io_proj ~exs_json_str))
+        (References.all (Fuzz.parse_io_proj ~exs_str))
         builtin ~equal:String.equal
     with
     | Some benchmark_thunk -> benchmark_thunk ()
