@@ -3,8 +3,11 @@ from subprocess import run, PIPE, STDOUT
 import os
 import csv
 import itertools
-import pandas as pd
 import random
+import matplotlib.pyplot as plt
+import matplotlib.transforms as mtrans
+import numpy as np
+import pandas as pd
 
 TIMEOUT = 120
 LOG_DIRS = ["Random", "Random+BC", "Expert", "Expert+BC"]

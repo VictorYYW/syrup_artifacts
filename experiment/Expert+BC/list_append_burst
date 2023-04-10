@@ -1,17 +1,16 @@
-list_append
 ([], [0]) -> [0];
 ([], []) -> [];
 =================================
 fix (f : list * list -> list) = fun (x:list * list) -> x . 1
 
-0.0032 false
+0.0033 false
 
 ([0], []) -> [0];
 ([], []) -> [];
 =================================
 fix (f : list * list -> list) = fun (x:list * list) -> x . 0
 
-0.0033 false
+0.0034 false
 
 ([0], [0]) -> [0, 0];
 ([], []) -> [];
@@ -22,14 +21,14 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 1) . 0, x . 1)
 
-0.0328 false
+0.0321 false
 
 ([1, 0], []) -> [1, 0];
 ([], []) -> [];
 =================================
 fix (f : list * list -> list) = fun (x:list * list) -> x . 0
 
-0.0055 false
+0.0054 false
 
 ([1, 0], [0]) -> [1, 0, 0];
 ([], []) -> [];
@@ -40,7 +39,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.2275 true
+0.2432 true
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -51,7 +50,7 @@ fix (f : list * list -> list) =
                            | Nil _ -> x . 0
                            | Cons _ -> x . 1
 
-0.0096 false
+0.0103 false
 
 ([], [0]) -> [0];
 ([0], [0]) -> [0, 0];
@@ -63,7 +62,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, x . 0)
 
-0.0249 false
+0.0257 false
 
 ([], [0]) -> [0];
 ([1, 0], []) -> [1, 0];
@@ -74,7 +73,7 @@ fix (f : list * list -> list) =
                            | Nil _ -> x . 0
                            | Cons _ -> x . 1
 
-0.0087 false
+0.0084 false
 
 ([], [0]) -> [0];
 ([1, 0], [0]) -> [1, 0, 0];
@@ -86,7 +85,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (x . 1, Un_Cons (x . 0) . 1))
 
-0.0508 false
+0.0490 false
 
 ([0], []) -> [0];
 ([0], [0]) -> [0, 0];
@@ -98,7 +97,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 1) . 0, x . 1)
 
-0.0239 false
+0.0216 false
 
 ([0], []) -> [0];
 ([1, 0], []) -> [1, 0];
@@ -106,7 +105,7 @@ fix (f : list * list -> list) =
 =================================
 fix (f : list * list -> list) = fun (x:list * list) -> x . 0
 
-0.0035 false
+0.0031 false
 
 ([0], []) -> [0];
 ([1, 0], [0]) -> [1, 0, 0];
@@ -118,7 +117,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (x . 1, Un_Cons (x . 0) . 1))
 
-0.1468 false
+0.1591 false
 
 ([0], [0]) -> [0, 0];
 ([1, 0], []) -> [1, 0];
@@ -130,7 +129,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 1) . 0, x . 1)
 
-0.0838 false
+0.0837 false
 
 ([0], [0]) -> [0, 0];
 ([1, 0], [0]) -> [1, 0, 0];
@@ -142,7 +141,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.2528 true
+0.2580 true
 
 ([1, 0], []) -> [1, 0];
 ([1, 0], [0]) -> [1, 0, 0];
@@ -154,7 +153,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.2125 true
+0.2286 true
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -167,7 +166,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 1) . 0, x . 0)
 
-0.0103 false
+0.0098 false
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -179,7 +178,7 @@ fix (f : list * list -> list) =
                            | Nil _ -> x . 1
                            | Cons _ -> x . 0
 
-0.0106 false
+0.0113 false
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -192,7 +191,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (x . 1, Un_Cons (x . 0) . 1))
 
-0.0673 false
+0.0718 false
 
 ([], [0]) -> [0];
 ([0], [0]) -> [0, 0];
@@ -218,7 +217,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.0295 true
+0.0322 true
 
 ([], [0]) -> [0];
 ([1, 0], []) -> [1, 0];
@@ -231,7 +230,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.0250 true
+0.0252 true
 
 ([0], []) -> [0];
 ([0], [0]) -> [0, 0];
@@ -244,7 +243,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 1) . 0, x . 0)
 
-0.1076 false
+0.0852 false
 
 ([0], []) -> [0];
 ([0], [0]) -> [0, 0];
@@ -257,7 +256,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (x . 1, Un_Cons (x . 0) . 1))
 
-0.1234 false
+0.1231 false
 
 ([0], []) -> [0];
 ([1, 0], []) -> [1, 0];
@@ -283,7 +282,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.1445 true
+0.1411 true
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -297,7 +296,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 0
       | Cons _ -> Cons (Un_Cons (x . 1) . 0, x . 0)
 
-0.0196 false
+0.0189 false
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -311,7 +310,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (x . 1, Un_Cons (x . 0) . 1))
 
-0.0319 false
+0.0335 false
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -325,7 +324,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.0289 true
+0.0311 true
 
 ([], [0]) -> [0];
 ([0], [0]) -> [0, 0];
@@ -339,7 +338,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.0375 true
+0.0385 true
 
 ([0], []) -> [0];
 ([0], [0]) -> [0, 0];
@@ -353,7 +352,7 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.1516 true
+0.1499 true
 
 ([], [0]) -> [0];
 ([0], []) -> [0];
@@ -368,5 +367,5 @@ fix (f : list * list -> list) =
       | Nil _ -> x . 1
       | Cons _ -> Cons (Un_Cons (x . 0) . 0, f (Un_Cons (x . 0) . 1, x . 1))
 
-0.0290 true
+0.0305 true
 

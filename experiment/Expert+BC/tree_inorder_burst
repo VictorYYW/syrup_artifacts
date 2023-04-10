@@ -1,4 +1,3 @@
-tree_inorder
 Node (Leaf (), 1, Leaf ()) -> [1];
 Leaf () -> [];
 =================================
@@ -8,7 +7,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, Nil)
 
-0.0061 false
+0.0115 false
 
 Node (Leaf (), 2, Leaf ()) -> [2];
 Leaf () -> [];
@@ -19,7 +18,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, Nil)
 
-0.0070 false
+0.0104 false
 
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Leaf () -> [];
@@ -33,7 +32,7 @@ fix (f : tree -> list) =
                      | Node _ -> Cons (Un_S (Un_Node x . 1),
                                         f (Un_Node x . 0)))
 
-0.0533 false
+0.0861 false
 
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [1, 2];
 Leaf () -> [];
@@ -44,7 +43,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-0.0749 false
+0.1098 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 2, Leaf ()) -> [2];
@@ -56,7 +55,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, Nil)
 
-0.0065 false
+0.0103 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
@@ -68,7 +67,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> append (f (Un_Node x . 0)) Cons (Un_Node x . 1, Nil)
 
-0.6534 false
+1.3366 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [1, 2];
@@ -80,7 +79,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-0.0745 false
+0.1180 false
 
 Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
@@ -95,7 +94,7 @@ fix (f : tree -> list) =
                      | Node _ -> Cons (Un_S (Un_Node x . 1),
                                         Cons (Un_Node x . 1, Nil)))
 
-0.0503 false
+0.0571 false
 
 Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [1, 2];
@@ -107,7 +106,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-0.0507 false
+0.0649 false
 
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [1, 2];
@@ -121,7 +120,7 @@ fix (f : tree -> list) =
                      | Nil _ -> Cons (2, Nil)
                      | Cons _ -> Cons (1, Cons (2, Nil)))
 
-0.2929 false
+0.5143 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 2, Leaf ()) -> [2];
@@ -134,7 +133,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> append (f (Un_Node x . 0)) Cons (Un_Node x . 1, Nil)
 
-0.6730 false
+1.3643 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 2, Leaf ()) -> [2];
@@ -147,7 +146,7 @@ fix (f : tree -> list) =
       | Leaf _ -> Nil
       | Node _ -> Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-0.0555 false
+0.0961 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
@@ -161,7 +160,7 @@ fix (f : tree -> list) =
       | Node _ -> append (f (Un_Node x . 0))
                     Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-17.5571 true
+16.4901 true
 
 Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
@@ -176,7 +175,7 @@ fix (f : tree -> list) =
                      | Nil _ -> Cons (2, Nil)
                      | Cons _ -> Cons (1, Cons (2, Nil)))
 
-0.2400 false
+0.2252 false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 2, Leaf ()) -> [2];
@@ -191,5 +190,5 @@ fix (f : tree -> list) =
       | Node _ -> append (f (Un_Node x . 0))
                     Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-1.2390 true
+1.0942 true
 

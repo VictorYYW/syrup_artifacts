@@ -1,9 +1,8 @@
-list_even_parity
 [F] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let list_even_parity = \xs -> T in list_even_parity) : BooleanList -> Boolean)
-0.0019769999999 false false
+0.00189300000011 false false
 
 [T] -> F;
 [] -> T;
@@ -15,13 +14,13 @@ list_even_parity
 
     Cons y1 -> 
       F in list_even_parity) : BooleanList -> Boolean)
-0.00287899999989 false false
+0.00264399999992 false false
 
 [F , F] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let list_even_parity = \xs -> T in list_even_parity) : BooleanList -> Boolean)
-0.00194099999999 false false
+0.00195200000007 false false
 
 [F, T] -> F;
 [] -> T;
@@ -33,7 +32,7 @@ list_even_parity
 
     Cons y1 -> 
       F in list_even_parity) : BooleanList -> Boolean)
-0.00286800000003 false false
+0.00263900000004 false false
 
 [T, F] -> F;
 [] -> T;
@@ -45,13 +44,13 @@ list_even_parity
 
     Cons y1 -> 
       F in list_even_parity) : BooleanList -> Boolean)
-0.00289300000009 false false
+0.0026499999999 false false
 
 [T, T] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let list_even_parity = \xs -> T in list_even_parity) : BooleanList -> Boolean)
-0.00206099999991 false false
+0.00181900000007 false false
 
 [F] -> T;
 [T] -> F;
@@ -81,9 +80,9 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00522000000001 false false
+0.00489399999992 false false
 
-[F, T] -> F;
+[T, F] -> F;
 [T, T] -> T;
 [] -> T;
 =================================
@@ -93,8 +92,25 @@ list_even_parity
       T
 
     Cons y1 -> 
-      #2.1 y1 in list_even_parity) : BooleanList -> Boolean)
-0.0028299999999 false false
+      case list_even_parity (#2.2 y1) of
+        T y2 -> 
+          #2.1 y1
+
+        F y2 -> 
+          F in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case list_even_parity (#2.2 y1) of
+        T y2 -> 
+          #2.1 y1
+
+        F y2 -> 
+          F in list_even_parity) : BooleanList -> Boolean)
+0.008689 false false
 
 [F] -> T;
 [F, T] -> F;
@@ -124,7 +140,7 @@ list_even_parity
 
         Cons y2 -> 
           F in list_even_parity) : BooleanList -> Boolean)
-0.00596199999995 false false
+0.00542900000005 false false
 
 [F] -> T;
 [T, F] -> F;
@@ -154,17 +170,73 @@ list_even_parity
 
         Cons y2 -> 
           F in list_even_parity) : BooleanList -> Boolean)
-0.00626000000011 false false
+0.00565099999994 false false
 
 [F] -> T;
 [T, T] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let list_even_parity = \xs -> T in list_even_parity) : BooleanList -> Boolean)
-0.00209399999994 false false
+0.00184300000001 false false
+
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      F in list_even_parity) : BooleanList -> Boolean)
+0.00261799999998 false false
 
 [T] -> F;
+[F, T] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      F in list_even_parity) : BooleanList -> Boolean)
+0.00263399999994 false false
+
 [F , F] -> T;
+[T, F] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          T in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.00484000000006 false false
+
+[T] -> F;
+[T, T] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
@@ -191,10 +263,18 @@ list_even_parity
 
         Cons y2 -> 
           list_even_parity (#2.2 y2) in list_even_parity) : BooleanList -> Boolean)
-0.00657099999989 false false
+0.00548299999991 false false
 
+[F , F] -> T;
+[T, T] -> T;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let list_even_parity = \xs -> T in list_even_parity) : BooleanList -> Boolean)
+0.00197600000001 false false
+
+[F] -> T;
 [T] -> F;
-[F, T] -> F;
+[F , F] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
@@ -203,23 +283,28 @@ list_even_parity
       T
 
     Cons y1 -> 
-      F in list_even_parity) : BooleanList -> Boolean)
-0.00282500000003 false false
+      case #2.1 y1 of
+        T y2 -> 
+          F
 
-[F, T] -> F;
-[T, F] -> F;
-[] -> T;
-=================================
+        F y2 -> 
+          T in list_even_parity) : BooleanList -> Boolean)
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_even_parity = \xs -> case xs of
     Nil y1 -> 
       T
 
     Cons y1 -> 
-      F in list_even_parity) : BooleanList -> Boolean)
-0.00277600000004 false false
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.00612000000001 false false
 
 [T] -> F;
+[F, T] -> F;
 [T, T] -> T;
 [] -> T;
 =================================
@@ -234,116 +319,12 @@ list_even_parity
           F
 
         Cons y2 -> 
-          T in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
+          #2.1 y1 in list_even_parity) : BooleanList -> Boolean)
+0.005764 false false
 
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          F
-
-        Cons y2 -> 
-          list_even_parity (#2.2 y2) in list_even_parity) : BooleanList -> Boolean)
-0.00603500000011 false false
-
-[F , F] -> T;
 [F, T] -> F;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case list_even_parity (#2.2 y1) of
-        T y2 -> 
-          #2.1 y1
-
-        F y2 -> 
-          T in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case list_even_parity (#2.2 y1) of
-        T y2 -> 
-          #2.1 y1
-
-        F y2 -> 
-          T in list_even_parity) : BooleanList -> Boolean)
-0.00710099999992 false false
-
-[F] -> T;
-[T] -> F;
-[F , F] -> T;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          T in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.0060289999999 false false
-
-[F] -> T;
-[T] -> F;
-[F, T] -> F;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00590299999999 false false
-
-[F] -> T;
-[T] -> F;
 [T, F] -> F;
+[T, T] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
@@ -354,10 +335,10 @@ list_even_parity
     Cons y1 -> 
       case #2.1 y1 of
         T y2 -> 
-          F
+          list_even_parity (#2.2 y1)
 
         F y2 -> 
-          T in list_even_parity) : BooleanList -> Boolean)
+          F in list_even_parity) : BooleanList -> Boolean)
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_even_parity = \xs -> case xs of
     Nil y1 -> 
@@ -366,11 +347,11 @@ list_even_parity
     Cons y1 -> 
       case #2.1 y1 of
         T y2 -> 
-          F
+          list_even_parity (#2.2 y1)
 
         F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00591899999995 false false
+          F in list_even_parity) : BooleanList -> Boolean)
+0.00498199999993 false false
 
 [F] -> T;
 [T] -> F;
@@ -411,87 +392,11 @@ list_even_parity
 
         Cons y2 -> 
           T in list_even_parity) : BooleanList -> Boolean)
-0.015394 false false
-
-[T] -> F;
-[F , F] -> T;
-[F, T] -> F;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00560500000006 false false
-
-[F , F] -> T;
-[F, T] -> F;
-[T, F] -> F;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00500699999998 false false
-
-[T] -> F;
-[F, T] -> F;
-[T, F] -> F;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      F in list_even_parity) : BooleanList -> Boolean)
-0.00262599999996 false false
+0.0166899999999 false false
 
 [F] -> T;
+[F , F] -> T;
 [F, T] -> F;
-[T, F] -> F;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
@@ -505,7 +410,12 @@ list_even_parity
           T
 
         Cons y2 -> 
-          F in list_even_parity) : BooleanList -> Boolean)
+          case #2.1 y2 of
+            T y3 -> 
+              F
+
+            F y3 -> 
+              T in list_even_parity) : BooleanList -> Boolean)
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_even_parity = \xs -> case xs of
     Nil y1 -> 
@@ -514,14 +424,120 @@ list_even_parity
     Cons y1 -> 
       case #2.2 y1 of
         Nil y2 -> 
-          list_even_parity (#2.2 y1)
+          T
 
         Cons y2 -> 
-          F in list_even_parity) : BooleanList -> Boolean)
-0.00582600000007 false false
+          case #2.1 y2 of
+            T y3 -> 
+              F
+
+            F y3 -> 
+              list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.015011 false false
 
 [F] -> T;
+[F , F] -> T;
+[T, F] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          T in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.00585599999999 false false
+
+[F] -> T;
+[F , F] -> T;
+[T, T] -> T;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ((let list_even_parity = \xs -> T in list_even_parity) : BooleanList -> Boolean)
+0.00168000000008 false false
+
+[F , F] -> T;
 [F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.00509800000009 false false
+
+[T] -> F;
+[F , F] -> T;
+[T, F] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          T in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.00532399999997 false false
+
+[F] -> T;
+[T, F] -> F;
 [T, T] -> T;
 [] -> T;
 =================================
@@ -536,7 +552,7 @@ list_even_parity
           T
 
         Cons y2 -> 
-          #2.1 y1 in list_even_parity) : BooleanList -> Boolean)
+          #2.1 y2 in list_even_parity) : BooleanList -> Boolean)
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_even_parity = \xs -> case xs of
     Nil y1 -> 
@@ -548,11 +564,12 @@ list_even_parity
           list_even_parity (#2.2 y1)
 
         Cons y2 -> 
-          #2.1 y1 in list_even_parity) : BooleanList -> Boolean)
-0.0148750000001 false false
+          #2.1 y2 in list_even_parity) : BooleanList -> Boolean)
+0.00531299999989 false false
 
 [T] -> F;
 [F , F] -> T;
+[F, T] -> F;
 [T, F] -> F;
 [] -> T;
 =================================
@@ -567,38 +584,6 @@ list_even_parity
           F
 
         F y2 -> 
-          T in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00563200000011 false false
-
-[F] -> T;
-[T] -> F;
-[F , F] -> T;
-[F, T] -> F;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          F
-
-        F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_even_parity = \xs -> case xs of
@@ -612,7 +597,7 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00573499999996 false false
+0.005762 false false
 
 [F] -> T;
 [T] -> F;
@@ -644,12 +629,12 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.0057240000001 false false
+0.00546200000008 false false
 
-[T] -> F;
 [F , F] -> T;
 [F, T] -> F;
 [T, F] -> F;
+[T, T] -> T;
 [] -> T;
 =================================
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
@@ -660,10 +645,20 @@ list_even_parity
     Cons y1 -> 
       case #2.1 y1 of
         T y2 -> 
-          F
+          case #2.2 y1 of
+            Nil y3 -> 
+              F
+
+            Cons y3 -> 
+              #2.1 y3
 
         F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+          case list_even_parity (#2.2 y1) of
+            T y3 -> 
+              T
+
+            F y3 -> 
+              F in list_even_parity) : BooleanList -> Boolean)
 (\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_even_parity = \xs -> case xs of
     Nil y1 -> 
@@ -672,11 +667,21 @@ list_even_parity
     Cons y1 -> 
       case #2.1 y1 of
         T y2 -> 
-          F
+          case #2.2 y1 of
+            Nil y3 -> 
+              F
+
+            Cons y3 -> 
+              #2.1 y3
 
         F y2 -> 
-          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00565600000004 false false
+          case list_even_parity (#2.2 y1) of
+            T y3 -> 
+              T
+
+            F y3 -> 
+              F in list_even_parity) : BooleanList -> Boolean)
+0.0156569999999 false false
 
 [F] -> T;
 [T] -> F;
@@ -708,91 +713,7 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00572899999997 false false
-
-[F] -> T;
-[T] -> F;
-[F, T] -> F;
-[T, T] -> T;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          case #2.1 y1 of
-            T y3 -> 
-              F
-
-            F y3 -> 
-              T
-
-        Cons y2 -> 
-          #2.1 y1 in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          case #2.1 y1 of
-            T y3 -> 
-              F
-
-            F y3 -> 
-              list_even_parity (#2.2 y1)
-
-        Cons y2 -> 
-          #2.1 y1 in list_even_parity) : BooleanList -> Boolean)
-0.0212759999999 false false
-
-[F] -> T;
-[T] -> F;
-[T, F] -> F;
-[T, T] -> T;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          case #2.1 y1 of
-            T y3 -> 
-              F
-
-            F y3 -> 
-              T
-
-        Cons y2 -> 
-          #2.1 y2 in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          case #2.1 y1 of
-            T y3 -> 
-              F
-
-            F y3 -> 
-              list_even_parity (#2.2 y1)
-
-        Cons y2 -> 
-          #2.1 y2 in list_even_parity) : BooleanList -> Boolean)
-0.0208319999999 false false
+0.00546400000007 false false
 
 [T] -> F;
 [F , F] -> T;
@@ -834,7 +755,81 @@ list_even_parity
 
             F y3 -> 
               list_even_parity (#2.2 y2) in list_even_parity) : BooleanList -> Boolean)
-0.0248309999999 false false
+0.023254 false false
+
+[F] -> T;
+[T] -> F;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.2 y1 of
+        Nil y2 -> 
+          case #2.1 y1 of
+            T y3 -> 
+              F
+
+            F y3 -> 
+              T
+
+        Cons y2 -> 
+          #2.1 y2 in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.2 y1 of
+        Nil y2 -> 
+          case #2.1 y1 of
+            T y3 -> 
+              F
+
+            F y3 -> 
+              list_even_parity (#2.2 y1)
+
+        Cons y2 -> 
+          #2.1 y2 in list_even_parity) : BooleanList -> Boolean)
+0.020217 false false
+
+[F] -> T;
+[F , F] -> T;
+[F, T] -> F;
+[T, F] -> F;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.1 y1 of
+        T y2 -> 
+          F
+
+        F y2 -> 
+          list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
+0.00573600000007 false false
 
 [F] -> T;
 [F , F] -> T;
@@ -876,51 +871,51 @@ list_even_parity
 
             F y3 -> 
               list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.023813 false false
+0.022579 false false
 
 [T] -> F;
-[F, T] -> F;
-[T, F] -> F;
-[T, T] -> T;
-[] -> T;
-=================================
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          F
-
-        Cons y2 -> 
-          case #2.1 y1 of
-            T y3 -> 
-              #2.1 y2
-
-            F y3 -> 
-              F in list_even_parity) : BooleanList -> Boolean)
-(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_even_parity = \xs -> case xs of
-    Nil y1 -> 
-      T
-
-    Cons y1 -> 
-      case #2.2 y1 of
-        Nil y2 -> 
-          F
-
-        Cons y2 -> 
-          case #2.1 y1 of
-            T y3 -> 
-              #2.1 y2
-
-            F y3 -> 
-              list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.0245150000001 false false
-
 [F , F] -> T;
+[T, F] -> F;
+[T, T] -> T;
+[] -> T;
+=================================
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.2 y1 of
+        Nil y2 -> 
+          F
+
+        Cons y2 -> 
+          case #2.1 y1 of
+            T y3 -> 
+              #2.1 y2
+
+            F y3 -> 
+              T in list_even_parity) : BooleanList -> Boolean)
+(\list_even_parity -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_even_parity = \xs -> case xs of
+    Nil y1 -> 
+      T
+
+    Cons y1 -> 
+      case #2.2 y1 of
+        Nil y2 -> 
+          F
+
+        Cons y2 -> 
+          case #2.1 y1 of
+            T y3 -> 
+              #2.1 y2
+
+            F y3 -> 
+              list_even_parity (#2.2 y2) in list_even_parity) : BooleanList -> Boolean)
+0.0196120000001 false false
+
+[F] -> T;
 [F, T] -> F;
 [T, F] -> F;
 [T, T] -> T;
@@ -932,19 +927,14 @@ list_even_parity
       T
 
     Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          case #2.2 y1 of
-            Nil y3 -> 
-              F
+      case #2.2 y1 of
+        Nil y2 -> 
+          T
 
-            Cons y3 -> 
-              #2.1 y3
-
-        F y2 -> 
-          case list_even_parity (#2.2 y1) of
+        Cons y2 -> 
+          case #2.1 y1 of
             T y3 -> 
-              T
+              #2.1 y2
 
             F y3 -> 
               F in list_even_parity) : BooleanList -> Boolean)
@@ -954,23 +944,18 @@ list_even_parity
       T
 
     Cons y1 -> 
-      case #2.1 y1 of
-        T y2 -> 
-          case #2.2 y1 of
-            Nil y3 -> 
-              F
+      case #2.2 y1 of
+        Nil y2 -> 
+          list_even_parity (#2.2 y1)
 
-            Cons y3 -> 
-              #2.1 y3
-
-        F y2 -> 
-          case list_even_parity (#2.2 y1) of
+        Cons y2 -> 
+          case #2.1 y1 of
             T y3 -> 
-              T
+              #2.1 y2
 
             F y3 -> 
               F in list_even_parity) : BooleanList -> Boolean)
-0.0151249999999 false false
+0.025461 false false
 
 [F] -> T;
 [T] -> F;
@@ -1003,7 +988,7 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.00571300000001 false false
+0.00585099999989 false false
 
 [F] -> T;
 [T] -> F;
@@ -1056,7 +1041,7 @@ list_even_parity
 
             F y3 -> 
               list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.026169 false false
+0.0254279999999 false false
 
 [F] -> T;
 [T] -> F;
@@ -1099,7 +1084,7 @@ list_even_parity
 
         F y2 -> 
           T in list_even_parity) : BooleanList -> Boolean)
-0.026946 false false
+0.0266630000001 false false
 
 [F] -> T;
 [T] -> F;
@@ -1152,7 +1137,7 @@ list_even_parity
 
             F y3 -> 
               F in list_even_parity) : BooleanList -> Boolean)
-0.027693 false false
+0.028037 false false
 
 [F] -> T;
 [F , F] -> T;
@@ -1195,7 +1180,7 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.0322389999999 false false
+0.032676 false false
 
 [T] -> F;
 [F , F] -> T;
@@ -1238,7 +1223,7 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.0306069999999 false false
+0.031385 false false
 
 [F] -> T;
 [T] -> F;
@@ -1282,5 +1267,5 @@ list_even_parity
 
         F y2 -> 
           list_even_parity (#2.2 y1) in list_even_parity) : BooleanList -> Boolean)
-0.040148 false false
+0.0406579999999 false false
 

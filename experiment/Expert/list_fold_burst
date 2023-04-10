@@ -10,14 +10,14 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) -> Un_Cons (x . 2) . 0
 
-0.0100 false
+0.0092 false
 
 (add, 0, [2, 1]) -> 3;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) -> S (Un_Cons (x . 2) . 0)
 
-0.0197 false
+0.0180 false
 
 (add, 0, [3, 2, 1]) -> 6;
 =================================
@@ -25,14 +25,14 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     x . 0 (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
 
-0.0537 false
+0.0512 false
 
 (add, 1, []) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) -> x . 1
 
-0.0127 false
+0.0130 false
 
 (countOdd, 0, []) -> 0;
 =================================
@@ -46,53 +46,24 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) -> Un_Cons (x . 2) . 0
 
-0.0102 false
+0.0101 false
 
 (countOdd, 0, [2, 1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) -> S (x . 1)
 
-0.0197 false
+0.0187 false
 
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) -> Un_S (Un_Cons (x . 2) . 0)
 
-0.0541 false
-
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) -> x . 1
-
-0.0127 false
-
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    x . 0 Un_S (Un_Cons (x . 2) . 0)
-      (x . 0 Un_S (Un_Cons (x . 2) . 0) Un_S (Un_Cons (x . 2) . 0))
-
-0.2833 false
+0.0507 false
 
 (add, 0, []) -> 0;
-(add, 0, [3, 2, 1]) -> 6;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
-
-0.1042 false
-
 (add, 0, [1]) -> 1;
-(countOdd, 0, []) -> 0;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
@@ -100,45 +71,77 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Nil _ -> x . 1
       | Cons _ -> Un_Cons (x . 2) . 0
 
-0.0323 false
+0.0326 false
 
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    x . 0 Un_S (Un_Cons (x . 2) . 0)
-      (countOdd (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0))
-
-5.8659 false
-
-(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [1]) -> 1;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) -> Un_S (Un_Cons (x . 2) . 0)
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match Un_S (Un_Cons (x . 2) . 0) with
+      | O _ -> Un_Cons (x . 2) . 0
+      | S _ -> Un_S (Un_Cons (x . 2) . 0)
 
-0.1127 false
+17.1044 false
 
 (add, 0, [2, 1]) -> 3;
+(countOdd, 0, []) -> 0;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> S (Un_Cons (x . 2) . 0)
+
+0.0426 false
+
+(add, 0, [2, 1]) -> 3;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    x . 0 (x . 1) S (Un_Cons (x . 2) . 0)
+
+0.7061 false
+
+(add, 0, []) -> 0;
+(countOdd, 0, []) -> 0;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) -> 0
+
+0.0001 false
+
+(add, 0, [1]) -> 1;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
-    S (x . 0 (x . 1) (Un_Cons (x . 2) . 0))
+    match Un_S (Un_Cons (x . 2) . 0) with
+      | O _ -> Un_Cons (x . 2) . 0
+      | S _ -> Un_S (Un_Cons (x . 2) . 0)
 
-1.2025 false
+110.8387 false
 
-(countOdd, 0, []) -> 0;
+(add, 0, []) -> 0;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> S (x . 1)
+
+0.0409 false
+
+(add, 0, [2, 1]) -> 3;
 (countOdd, 0, [1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> Un_Cons (x . 2) . 0
+    x . 0 Un_S (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
 
-0.0337 false
+0.0466 false
 
 (add, 0, [1]) -> 1;
 (add, 0, [2, 1]) -> 3;
@@ -147,79 +150,54 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     x . 0 (Un_Cons (x . 2) . 0) Un_S (Un_Cons (x . 2) . 0)
 
-0.0375 false
+0.0348 false
 
-(add, 0, [1]) -> 1;
-(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) -> 1
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> Un_Cons (x . 2) . 0
 
-0.0601 false
+0.0317 false
 
-(add, 0, [2, 1]) -> 3;
+(countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
-    x . 0 Un_S (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> S (x . 1)
 
-0.7494 false
-
-(add, 0, []) -> 0;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) -> x . 1
-
-0.0221 false
+0.1075 false
 
 (add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 1, []) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> Un_Cons (x . 2) . 0
+      | Cons _ -> x . 0 Un_S (Un_Cons (x . 2) . 0) S (Un_Cons (x . 2) . 0)
 
-0.0345 false
+14.8205 false
 
-(add, 0, [1]) -> 1;
-(add, 1, []) -> 1;
+(add, 0, []) -> 0;
+(countOdd, 0, []) -> 0;
 (countOdd, 0, [2, 1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) -> 1
-
-0.0649 false
-
-(add, 0, [1]) -> 1;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> Un_Cons (x . 2) . 0
+      | Cons _ -> S (x . 1)
 
-1.2358 false
-
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
-
-0.7437 false
+0.0407 false
 
 (add, 0, []) -> 0;
 (add, 0, [3, 2, 1]) -> 6;
@@ -231,212 +209,22 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Nil _ -> x . 1
       | Cons _ -> x . 0 (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
 
-0.1101 false
-
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    x . 0 Un_S (Un_Cons (x . 2) . 0)
-      (countOdd (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0))
-
-0.2921 false
+0.1001 false
 
 (add, 0, []) -> 0;
 (add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> S (Un_Cons (x . 2) . 0)
-
-0.0515 false
-
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-None
-(add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
+      | Cons _ -> x . 0 (Un_Cons (x . 2) . 0) Un_S (Un_Cons (x . 2) . 0)
 
-27.1936 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-41.1541 true
+0.1753 false
 
 (add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
 (add, 1, []) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> S (x . 1)
-
-0.1661 false
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> S (x . 1)
-
-0.1631 false
-
-(add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 S (x . 1) (Un_Cons (x . 2) . 0)
-
-74.2980 false
-
-(add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-77.8843 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-None
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-0.1555 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-None
-(add, 0, []) -> 0;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-2.1917 true
-
-(add, 0, []) -> 0;
-(add, 0, [2, 1]) -> 3;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 Un_S (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
-
-0.1799 false
-
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-None
-(add, 0, []) -> 0;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-2.3527 true
-
-(add, 0, [1]) -> 1;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-23.7671 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
@@ -445,28 +233,28 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Nil _ -> x . 1
       | Cons _ -> Un_Cons (x . 2) . 0
 
-0.0371 false
+0.1080 false
 
-(add, 0, []) -> 0;
-(add, 1, []) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
 (countOdd, 0, [1]) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
+=================================
+None
+(add, 0, []) -> 0;
+(add, 0, [2, 1]) -> 3;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
+      | Cons _ -> S (x . 0 (x . 1) (Un_Cons (x . 2) . 0))
 
-1.8779 true
+1.0384 false
 
 (add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
@@ -474,24 +262,21 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Nil _ -> x . 1
       | Cons _ -> x . 0 Un_S (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
 
-33.8951 false
+0.1516 false
 
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
+(add, 0, []) -> 0;
 (add, 1, []) -> 1;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 1 with
-      | O _ -> x . 0 Un_S (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0)
-      | S _ -> x . 1
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> Un_S (Un_Cons (x . 2) . 0)
 
-28.2626 false
+0.2170 false
 
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
+(add, 0, []) -> 0;
 (add, 1, []) -> 1;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [3, 2, 1]) -> 2;
@@ -500,14 +285,12 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
+      | Cons _ -> Un_S (Un_Cons (x . 2) . 0)
 
-91.9585 true
+0.1998 false
 
 (add, 0, []) -> 0;
 (add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
@@ -518,13 +301,39 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 Un_S (Un_Cons (x . 2) . 0)
                     (countOdd (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0))
 
-18.3567 false
+17.8597 false
 
-(add, 0, [1]) -> 1;
+(add, 0, []) -> 0;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> add (x . 0 (x . 1) (Un_Cons (x . 2) . 0))
+                    (x . 0 (x . 1) (Un_Cons (x . 2) . 0))
+
+13.4100 false
+
 (add, 0, [2, 1]) -> 3;
 (add, 0, [3, 2, 1]) -> 6;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> add (Un_Cons (x . 2) . 0)
+                    (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+
+6.9083 false
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
 fix (f : (nat -> nat -> nat) * nat * list -> nat) =
@@ -534,12 +343,23 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-6.0497 true
+0.1416 true
 
-(add, 0, []) -> 0;
-(add, 0, [2, 1]) -> 3;
+(add, 1, []) -> 1;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> S (x . 1)
+
+0.1676 false
+
+(add, 0, [2, 1]) -> 3;
+(countOdd, 0, []) -> 0;
 (countOdd, 0, [2, 1]) -> 1;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
@@ -547,14 +367,11 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
+      | Cons _ -> S (x . 0 (x . 1) (Un_Cons (x . 2) . 0))
 
-8.8738 true
+31.3532 false
 
 (add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
 (add, 0, [3, 2, 1]) -> 6;
 (add, 1, []) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
@@ -563,10 +380,236 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
+      | Cons _ -> x . 0 Un_S (Un_Cons (x . 2) . 0)
+                    (x . 0 Un_S (Un_Cons (x . 2) . 0)
+                       Un_S (Un_Cons (x . 2) . 0))
+
+15.9655 false
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+None
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-33.7990 true
+0.1433 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+75.9477 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> countOdd (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+3.1548 false
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match Un_S (Un_Cons (x . 2) . 0) with
+      | O _ -> Un_Cons (x . 2) . 0
+      | S _ -> x . 0 Un_S (Un_Cons (x . 2) . 0)
+                 (x . 0 Un_S (Un_Cons (x . 2) . 0) Un_S (Un_Cons (x . 2) . 0))
+
+2.6391 false
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> add (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+0.1424 false
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+4.9958 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+None
+(add, 0, []) -> 0;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 Un_S (Un_Cons (x . 2) . 0)
+                    (countOdd (Un_Cons (x . 2) . 0) (Un_Cons (x . 2) . 0))
+
+0.1494 false
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> S (x . 1)
+
+0.1573 false
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> add (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+0.1411 false
+
+(add, 0, []) -> 0;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+1.9522 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+1.7995 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+5.0782 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+1.6892 true
+
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+4.6609 true
 
 (add, 0, [1]) -> 1;
 (add, 0, [2, 1]) -> 3;
@@ -583,66 +626,10 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | S _ -> x . 0 Un_S (Un_Cons (x . 2) . 0)
                  (x . 0 Un_S (Un_Cons (x . 2) . 0) Un_S (Un_Cons (x . 2) . 0))
 
-2.9876 false
+2.5705 false
 
 (add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
 (add, 1, []) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-75.8260 true
-
-(add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-None
-(add, 0, []) -> 0;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-16.5122 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-41.3694 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
@@ -652,23 +639,14 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
   fun (x:(nat -> nat -> nat) * nat * list) ->
     match x . 2 with
       | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+      | Cons _ -> countOdd (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-26.6613 true
+83.5920 false
 
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-None
 (add, 0, []) -> 0;
 (add, 0, [1]) -> 1;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
+(add, 0, [2, 1]) -> 3;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [2, 1]) -> 1;
 (countOdd, 0, [3, 2, 1]) -> 2;
@@ -680,11 +658,10 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-0.1603 true
+23.7913 true
 
-(add, 0, [1]) -> 1;
+(add, 0, []) -> 0;
 (add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
@@ -697,47 +674,28 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-83.7187 true
+0.2009 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+90.1946 true
 
 (add, 0, []) -> 0;
 (add, 0, [1]) -> 1;
 (add, 0, [2, 1]) -> 3;
 (add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-41.5019 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-2.0411 true
-
-(add, 0, []) -> 0;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
 (countOdd, 0, [2, 1]) -> 1;
 (countOdd, 0, [3, 2, 1]) -> 2;
 =================================
@@ -748,7 +706,7 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-23.6185 true
+1.0604 true
 
 (add, 0, []) -> 0;
 (add, 0, [1]) -> 1;
@@ -765,61 +723,10 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-0.1604 true
+0.1499 true
 
 (add, 0, []) -> 0;
 (add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-6.1669 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-43.9401 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-1.1678 true
-
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
 (add, 0, [3, 2, 1]) -> 6;
 (countOdd, 0, []) -> 0;
 (countOdd, 0, [1]) -> 1;
@@ -833,118 +740,9 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-11.0313 true
+0.1724 true
 
 (add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-6.0123 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-1.1731 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-1.1270 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(add, 1, []) -> 1;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-21.1200 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 0, [3, 2, 1]) -> 6;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-6.1158 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
-(add, 0, [2, 1]) -> 3;
-(add, 1, []) -> 1;
-(countOdd, 0, []) -> 0;
-(countOdd, 0, [1]) -> 1;
-(countOdd, 0, [2, 1]) -> 1;
-(countOdd, 0, [3, 2, 1]) -> 2;
-=================================
-fix (f : (nat -> nat -> nat) * nat * list -> nat) =
-  fun (x:(nat -> nat -> nat) * nat * list) ->
-    match x . 2 with
-      | Nil _ -> x . 1
-      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
-                    (Un_Cons (x . 2) . 0)
-
-1.7377 true
-
-(add, 0, []) -> 0;
-(add, 0, [1]) -> 1;
 (add, 0, [3, 2, 1]) -> 6;
 (add, 1, []) -> 1;
 (countOdd, 0, []) -> 0;
@@ -959,9 +757,42 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-1.3622 true
+0.1922 true
 
 (add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+19.0756 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+63.3782 true
+
 (add, 0, [2, 1]) -> 3;
 (add, 0, [3, 2, 1]) -> 6;
 (add, 1, []) -> 1;
@@ -977,7 +808,219 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-2.0957 true
+112.1043 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+2.2927 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+35.1824 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+63.5921 true
+
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+52.6167 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+5.3727 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+0.9150 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+0.9386 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+19.0852 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+5.4409 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [2, 1]) -> 3;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+1.4969 true
+
+(add, 0, []) -> 0;
+(add, 0, [1]) -> 1;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+1.2092 true
+
+(add, 0, []) -> 0;
+(add, 0, [2, 1]) -> 3;
+(add, 0, [3, 2, 1]) -> 6;
+(add, 1, []) -> 1;
+(countOdd, 0, []) -> 0;
+(countOdd, 0, [1]) -> 1;
+(countOdd, 0, [2, 1]) -> 1;
+(countOdd, 0, [3, 2, 1]) -> 2;
+=================================
+fix (f : (nat -> nat -> nat) * nat * list -> nat) =
+  fun (x:(nat -> nat -> nat) * nat * list) ->
+    match x . 2 with
+      | Nil _ -> x . 1
+      | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
+                    (Un_Cons (x . 2) . 0)
+
+1.7681 true
 
 (add, 0, [1]) -> 1;
 (add, 0, [2, 1]) -> 3;
@@ -995,7 +1038,7 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-39.3260 true
+32.4130 true
 
 (add, 0, []) -> 0;
 (add, 0, [1]) -> 1;
@@ -1014,5 +1057,5 @@ fix (f : (nat -> nat -> nat) * nat * list -> nat) =
       | Cons _ -> x . 0 (f (x . 0, x . 1, Un_Cons (x . 2) . 1))
                     (Un_Cons (x . 2) . 0)
 
-1.1369 true
+0.9207 true
 

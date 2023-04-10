@@ -1,5 +1,4 @@
-list_rev_tailcall
-([1],[2]) -> [1,2];
+([0,3,2],[0,3,0]) -> [2,3,0,0,3,0];
 ([], []) -> [];
 
 =================================
@@ -9,23 +8,10 @@ list_rev_tailcall
       []
 
     Cons y1 -> 
-      Cons (1, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      []
+      Cons (2, Cons (3, Cons (0, acc))) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.047255 false false
 
-    Cons y1 -> 
-      Cons
-        ( 1
-        , Cons
-            ( S (#2.1 y1)
-            , list_rev_tailcall (#2.2 y1) acc
-            )
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00858599999992 false false
-
-([1,0],[3,2,2]) -> [0,1,3,2,2];
+([2,0],[3]) -> [0,2,3];
 ([], []) -> [];
 
 =================================
@@ -36,9 +22,16 @@ list_rev_tailcall
 
     Cons y1 -> 
       Cons (0, Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0159189999999 false false
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
 
-([1,2],[2,3]) -> [2,1,2,3];
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.024461 false true
+
+([0,0],[1,0]) -> [0,0,1,0];
 ([], []) -> [];
 
 =================================
@@ -48,82 +41,8 @@ list_rev_tailcall
       []
 
     Cons y1 -> 
-      Cons (#2.1 y1, Cons (1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00948100000005 false false
-
-([2,3,1],[0]) -> [1,3,2,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case acc of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons (1, Cons (3, Cons (2, acc))) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0074360000001 false false
-
-([3,0,0],[3]) -> [0,0,3,3];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case acc of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons (0, Cons (0, Cons (#2.1 y1, acc))) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.01315 false false
-
-([3,3],[1,2]) -> [3,3,1,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case acc of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons
-        ( S (S (#2.1 y1))
-        , Cons (S (S (#2.1 y1)), acc)
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00895799999989 false false
-
-([2,2,3],[1,3]) -> [3,2,2,1,3];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case acc of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons
-        ( 3
-        , Cons
-            ( S (#2.1 y1)
-            , Cons (S (#2.1 y1), acc)
-            )
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00924200000009 false false
-
-([3],[3,3,1]) -> [3,3,3,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case acc of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons (#2.1 y1, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.01315 false false
+      Cons (0, Cons (0, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0230839999999 false false
 
 ([2,2,3],[2]) -> [3,2,2,2];
 ([], []) -> [];
@@ -139,9 +58,9 @@ list_rev_tailcall
         ( S (#2.1 y1)
         , Cons (#2.1 y1, Cons (#2.1 y1, acc))
         ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00845000000004 false false
+0.0212079999999 false false
 
-([0,0],[1,0]) -> [0,0,1,0];
+([3],[3,3,1]) -> [3,3,3,1];
 ([], []) -> [];
 
 =================================
@@ -151,11 +70,109 @@ list_rev_tailcall
       []
 
     Cons y1 -> 
-      Cons (0, Cons (0, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0115969999999 false false
+      Cons (#2.1 y1, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.041819 false false
 
-([0],[1,2]) -> [0,1,2];
-([3,0,1],[1,1]) -> [1,0,3,1,1];
+([3],[0,2]) -> [3,0,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case acc of
+    Nil y1 -> 
+      []
+
+    Cons y1 -> 
+      Cons (3, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.032297 false false
+
+([1,0,3],[2,0]) -> [3,0,1,2,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case acc of
+    Nil y1 -> 
+      []
+
+    Cons y1 -> 
+      Cons
+        ( S (#2.1 y1)
+        , Cons (0, Cons (1, acc))
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0330489999999 false false
+
+([2,0],[2]) -> [0,2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case acc of
+    Nil y1 -> 
+      []
+
+    Cons y1 -> 
+      Cons (0, Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0195189999999 false false
+
+([1],[0,1,2]) -> [1,0,1,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case acc of
+    Nil y1 -> 
+      []
+
+    Cons y1 -> 
+      Cons (1, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.018188 false false
+
+([3,1,2],[2]) -> [2,1,3,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case acc of
+    Nil y1 -> 
+      []
+
+    Cons y1 -> 
+      Cons
+        ( #2.1 y1
+        , Cons (1, Cons (S (#2.1 y1), acc))
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.021939 false false
+
+([0],[3,2]) -> [0,3,2];
+([1,1],[3,2,2]) -> [1,1,3,2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      Cons
+        ( #2.1 y1
+        , list_rev_tailcall (#2.2 y1) acc
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      Cons
+        ( #2.1 y1
+        , list_rev_tailcall (#2.2 y1) acc
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0182259999999 false false
+
+([3,2],[1,0]) -> [2,3,1,0];
+([2,2],[2]) -> [2,2,2];
 ([], []) -> [];
 
 =================================
@@ -173,7 +190,28 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00678799999991 true true
+0.0768619999999 true true
+
+([3,3,2],[2,3,1]) -> [2,3,3,2,3,1];
+([2,0,0],[2,3]) -> [0,0,2,2,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0225820000001 true true
 
 ([2,1,3],[2,1,3]) -> [3,1,2,2,1,3];
 ([2,3,1],[0,2]) -> [1,3,2,0,2];
@@ -194,100 +232,10 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00872499999991 true true
+0.01784 true true
 
-([1,3,1],[2]) -> [1,3,1,2];
-([1,0],[1,2]) -> [0,1,1,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.006981 true true
-
-([2,1,3],[0,3,3]) -> [3,1,2,0,3,3];
-([1,1,2],[2,3,1]) -> [2,1,1,2,3,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0121300000001 true true
-
-([3,1],[3,2]) -> [1,3,3,2];
-([3],[2]) -> [3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00800400000003 true true
-
-([2],[0,3,0]) -> [2,0,3,0];
-([3,3,3],[3,3,2]) -> [3,3,3,3,3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00881699999991 false false
-
-([3],[2,1]) -> [3,2,1];
-([1],[0]) -> [1,0];
+([1],[1]) -> [1,1];
+([3],[1,3,1]) -> [3,1,3,1];
 ([], []) -> [];
 
 =================================
@@ -308,7 +256,28 @@ list_rev_tailcall
         ( #2.1 y1
         , list_rev_tailcall (#2.2 y1) acc
         ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00813700000003 false false
+0.018417 false false
+
+([3],[3,3,0]) -> [3,3,3,0];
+([1,0],[2,2]) -> [0,1,2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0197860000001 true true
 
 ([3],[3]) -> [3,3];
 ([0,2],[1]) -> [2,0,1];
@@ -329,62 +298,10 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00782499999991 true true
+0.0170680000001 true true
 
-([3],[1,0,1]) -> [3,1,0,1];
-([2],[0]) -> [2,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons (#2.1 y1, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00873700000011 false false
-
-([1],[1,3]) -> [1,1,3];
-([1,1],[1,3,0]) -> [1,1,1,3,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0138930000001 false false
-
-([0,3,0],[3,2,2]) -> [0,3,0,3,2,2];
-([3,0,2],[2]) -> [2,0,3,2];
-([3],[2,3,1]) -> [3,2,3,1];
+([2,2],[2]) -> [2,2,2];
+([2,0],[1,2,2]) -> [0,2,1,2,2];
 ([], []) -> [];
 
 =================================
@@ -402,11 +319,10 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00731700000006 true true
+0.0178060000001 true true
 
-([2],[0]) -> [2,0];
-([3],[3]) -> [3,3];
-([3,3,2],[2]) -> [2,3,3,2];
+([0],[1,2]) -> [0,1,2];
+([3,0,1],[1,1]) -> [1,0,3,1,1];
 ([], []) -> [];
 
 =================================
@@ -424,7 +340,28 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00849599999992 true true
+0.0147199999999 true true
+
+([3,2],[3]) -> [2,3,3];
+([0,1,0],[0,2]) -> [0,1,0,0,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.015228 true true
 
 ([3,1,1],[2]) -> [1,1,3,2];
 ([1],[2,1]) -> [1,2,1];
@@ -446,11 +383,11 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00837700000011 true true
+0.0125149999999 true true
 
-([2,2,0],[3]) -> [0,2,2,3];
-([1],[3]) -> [1,3];
-([1],[3,2]) -> [1,3,2];
+([3,1],[1,0]) -> [1,3,1,0];
+([1],[2,0]) -> [1,2,0];
+([1],[2]) -> [1,2];
 ([], []) -> [];
 
 =================================
@@ -468,11 +405,11 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0073339999999 true true
+0.0176019999999 true true
 
-([3],[0,3]) -> [3,0,3];
-([2,0,1],[1,3]) -> [1,0,2,1,3];
-([1,0,2],[1,1]) -> [2,0,1,1,1];
+([1,0],[1,3,1]) -> [0,1,1,3,1];
+([2,1,1],[0,2]) -> [1,1,2,0,2];
+([3,0],[1,0]) -> [0,3,1,0];
 ([], []) -> [];
 
 =================================
@@ -490,11 +427,11 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00827699999991 true true
+0.0416760000001 true true
 
-([3],[0]) -> [3,0];
-([1,2,0],[2,2,1]) -> [0,2,1,2,2,1];
-([3],[2,1,1]) -> [3,2,1,1];
+([3,1],[2]) -> [1,3,2];
+([3],[1]) -> [3,1];
+([0],[2,3]) -> [0,2,3];
 ([], []) -> [];
 
 =================================
@@ -512,7 +449,29 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00715700000001 true true
+0.01269 true true
+
+([2,0],[3,0]) -> [0,2,3,0];
+([2,1,3],[1,1,2]) -> [3,1,2,1,1,2];
+([2,0],[2,3,0]) -> [0,2,2,3,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.027055 true true
 
 ([2,0],[1,3,3]) -> [0,2,1,3,3];
 ([0],[2]) -> [0,2];
@@ -534,36 +493,11 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00792999999999 true true
+0.0355010000001 true true
 
-([2],[2,0]) -> [2,2,0];
-([2],[2]) -> [2,2];
-([0],[1,0,1]) -> [0,1,0,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      []
-
-    Cons y1 -> 
-      Cons (#2.1 y1, acc) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00801299999989 false false
-
-([0,0,3],[3,3,0]) -> [3,0,0,3,3,0];
-([0],[3,3,1]) -> [0,3,3,1];
-([2],[1]) -> [2,1];
+([2,2,0],[0,2]) -> [0,2,2,0,2];
+([1,2],[3]) -> [2,1,3];
+([0,3,0],[0,2,1]) -> [0,3,0,0,2,1];
 ([], []) -> [];
 
 =================================
@@ -581,40 +515,11 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0074239999999 true true
+0.0197330000001 true true
 
-([3,0,3],[2,0]) -> [3,0,3,2,0];
-([3,0,3],[1,3]) -> [3,0,3,1,3];
-([0,3,0],[3,3]) -> [0,3,0,3,3];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      Cons
-        ( #2.1 y1
-        , list_rev_tailcall (#2.2 y1) acc
-        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00875599999995 false false
-
+([1,3],[0]) -> [3,1,0];
+([0],[2,0,1]) -> [0,2,0,1];
 ([0],[3]) -> [0,3];
-([0,2],[3,2,2]) -> [2,0,3,2,2];
-([0,0],[3,0,0]) -> [0,0,3,0,0];
-([2,1,0],[3,0,0]) -> [0,1,2,3,0,0];
 ([], []) -> [];
 
 =================================
@@ -632,12 +537,11 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00749100000007 true true
+0.011634 true true
 
-([2,0,3],[1,1]) -> [3,0,2,1,1];
-([2,1],[3,2]) -> [1,2,3,2];
-([1,0],[0,2]) -> [0,1,0,2];
-([3,3,2],[3,2,0]) -> [2,3,3,3,2,0];
+([1,2],[1,3,0]) -> [2,1,1,3,0];
+([0],[3,1,2]) -> [0,3,1,2];
+([2],[2]) -> [2,2];
 ([], []) -> [];
 
 =================================
@@ -655,7 +559,81 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00748900000008 true true
+0.013115 true true
+
+([0],[3,2]) -> [0,3,2];
+([1,2],[3,1]) -> [2,1,3,1];
+([0],[1]) -> [0,1];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0402340000001 true true
+
+([2,3,1],[1,2]) -> [1,3,2,1,2];
+([3],[3,2,1]) -> [3,3,2,1];
+([3,2,3],[2]) -> [3,2,3,2];
+([3,2],[0,3]) -> [2,3,0,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0194240000001 true true
+
+([0],[0]) -> [0,0];
+([1,0,1],[1,3,0]) -> [1,0,1,1,3,0];
+([1,3,1],[2,3,3]) -> [1,3,1,2,3,3];
+([0],[3]) -> [0,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      Cons
+        ( #2.1 y1
+        , list_rev_tailcall (#2.2 y1) acc
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      Cons
+        ( #2.1 y1
+        , list_rev_tailcall (#2.2 y1) acc
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.01712 false false
 
 ([2,3],[3,1,1]) -> [3,2,3,1,1];
 ([0,0],[1,1]) -> [0,0,1,1];
@@ -678,12 +656,12 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00727899999993 true true
+0.016531 true true
 
-([0,3,2],[0]) -> [2,3,0,0];
-([0,2],[0,0,2]) -> [2,0,0,0,2];
-([1],[0,1,0]) -> [1,0,1,0];
-([0,3],[3]) -> [3,0,3];
+([2,2],[1,0]) -> [2,2,1,0];
+([1,3,2],[0]) -> [2,3,1,0];
+([3,0,2],[0]) -> [2,0,3,0];
+([1,1,0],[1,1]) -> [0,1,1,1,1];
 ([], []) -> [];
 
 =================================
@@ -701,7 +679,76 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.008691 true true
+0.0157790000001 true true
+
+([3,2],[1,2,1]) -> [2,3,1,2,1];
+([0],[3,1,1]) -> [0,3,1,1];
+([3],[0]) -> [3,0];
+([3,3],[0,3]) -> [3,3,0,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.037699 true true
+
+([0,2,3],[2,2]) -> [3,2,0,2,2];
+([1,1],[3,3]) -> [1,1,3,3];
+([0],[2]) -> [0,2];
+([2],[0,1,3]) -> [2,0,1,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.017047 true true
+
+([3,0],[1,0]) -> [0,3,1,0];
+([0,3],[3,1]) -> [3,0,3,1];
+([0],[1,1,3]) -> [0,1,1,3];
+([1,3,3],[3,0]) -> [3,3,1,3,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.021534 true true
 
 ([1],[2,1,3]) -> [1,2,1,3];
 ([1,0],[3]) -> [0,1,3];
@@ -724,12 +771,12 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00755000000004 true true
+0.015946 true true
 
-([0,0],[0,1,3]) -> [0,0,0,1,3];
-([0],[1,1]) -> [0,1,1];
-([2,2,1],[0,1]) -> [1,2,2,0,1];
-([1,2,1],[1,1,3]) -> [1,2,1,1,1,3];
+([0],[1,3]) -> [0,1,3];
+([3,0],[3]) -> [0,3,3];
+([3],[1]) -> [3,1];
+([2,2],[1,0]) -> [2,2,1,0];
 ([], []) -> [];
 
 =================================
@@ -747,12 +794,12 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00744699999996 true true
+0.0129649999999 true true
 
-([3,0,0],[2,0]) -> [0,0,3,2,0];
-([2],[3]) -> [2,3];
-([0],[2]) -> [0,2];
-([1],[1]) -> [1,1];
+([1],[0,1]) -> [1,0,1];
+([3],[0,1,3]) -> [3,0,1,3];
+([3,2,2],[2,3]) -> [2,2,3,2,3];
+([2,0],[2]) -> [0,2,2];
 ([], []) -> [];
 
 =================================
@@ -770,12 +817,13 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00749399999995 true true
+0.0149630000001 true true
 
-([2,1],[2,0,3]) -> [1,2,2,0,3];
-([0,2],[3,2,1]) -> [2,0,3,2,1];
-([2,1,3],[2,0]) -> [3,1,2,2,0];
-([3,2,2],[0,3]) -> [2,2,3,0,3];
+([1],[1,3,2]) -> [1,1,3,2];
+([2,0,3],[3]) -> [3,0,2,3];
+([2,2],[0,1]) -> [2,2,0,1];
+([0,3],[0]) -> [3,0,0];
+([3,0],[3]) -> [0,3,3];
 ([], []) -> [];
 
 =================================
@@ -793,101 +841,7 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00944699999991 true true
-
-([1,1],[3]) -> [1,1,3];
-([1,2],[1,3,1]) -> [2,1,1,3,1];
-([2,1],[2,1,3]) -> [1,2,2,1,3];
-([1],[3,1]) -> [1,3,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00888800000007 true true
-
-([2,2],[1]) -> [2,2,1];
-([2,2,0],[1]) -> [0,2,2,1];
-([2],[3,1]) -> [2,3,1];
-([3],[2]) -> [3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.015077 true true
-
-([3],[2]) -> [3,2];
-([3],[3,1,1]) -> [3,3,1,1];
-([1,3,3],[3]) -> [3,3,1,3];
-([0,2,1],[0]) -> [1,2,0,0];
-([3],[0]) -> [3,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00924099999997 true true
-
-([1,3,2],[3]) -> [2,3,1,3];
-([0,3,0],[3,0]) -> [0,3,0,3,0];
-([0,0,0],[0]) -> [0,0,0,0];
-([3,0,0],[0]) -> [0,0,3,0];
-([0],[3,3,2]) -> [0,3,3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0185980000001 true true
+0.0167759999999 true true
 
 ([2,3,1],[2,2]) -> [1,3,2,2,2];
 ([3],[2,1,2]) -> [3,2,1,2];
@@ -911,103 +865,7 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00941499999999 true true
-
-([3,1],[1,3,2]) -> [1,3,1,3,2];
-([1,0],[0]) -> [0,1,0];
-([1,1,2],[3,0,3]) -> [2,1,1,3,0,3];
-([0,3,0],[0,0,3]) -> [0,3,0,0,0,3];
-([0],[2,2,1]) -> [0,2,2,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00772800000004 true true
-
-([0,0],[0,3]) -> [0,0,0,3];
-([3],[0]) -> [3,0];
-([3,1,2],[2]) -> [2,1,3,2];
-([1],[1]) -> [1,1];
-([2,2],[2,3,1]) -> [2,2,2,3,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00763800000004 true true
-
-([0,0],[2,0,1]) -> [0,0,2,0,1];
-([3,1,2],[1,0,2]) -> [2,1,3,1,0,2];
-([1],[2,3]) -> [1,2,3];
-([0],[3,1,2]) -> [0,3,1,2];
-([2,0],[2]) -> [0,2,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00772699999993 true true
-
-([2],[2,0,1]) -> [2,2,0,1];
-([2,3],[0,2,1]) -> [3,2,0,2,1];
-([0,2,0],[1,3]) -> [0,2,0,1,3];
-([1,3,0],[1,0,2]) -> [0,3,1,1,0,2];
-([2],[2]) -> [2,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00805500000001 true true
+0.017276 true true
 
 ([0],[1,2]) -> [0,1,2];
 ([1,1],[2,2]) -> [1,1,2,2];
@@ -1031,13 +889,13 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00782600000002 true true
+0.013387 true true
 
-([1,2],[3,2,1]) -> [2,1,3,2,1];
-([2],[2,3]) -> [2,2,3];
-([3,3],[2,3,1]) -> [3,3,2,3,1];
-([0],[3]) -> [0,3];
-([3,2,2],[1,2]) -> [2,2,3,1,2];
+([1,0],[0]) -> [0,1,0];
+([0,0,2],[1]) -> [2,0,0,1];
+([0],[2,1,0]) -> [0,2,1,0];
+([1,0],[1]) -> [0,1,1];
+([2,3],[1]) -> [3,2,1];
 ([], []) -> [];
 
 =================================
@@ -1055,13 +913,133 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00772099999995 true true
+0.0158180000001 true true
 
-([0,0],[1,3]) -> [0,0,1,3];
-([2],[2]) -> [2,2];
-([2,2],[1,2]) -> [2,2,1,2];
-([0,1,0],[1]) -> [0,1,0,1];
-([1,0,3],[0,2]) -> [3,0,1,0,2];
+([2,2,2],[2,1,1]) -> [2,2,2,2,1,1];
+([2,1],[2,3]) -> [1,2,2,3];
+([2,2,2],[2,3,3]) -> [2,2,2,2,3,3];
+([1],[2]) -> [1,2];
+([1,1],[1,3,3]) -> [1,1,1,3,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00942600000008 true true
+
+([1,2],[2,2]) -> [2,1,2,2];
+([2,3,0],[2]) -> [0,3,2,2];
+([1],[2,3,3]) -> [1,2,3,3];
+([3,1,3],[1]) -> [3,1,3,1];
+([2],[0,3,3]) -> [2,0,3,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00732799999992 true true
+
+([1],[3,3]) -> [1,3,3];
+([3,2,1],[0,0,1]) -> [1,2,3,0,0,1];
+([2,2],[0]) -> [2,2,0];
+([2,3],[2,2,2]) -> [3,2,2,2,2];
+([3,1,3],[2]) -> [3,1,3,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.01045 true true
+
+([3,3,2],[1,3]) -> [2,3,3,1,3];
+([3,0,3],[1,0,0]) -> [3,0,3,1,0,0];
+([3,0],[0,2,3]) -> [0,3,0,2,3];
+([0,3],[1,3,3]) -> [3,0,1,3,3];
+([0,3,2],[2,2]) -> [2,3,0,2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00804199999993 true true
+
+([0],[3,0]) -> [0,3,0];
+([1],[1,0,0]) -> [1,1,0,0];
+([3,0],[1]) -> [0,3,1];
+([2],[3,3,3]) -> [2,3,3,3];
+([0,0],[1,1]) -> [0,0,1,1];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00733500000001 true true
+
+([1,3,2],[3]) -> [2,3,1,3];
+([0,3,0],[3,0]) -> [0,3,0,3,0];
+([0,0,0],[0]) -> [0,0,0,0];
+([3,0,0],[0]) -> [0,0,3,0];
+([0],[3,3,2]) -> [0,3,3,2];
 ([], []) -> [];
 
 =================================
@@ -1080,56 +1058,6 @@ list_rev_tailcall
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
 0.00805100000002 true true
-
-([2],[0]) -> [2,0];
-([0],[3,2]) -> [0,3,2];
-([3,1,2],[2]) -> [2,1,3,2];
-([1,3],[1,1]) -> [3,1,1,1];
-([1,0,0],[2,0]) -> [0,0,1,2,0];
-([3,2,0],[0,1]) -> [0,2,3,0,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00758300000007 true true
-
-([1,1],[0]) -> [1,1,0];
-([2,1],[3]) -> [1,2,3];
-([3],[0,1,2]) -> [3,0,1,2];
-([0,2,2],[1,0,2]) -> [2,2,0,1,0,2];
-([0],[3,0]) -> [0,3,0];
-([1],[2,3,2]) -> [1,2,3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00768799999992 true true
 
 ([1,2,2],[1,1]) -> [2,2,1,1,1];
 ([3],[3,2,2]) -> [3,3,2,2];
@@ -1154,14 +1082,14 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.010121 true true
+0.011913 true true
 
-([3,1],[3]) -> [1,3,3];
-([1,2,0],[3]) -> [0,2,1,3];
-([3,0],[3]) -> [0,3,3];
-([3],[1]) -> [3,1];
-([3,2,2],[1]) -> [2,2,3,1];
-([2,1],[1,0,3]) -> [1,2,1,0,3];
+([1,1],[0]) -> [1,1,0];
+([2,1],[3]) -> [1,2,3];
+([3],[0,1,2]) -> [3,0,1,2];
+([0,2,2],[1,0,2]) -> [2,2,0,1,0,2];
+([0],[3,0]) -> [0,3,0];
+([1],[2,3,2]) -> [1,2,3,2];
 ([], []) -> [];
 
 =================================
@@ -1179,14 +1107,14 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00791600000002 true true
+0.00762400000008 true true
 
-([3],[1,1]) -> [3,1,1];
-([3],[0,3,0]) -> [3,0,3,0];
-([2,2,3],[2]) -> [3,2,2,2];
-([0,3],[1,1]) -> [3,0,1,1];
-([2,3,3],[2]) -> [3,3,2,2];
-([1,2,3],[3,3]) -> [3,2,1,3,3];
+([2,1,2],[3,1]) -> [2,1,2,3,1];
+([2,0],[1,3,2]) -> [0,2,1,3,2];
+([0],[3]) -> [0,3];
+([3,0],[1,0]) -> [0,3,1,0];
+([2,3,1],[2,2,0]) -> [1,3,2,2,2,0];
+([2,2],[3]) -> [2,2,3];
 ([], []) -> [];
 
 =================================
@@ -1204,14 +1132,14 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0107089999999 true true
+0.011211 true true
 
-([1,0],[1,3,0]) -> [0,1,1,3,0];
-([2,3],[2]) -> [3,2,2];
-([2],[2]) -> [2,2];
-([2,1],[1]) -> [1,2,1];
-([1,3,0],[2]) -> [0,3,1,2];
-([1],[1]) -> [1,1];
+([2,0,3],[0,0,0]) -> [3,0,2,0,0,0];
+([2,1],[3,3]) -> [1,2,3,3];
+([3,2,2],[3,1,1]) -> [2,2,3,3,1,1];
+([2,1],[3,1]) -> [1,2,3,1];
+([1],[0,0]) -> [1,0,0];
+([3,2],[2,1]) -> [2,3,2,1];
 ([], []) -> [];
 
 =================================
@@ -1229,14 +1157,14 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00774999999999 true true
+0.0175380000001 true true
 
-([3],[2,2]) -> [3,2,2];
-([3,2],[3,3,1]) -> [2,3,3,3,1];
-([0],[3,0,1]) -> [0,3,0,1];
-([0,3],[1,0]) -> [3,0,1,0];
-([3],[3,0,3]) -> [3,3,0,3];
-([1,2],[1]) -> [2,1,1];
+([1,2],[3,0,3]) -> [2,1,3,0,3];
+([0,1],[1,3]) -> [1,0,1,3];
+([3],[0,0,1]) -> [3,0,0,1];
+([1,3],[1,2]) -> [3,1,1,2];
+([2,2],[3,1,3]) -> [2,2,3,1,3];
+([2,3,3],[1,3,3]) -> [3,3,2,1,3,3];
 ([], []) -> [];
 
 =================================
@@ -1254,7 +1182,57 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00763499999994 true true
+0.010497 true true
+
+([0],[0,2,3]) -> [0,0,2,3];
+([0,0,0],[1,0,2]) -> [0,0,0,1,0,2];
+([2],[1,3]) -> [2,1,3];
+([1,1],[2,2,3]) -> [1,1,2,2,3];
+([0,3,3],[3]) -> [3,3,0,3];
+([1,0,2],[2,1,3]) -> [2,0,1,2,1,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00853600000005 true true
+
+([2],[0]) -> [2,0];
+([0],[3,2]) -> [0,3,2];
+([3,1,2],[2]) -> [2,1,3,2];
+([1,3],[1,1]) -> [3,1,1,1];
+([1,0,0],[2,0]) -> [0,0,1,2,0];
+([3,2,0],[0,1]) -> [0,2,3,0,1];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00876999999991 true true
 
 ([3,3],[2,1,3]) -> [3,3,2,1,3];
 ([0],[3,0,2]) -> [0,3,0,2];
@@ -1279,39 +1257,14 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00789200000008 true true
+0.00844800000004 true true
 
-([2],[3,0,1]) -> [2,3,0,1];
-([1],[1,3,0]) -> [1,1,3,0];
-([0,1],[1,3]) -> [1,0,1,3];
-([1],[0,1,3]) -> [1,0,1,3];
-([1,0,2],[2,0,1]) -> [2,0,1,2,0,1];
-([2,3,1],[1,2,1]) -> [1,3,2,1,2,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00931799999989 true true
-
-([1,3,1],[1]) -> [1,3,1,1];
-([1],[3,2,2]) -> [1,3,2,2];
-([0,3],[2]) -> [3,0,2];
-([2],[3]) -> [2,3];
-([2,1,3],[0,1]) -> [3,1,2,0,1];
-([1,0,3],[1,2,0]) -> [3,0,1,1,2,0];
+([3],[1,0]) -> [3,1,0];
+([1,2],[0,2,1]) -> [2,1,0,2,1];
+([0,1],[2,0,1]) -> [1,0,2,0,1];
+([3,3,1],[3]) -> [1,3,3,3];
+([1,3],[1,3,2]) -> [3,1,1,3,2];
+([0,3,2],[3]) -> [2,3,0,3];
 ([], []) -> [];
 
 =================================
@@ -1331,13 +1284,12 @@ list_rev_tailcall
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
 0.00965199999996 true true
 
-([3,2,3],[0,3]) -> [3,2,3,0,3];
-([3,1],[0]) -> [1,3,0];
-([1,3],[2]) -> [3,1,2];
-([0,1,2],[1,1]) -> [2,1,0,1,1];
-([2,2],[0,2,2]) -> [2,2,0,2,2];
-([0,0,3],[0,2,0]) -> [3,0,0,0,2,0];
-([1,2],[2]) -> [2,1,2];
+([2,3],[2,2]) -> [3,2,2,2];
+([3,2],[1,3]) -> [2,3,1,3];
+([2,0,1],[3]) -> [1,0,2,3];
+([0,2,0],[1,2]) -> [0,2,0,1,2];
+([3,1,0],[3,3,1]) -> [0,1,3,3,3,1];
+([3,2,1],[3,2]) -> [1,2,3,3,2];
 ([], []) -> [];
 
 =================================
@@ -1355,15 +1307,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0103770000001 true true
+0.00783499999989 true true
 
-([3,0],[1,2,3]) -> [0,3,1,2,3];
-([0,1],[1,2,0]) -> [1,0,1,2,0];
-([1],[1,2]) -> [1,1,2];
-([3],[2,0,3]) -> [3,2,0,3];
-([3],[0,1]) -> [3,0,1];
-([0,2,0],[2,2]) -> [0,2,0,2,2];
-([3,2,2],[2,0]) -> [2,2,3,2,0];
+([2,0],[1]) -> [0,2,1];
+([3,1],[1,2]) -> [1,3,1,2];
+([0,3,0],[1,3,2]) -> [0,3,0,1,3,2];
+([2,1,0],[3,0,3]) -> [0,1,2,3,0,3];
+([3,2],[3,1,2]) -> [2,3,3,1,2];
+([0,0,1],[3,3]) -> [1,0,0,3,3];
+([2,2,2],[3]) -> [2,2,2,3];
 ([], []) -> [];
 
 =================================
@@ -1381,15 +1333,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00780200000008 true true
+0.00788899999998 true true
 
-([1],[0]) -> [1,0];
-([2,2,1],[1]) -> [1,2,2,1];
-([0,2],[0,1]) -> [2,0,0,1];
-([2],[1,1,3]) -> [2,1,1,3];
-([2,0,1],[2,0,3]) -> [1,0,2,2,0,3];
-([1],[0,3,2]) -> [1,0,3,2];
-([2],[3,3]) -> [2,3,3];
+([0],[1,0]) -> [0,1,0];
+([3],[3,0,0]) -> [3,3,0,0];
+([3],[3]) -> [3,3];
+([0],[3,2,0]) -> [0,3,2,0];
+([1,1],[0]) -> [1,1,0];
+([1,0],[3]) -> [0,1,3];
+([3,1],[1,2]) -> [1,3,1,2];
 ([], []) -> [];
 
 =================================
@@ -1407,15 +1359,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.009681 true true
+0.00826499999994 true true
 
-([1],[2,3]) -> [1,2,3];
-([0,1],[0,2,1]) -> [1,0,0,2,1];
-([2,3],[0,3]) -> [3,2,0,3];
-([2,1,0],[0,3]) -> [0,1,2,0,3];
-([2],[3]) -> [2,3];
-([3,1,0],[3,3]) -> [0,1,3,3,3];
-([2],[0]) -> [2,0];
+([1,1,3],[2,2,0]) -> [3,1,1,2,2,0];
+([0,2],[3,3,1]) -> [2,0,3,3,1];
+([3,3,1],[3,2,1]) -> [1,3,3,3,2,1];
+([1,3],[3,0]) -> [3,1,3,0];
+([2],[1]) -> [2,1];
+([1],[1,0]) -> [1,1,0];
+([0,3],[0,1]) -> [3,0,0,1];
 ([], []) -> [];
 
 =================================
@@ -1433,15 +1385,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00768100000005 true true
+0.0112320000001 true true
 
-([0,2,3],[0,1]) -> [3,2,0,0,1];
-([1],[2]) -> [1,2];
-([2,3],[3,2,1]) -> [3,2,3,2,1];
-([2],[2]) -> [2,2];
-([1,0],[0,2,2]) -> [0,1,0,2,2];
-([3],[1,1,1]) -> [3,1,1,1];
-([1,3],[1]) -> [3,1,1];
+([3,0],[1,1,2]) -> [0,3,1,1,2];
+([1,2],[1]) -> [2,1,1];
+([3],[2,2,1]) -> [3,2,2,1];
+([2,0,0],[0]) -> [0,0,2,0];
+([1,3,0],[1,1,3]) -> [0,3,1,1,1,3];
+([1],[1,0]) -> [1,1,0];
+([0,3,0],[1,3]) -> [0,3,0,1,3];
 ([], []) -> [];
 
 =================================
@@ -1459,7 +1411,33 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00776599999995 true true
+0.00817299999994 true true
+
+([3,0,1],[2]) -> [1,0,3,2];
+([1,2],[3,2,2]) -> [2,1,3,2,2];
+([3,3,2],[0,0]) -> [2,3,3,0,0];
+([2,0,2],[1,1]) -> [2,0,2,1,1];
+([1,1,2],[1]) -> [2,1,1,1];
+([2,1,3],[2,3,1]) -> [3,1,2,2,3,1];
+([2,3,2],[0,3]) -> [2,3,2,0,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0107720000001 true true
 
 ([3],[2,2]) -> [3,2,2];
 ([3,2],[1,1,3]) -> [2,3,1,1,3];
@@ -1485,15 +1463,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00772699999993 true true
+0.00765999999999 true true
 
-([3],[0,0,3]) -> [3,0,0,3];
-([3,2],[3,3]) -> [2,3,3,3];
-([3,1],[3]) -> [1,3,3];
-([1,0],[1,2,0]) -> [0,1,1,2,0];
-([1],[1,2]) -> [1,1,2];
-([1],[0,0]) -> [1,0,0];
-([1,2,2],[0,0]) -> [2,2,1,0,0];
+([3,1],[2,3]) -> [1,3,2,3];
+([0,3,1],[3]) -> [1,3,0,3];
+([0,2,0],[1,3]) -> [0,2,0,1,3];
+([1,1],[3,2,1]) -> [1,1,3,2,1];
+([0,2],[0,2,0]) -> [2,0,0,2,0];
+([3,3],[2,3,3]) -> [3,3,2,3,3];
+([1],[2,1]) -> [1,2,1];
 ([], []) -> [];
 
 =================================
@@ -1511,15 +1489,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00758100000007 true true
+0.00837700000011 true true
 
-([2,3,0],[1,2]) -> [0,3,2,1,2];
-([1,2],[1]) -> [2,1,1];
-([3,0],[3]) -> [0,3,3];
-([0,1],[0,0,1]) -> [1,0,0,0,1];
-([1,2],[2]) -> [2,1,2];
-([2,3,3],[3,3,3]) -> [3,3,2,3,3,3];
-([3,1],[0,2,1]) -> [1,3,0,2,1];
+([0,2,3],[0,1]) -> [3,2,0,0,1];
+([1],[2]) -> [1,2];
+([2,3],[3,2,1]) -> [3,2,3,2,1];
+([2],[2]) -> [2,2];
+([1,0],[0,2,2]) -> [0,1,0,2,2];
+([3],[1,1,1]) -> [3,1,1,1];
+([1,3],[1]) -> [3,1,1];
 ([], []) -> [];
 
 =================================
@@ -1537,33 +1515,7 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00770699999998 true true
-
-([0,2,3],[2]) -> [3,2,0,2];
-([1,3,3],[0,0]) -> [3,3,1,0,0];
-([1],[3]) -> [1,3];
-([3,2],[1]) -> [2,3,1];
-([3,0],[2,2,0]) -> [0,3,2,2,0];
-([2,1],[1,3,2]) -> [1,2,1,3,2];
-([0,2,3],[0,2]) -> [3,2,0,0,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00776599999995 true true
+0.00868199999991 true true
 
 ([0,3,3],[2,2]) -> [3,3,0,2,2];
 ([1],[2,2,0]) -> [1,2,2,0];
@@ -1589,232 +1541,15 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00779899999998 true true
+0.00840500000004 true true
 
-([2],[0,3]) -> [2,0,3];
-([2,1,1],[3,1,3]) -> [1,1,2,3,1,3];
-([1,3,1],[1]) -> [1,3,1,1];
-([2,1],[1,0,1]) -> [1,2,1,0,1];
-([1,2,1],[0,3,1]) -> [1,2,1,0,3,1];
-([0],[1]) -> [0,1];
-([1,0],[1]) -> [0,1,1];
-([1],[2]) -> [1,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0077839999999 true true
-
-([2],[0]) -> [2,0];
-([0],[3,1]) -> [0,3,1];
-([3],[3,0]) -> [3,3,0];
-([1],[2]) -> [1,2];
-([2,2,3],[3]) -> [3,2,2,3];
-([2],[1,1,0]) -> [2,1,1,0];
-([0],[2]) -> [0,2];
-([0],[1]) -> [0,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00778300000002 true true
-
-([1,3],[2,2]) -> [3,1,2,2];
-([2,3],[3,1,0]) -> [3,2,3,1,0];
+([1,2],[3,3]) -> [2,1,3,3];
 ([3],[3]) -> [3,3];
-([0,0],[2,0]) -> [0,0,2,0];
-([3,0],[2,1,3]) -> [0,3,2,1,3];
-([2],[3,0,3]) -> [2,3,0,3];
-([1],[3,0]) -> [1,3,0];
-([1,0,0],[1,3,1]) -> [0,0,1,1,3,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00791800000002 true true
-
-([0],[1,1,2]) -> [0,1,1,2];
-([0,3],[0]) -> [3,0,0];
-([2,0],[1,2]) -> [0,2,1,2];
-([1],[3]) -> [1,3];
-([0],[3]) -> [0,3];
-([0],[0,3,0]) -> [0,0,3,0];
-([3],[0,0]) -> [3,0,0];
-([0,3,0],[1,0]) -> [0,3,0,1,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00766199999998 true true
-
-([0],[3]) -> [0,3];
-([2],[3]) -> [2,3];
-([3,0],[1,1]) -> [0,3,1,1];
-([1,2],[0]) -> [2,1,0];
-([3,1],[2,3,2]) -> [1,3,2,3,2];
-([3,1,1],[0,1]) -> [1,1,3,0,1];
-([1],[1]) -> [1,1];
-([0,3,1],[2]) -> [1,3,0,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00774500000011 true true
-
-([3],[0,1,1]) -> [3,0,1,1];
-([1,0],[1]) -> [0,1,1];
-([2],[1,0]) -> [2,1,0];
-([1],[0,2,2]) -> [1,0,2,2];
-([3,3,0],[0]) -> [0,3,3,0];
-([3,0,1],[0,3,0]) -> [1,0,3,0,3,0];
-([1,0],[0]) -> [0,1,0];
-([3,2],[2]) -> [2,3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00782600000002 true true
-
-([0,1,3],[3]) -> [3,1,0,3];
-([2,2],[3,0]) -> [2,2,3,0];
-([0,0,2],[3]) -> [2,0,0,3];
-([0],[2,0]) -> [0,2,0];
-([1,1,3],[2,1]) -> [3,1,1,2,1];
-([0,0,0],[1,3,0]) -> [0,0,0,1,3,0];
-([1],[1]) -> [1,1];
-([0,2],[1]) -> [2,0,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00805100000002 true true
-
-([2,3],[2]) -> [3,2,2];
-([3,0],[3]) -> [0,3,3];
-([0,2,0],[0,2,0]) -> [0,2,0,0,2,0];
-([0,2,2],[1]) -> [2,2,0,1];
-([2,0,3],[0,2,3]) -> [3,0,2,0,2,3];
-([3,3],[3]) -> [3,3,3];
-([0],[0]) -> [0,0];
-([0],[0,2]) -> [0,0,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00798699999996 true true
-
-([0,1,3],[0,0]) -> [3,1,0,0,0];
-([1,1,1],[0,2]) -> [1,1,1,0,2];
-([1,1,1],[1,2]) -> [1,1,1,1,2];
+([1],[2,0]) -> [1,2,0];
 ([0],[1]) -> [0,1];
-([0],[1,2,3]) -> [0,1,2,3];
-([2,3],[0,3]) -> [3,2,0,3];
-([2,2,2],[0]) -> [2,2,2,0];
-([1],[3,2]) -> [1,3,2];
+([2,3,0],[1]) -> [0,3,2,1];
+([2,1],[3,3,3]) -> [1,2,3,3,3];
+([1],[0,0,3]) -> [1,0,0,3];
 ([], []) -> [];
 
 =================================
@@ -1832,7 +1567,61 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00790299999994 true true
+0.00874999999996 true true
+
+([1,2,2],[2]) -> [2,2,1,2];
+([3,0,0],[2,3]) -> [0,0,3,2,3];
+([0],[0,0]) -> [0,0,0];
+([0,2,0],[2,1,1]) -> [0,2,0,2,1,1];
+([3,2],[0,1]) -> [2,3,0,1];
+([2,1,0],[0]) -> [0,1,2,0];
+([0,1],[1,2]) -> [1,0,1,2];
+([2],[3,0]) -> [2,3,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00789000000009 true true
+
+([3,3,0],[0,1]) -> [0,3,3,0,1];
+([2,3],[3]) -> [3,2,3];
+([1,0],[3,0]) -> [0,1,3,0];
+([2],[2]) -> [2,2];
+([0,0],[0]) -> [0,0,0];
+([2,2,3],[2]) -> [3,2,2,2];
+([1,0,0],[1]) -> [0,0,1,1];
+([3],[2]) -> [3,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00989000000004 true true
 
 ([3,1,0],[3,3,2]) -> [0,1,3,3,3,2];
 ([1,2],[0,1]) -> [2,1,0,1];
@@ -1859,17 +1648,16 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00791299999992 true true
+0.009906 true true
 
-([1,3,3],[0,1,2]) -> [3,3,1,0,1,2];
-([0,3,0],[2]) -> [0,3,0,2];
-([0,3],[2,3,0]) -> [3,0,2,3,0];
-([2,1],[2,0]) -> [1,2,2,0];
-([2],[0]) -> [2,0];
-([2,2],[3,0]) -> [2,2,3,0];
-([0,0,2],[0,0,0]) -> [2,0,0,0,0,0];
-([3],[0,3]) -> [3,0,3];
-([0,3],[0]) -> [3,0,0];
+([2,3],[2]) -> [3,2,2];
+([3,0],[3]) -> [0,3,3];
+([0,2,0],[0,2,0]) -> [0,2,0,0,2,0];
+([0,2,2],[1]) -> [2,2,0,1];
+([2,0,3],[0,2,3]) -> [3,0,2,0,2,3];
+([3,3],[3]) -> [3,3,3];
+([0],[0]) -> [0,0];
+([0],[0,2]) -> [0,0,2];
 ([], []) -> [];
 
 =================================
@@ -1887,73 +1675,16 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00798299999997 true true
+0.00844200000006 true true
 
-([2],[2,0]) -> [2,2,0];
-([0,3],[3]) -> [3,0,3];
-([0],[3,3]) -> [0,3,3];
-([2,0,1],[3,2,1]) -> [1,0,2,3,2,1];
-([2,1,1],[3,3,1]) -> [1,1,2,3,3,1];
-([2,1,3],[1,2]) -> [3,1,2,1,2];
-([3,1,1],[3]) -> [1,1,3,3];
-([3],[1,3,2]) -> [3,1,3,2];
-([3,2],[3,2]) -> [2,3,3,2];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00882200000001 true true
-
-([1],[3]) -> [1,3];
-([3,0],[1]) -> [0,3,1];
-([3],[1]) -> [3,1];
-([1,1,0],[0,3,0]) -> [0,1,1,0,3,0];
-([1,0],[0,3]) -> [0,1,0,3];
-([1],[2]) -> [1,2];
-([2,0,3],[0,2,0]) -> [3,0,2,0,2,0];
-([1,1],[3,3,0]) -> [1,1,3,3,0];
-([2,1,2],[1,1]) -> [2,1,2,1,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00811799999997 true true
-
-([3,1],[3,1,1]) -> [1,3,3,1,1];
-([0],[0,0]) -> [0,0,0];
-([3,3,1],[0,2]) -> [1,3,3,0,2];
-([3,1],[1,0]) -> [1,3,1,0];
-([3,2,3],[0,2,3]) -> [3,2,3,0,2,3];
+([0],[3]) -> [0,3];
 ([2],[3]) -> [2,3];
-([3,2,3],[1]) -> [3,2,3,1];
-([1,3],[3,0,3]) -> [3,1,3,0,3];
-([3],[3,3,0]) -> [3,3,3,0];
+([3,0],[1,1]) -> [0,3,1,1];
+([1,2],[0]) -> [2,1,0];
+([3,1],[2,3,2]) -> [1,3,2,3,2];
+([3,1,1],[0,1]) -> [1,1,3,0,1];
+([1],[1]) -> [1,1];
+([0,3,1],[2]) -> [1,3,0,2];
 ([], []) -> [];
 
 =================================
@@ -1971,17 +1702,16 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.019961 true true
+0.00786199999993 true true
 
-([1,1,3],[0]) -> [3,1,1,0];
-([1,1,0],[2,3,0]) -> [0,1,1,2,3,0];
-([0],[2]) -> [0,2];
-([3],[0,3,3]) -> [3,0,3,3];
-([0,3],[2,0]) -> [3,0,2,0];
-([3,0,1],[3,0,1]) -> [1,0,3,3,0,1];
-([3],[3,2,2]) -> [3,3,2,2];
-([3,1],[3,2,0]) -> [1,3,3,2,0];
-([0,2],[1,2]) -> [2,0,1,2];
+([3,0,1],[1,1,3]) -> [1,0,3,1,1,3];
+([0],[0,2,1]) -> [0,0,2,1];
+([1],[0,2]) -> [1,0,2];
+([2],[3,1,2]) -> [2,3,1,2];
+([0],[0,0]) -> [0,0,0];
+([3,1,2],[0,2,0]) -> [2,1,3,0,2,0];
+([2,2,1],[0,0,1]) -> [1,2,2,0,0,1];
+([2,3,3],[0]) -> [3,3,2,0];
 ([], []) -> [];
 
 =================================
@@ -1999,17 +1729,16 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00836499999991 true true
+0.007789 true true
 
-([0,1],[2]) -> [1,0,2];
-([1,2],[2]) -> [2,1,2];
-([1,0,0],[2,1,1]) -> [0,0,1,2,1,1];
-([0,2],[3]) -> [2,0,3];
+([3],[0,0,0]) -> [3,0,0,0];
+([1,0],[0]) -> [0,1,0];
+([2,2,1],[0,0,1]) -> [1,2,2,0,0,1];
+([0,2,0],[3,0,2]) -> [0,2,0,3,0,2];
+([3,1,3],[1]) -> [3,1,3,1];
+([2],[2,2]) -> [2,2,2];
 ([1],[0]) -> [1,0];
-([0,3],[0,3]) -> [3,0,0,3];
-([1,3],[1]) -> [3,1,1];
-([3,2,3],[0,2,3]) -> [3,2,3,0,2,3];
-([3,0],[2]) -> [0,3,2];
+([1],[1,0]) -> [1,1,0];
 ([], []) -> [];
 
 =================================
@@ -2027,7 +1756,116 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00802599999997 true true
+0.00768700000003 true true
+
+([0,1,3],[3]) -> [3,1,0,3];
+([2,2],[3,0]) -> [2,2,3,0];
+([0,0,2],[3]) -> [2,0,0,3];
+([0],[2,0]) -> [0,2,0];
+([1,1,3],[2,1]) -> [3,1,1,2,1];
+([0,0,0],[1,3,0]) -> [0,0,0,1,3,0];
+([1],[1]) -> [1,1];
+([0,2],[1]) -> [2,0,1];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00916499999994 true true
+
+([0],[3,0]) -> [0,3,0];
+([1,0],[1]) -> [0,1,1];
+([2,0],[2]) -> [0,2,2];
+([1,2],[0]) -> [2,1,0];
+([2],[0,3]) -> [2,0,3];
+([2],[1,3,2]) -> [2,1,3,2];
+([2],[0,3,0]) -> [2,0,3,0];
+([1,2],[0,2,2]) -> [2,1,0,2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00875900000005 true true
+
+([3],[1,1]) -> [3,1,1];
+([3,0],[2]) -> [0,3,2];
+([3,3],[0,3]) -> [3,3,0,3];
+([2],[0]) -> [2,0];
+([0],[1,3,3]) -> [0,1,3,3];
+([2],[2,3]) -> [2,2,3];
+([2,1,0],[3,0]) -> [0,1,2,3,0];
+([0],[3,1,3]) -> [0,3,1,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00852000000009 true true
+
+([3,1,0],[2,1,1]) -> [0,1,3,2,1,1];
+([1,2],[0,3]) -> [2,1,0,3];
+([0],[3,2,0]) -> [0,3,2,0];
+([3],[1,2,1]) -> [3,1,2,1];
+([0],[1]) -> [0,1];
+([1],[2,2]) -> [1,2,2];
+([2,3,0],[2,1,1]) -> [0,3,2,2,1,1];
+([2],[3,3]) -> [2,3,3];
+([2,3],[1]) -> [3,2,1];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00796799999989 true true
 
 ([1,2],[2]) -> [2,1,2];
 ([0],[0]) -> [0,0];
@@ -2055,17 +1893,17 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.008286 true true
+0.00898099999995 true true
 
-([1,3],[3,2,1]) -> [3,1,3,2,1];
-([1,0],[0,2,2]) -> [0,1,0,2,2];
-([3,3],[3]) -> [3,3,3];
-([3,3,1],[1]) -> [1,3,3,1];
-([0],[0]) -> [0,0];
-([0],[2,2,2]) -> [0,2,2,2];
-([2],[3]) -> [2,3];
-([3,2,3],[1,1]) -> [3,2,3,1,1];
-([2],[2,0]) -> [2,2,0];
+([1,3,2],[2,1,2]) -> [2,3,1,2,1,2];
+([2,2,0],[0,2,3]) -> [0,2,2,0,2,3];
+([2],[2,2]) -> [2,2,2];
+([0],[3]) -> [0,3];
+([2],[0,3]) -> [2,0,3];
+([3,1,2],[1,0,1]) -> [2,1,3,1,0,1];
+([1,1],[0]) -> [1,1,0];
+([3,2],[1]) -> [2,3,1];
+([2,2],[1]) -> [2,2,1];
 ([], []) -> [];
 
 =================================
@@ -2083,7 +1921,147 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00816099999997 true true
+0.00847700000008 true true
+
+([0,2],[2]) -> [2,0,2];
+([1,3,1],[1,1,1]) -> [1,3,1,1,1,1];
+([2,2],[1,2,1]) -> [2,2,1,2,1];
+([0,0],[2,2,3]) -> [0,0,2,2,3];
+([1,0],[1]) -> [0,1,1];
+([3],[3,2]) -> [3,3,2];
+([0,0,1],[3,3,2]) -> [1,0,0,3,3,2];
+([1],[3,2]) -> [1,3,2];
+([1,3,3],[0]) -> [3,3,1,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00830300000007 true true
+
+([3,1],[3,1,1]) -> [1,3,3,1,1];
+([0],[0,0]) -> [0,0,0];
+([3,3,1],[0,2]) -> [1,3,3,0,2];
+([3,1],[1,0]) -> [1,3,1,0];
+([3,2,3],[0,2,3]) -> [3,2,3,0,2,3];
+([2],[3]) -> [2,3];
+([3,2,3],[1]) -> [3,2,3,1];
+([1,3],[3,0,3]) -> [3,1,3,0,3];
+([3],[3,3,0]) -> [3,3,3,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00997400000006 true true
+
+([0,3],[0,0,3]) -> [3,0,0,0,3];
+([1,0],[0,3,1]) -> [0,1,0,3,1];
+([1],[2,2]) -> [1,2,2];
+([1,0,2],[1]) -> [2,0,1,1];
+([0,1],[1,1]) -> [1,0,1,1];
+([1,3,0],[3]) -> [0,3,1,3];
+([2,3],[1]) -> [3,2,1];
+([3],[2,1,1]) -> [3,2,1,1];
+([0],[2]) -> [0,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00862499999994 true true
+
+([3],[1]) -> [3,1];
+([3,3],[2,2,1]) -> [3,3,2,2,1];
+([2],[3,2]) -> [2,3,2];
+([1],[3,3,2]) -> [1,3,3,2];
+([1],[2,3]) -> [1,2,3];
+([0],[2,1]) -> [0,2,1];
+([3],[3]) -> [3,3];
+([2,3,0],[3]) -> [0,3,2,3];
+([0,3,2],[3,0]) -> [2,3,0,3,0];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.0078860000001 true true
+
+([0,0],[1,0]) -> [0,0,1,0];
+([1,2,0],[1]) -> [0,2,1,1];
+([1],[3]) -> [1,3];
+([1,2,1],[0,1]) -> [1,2,1,0,1];
+([3],[1]) -> [3,1];
+([2,3,1],[1,1,3]) -> [1,3,2,1,1,3];
+([1,3],[0,2]) -> [3,1,0,2];
+([1,1],[3,1]) -> [1,1,3,1];
+([2,3,2],[2,1,2]) -> [2,3,2,2,1,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00819799999999 true true
 
 ([0],[2,2,3]) -> [0,2,2,3];
 ([3,2,1],[1,1]) -> [1,2,3,1,1];
@@ -2111,162 +2089,17 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00826600000005 true true
+0.00852299999997 true true
 
-([1,0],[3]) -> [0,1,3];
-([3],[3,0,3]) -> [3,3,0,3];
-([0],[2,3]) -> [0,2,3];
-([3,1],[2,1]) -> [1,3,2,1];
-([0],[2,2]) -> [0,2,2];
-([1],[1,2]) -> [1,1,2];
-([3,1],[1,1,1]) -> [1,3,1,1,1];
-([3],[0,0]) -> [3,0,0];
-([1],[3]) -> [1,3];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00800099999992 true true
-
-([2],[2,0]) -> [2,2,0];
-([1,0],[1,2]) -> [0,1,1,2];
-([1],[0]) -> [1,0];
-([3],[3]) -> [3,3];
-([0,0],[2]) -> [0,0,2];
-([2,1],[3,1]) -> [1,2,3,1];
-([3],[3,3,3]) -> [3,3,3,3];
-([1,1],[1]) -> [1,1,1];
-([0,3],[3,0,2]) -> [3,0,3,0,2];
-([1,2,1],[1,2,0]) -> [1,2,1,1,2,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00842699999998 true true
-
-([3,1],[2,1]) -> [1,3,2,1];
-([3,1],[1,0,0]) -> [1,3,1,0,0];
-([2],[0,1]) -> [2,0,1];
-([3],[0]) -> [3,0];
-([3,1,0],[1,0,1]) -> [0,1,3,1,0,1];
-([1],[1,0]) -> [1,1,0];
-([3],[3,2,3]) -> [3,3,2,3];
-([0],[3,2,3]) -> [0,3,2,3];
-([0,2],[2,2,1]) -> [2,0,2,2,1];
-([0,2],[3,3,3]) -> [2,0,3,3,3];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00846299999989 true true
-
-([1],[2,3,0]) -> [1,2,3,0];
-([3,2,2],[3,3]) -> [2,2,3,3,3];
-([0,3],[3]) -> [3,0,3];
-([2],[2,3]) -> [2,2,3];
-([2,2,1],[1,3,1]) -> [1,2,2,1,3,1];
-([2,0,3],[3,3]) -> [3,0,2,3,3];
-([2],[3,0]) -> [2,3,0];
-([0,3,1],[0,1]) -> [1,3,0,0,1];
-([3],[3,2,3]) -> [3,3,2,3];
-([2,2,0],[1]) -> [0,2,2,1];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0085160000001 true true
-
-([1,1,1],[3,0,1]) -> [1,1,1,3,0,1];
-([3,1],[0,0]) -> [1,3,0,0];
-([0,3],[1]) -> [3,0,1];
-([2,3,3],[1]) -> [3,3,2,1];
-([1,1,2],[3,2]) -> [2,1,1,3,2];
-([3],[0,2,1]) -> [3,0,2,1];
-([3,1,0],[1]) -> [0,1,3,1];
-([0,1,3],[3,0,0]) -> [3,1,0,3,0,0];
-([3,2],[1,1]) -> [2,3,1,1];
 ([2],[0]) -> [2,0];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.0087410000001 true true
-
-([0],[1,1,0]) -> [0,1,1,0];
-([1,3,0],[0]) -> [0,3,1,0];
+([1,2,1],[0]) -> [1,2,1,0];
+([0],[1,3]) -> [0,1,3];
+([0],[0]) -> [0,0];
+([1],[0,0,3]) -> [1,0,0,3];
+([1,1,1],[2,0]) -> [1,1,1,2,0];
 ([3],[0,1]) -> [3,0,1];
-([3,0,0],[2,2,1]) -> [0,0,3,2,2,1];
-([3,0],[1]) -> [0,3,1];
-([3,3,0],[3]) -> [0,3,3,3];
-([3],[3,3,3]) -> [3,3,3,3];
-([1,0,3],[1,1]) -> [3,0,1,1,1];
-([0,0],[1,0,1]) -> [0,0,1,0,1];
-([3,2,2],[2,1,3]) -> [2,2,3,2,1,3];
+([3],[0,0]) -> [3,0,0];
+([3,3,3],[2,0,3]) -> [3,3,3,2,0,3];
 ([], []) -> [];
 
 =================================
@@ -2276,15 +2109,21 @@ list_rev_tailcall
       acc
 
     Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+      Cons
+        ( #2.1 y1
+        , list_rev_tailcall (#2.2 y1) acc
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
 (\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let list_rev_tailcall = \xs -> \acc -> case xs of
     Nil y1 -> 
       acc
 
     Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00852600000007 true true
+      Cons
+        ( #2.1 y1
+        , list_rev_tailcall (#2.2 y1) acc
+        ) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.010027 false false
 
 ([0,2,1],[1,1]) -> [1,2,0,1,1];
 ([0,2],[0]) -> [2,0,0];
@@ -2313,18 +2152,18 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00879200000008 true true
+0.00936799999999 true true
 
-([3,3],[1]) -> [3,3,1];
-([1,2,0],[1]) -> [0,2,1,1];
-([3],[1]) -> [3,1];
-([2],[1,0,1]) -> [2,1,0,1];
-([3,3],[0,3,0]) -> [3,3,0,3,0];
-([1,2],[3]) -> [2,1,3];
-([3,2,3],[3,3,2]) -> [3,2,3,3,3,2];
-([2],[1,0]) -> [2,1,0];
-([3],[3,2,3]) -> [3,3,2,3];
-([0,3],[0,1,2]) -> [3,0,0,1,2];
+([2,0,3],[1,0,1]) -> [3,0,2,1,0,1];
+([1],[0,0]) -> [1,0,0];
+([2,2,3],[0]) -> [3,2,2,0];
+([0,0,1],[0,0,2]) -> [1,0,0,0,0,2];
+([0,0],[3,0]) -> [0,0,3,0];
+([0,3,0],[3,0]) -> [0,3,0,3,0];
+([0,0,1],[3]) -> [1,0,0,3];
+([3,1,3],[3,2]) -> [3,1,3,3,2];
+([3],[1,1,0]) -> [3,1,1,0];
+([2],[0,1,0]) -> [2,0,1,0];
 ([], []) -> [];
 
 =================================
@@ -2342,7 +2181,7 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.008734 true true
+0.00954999999999 true true
 
 ([1],[1,3,0]) -> [1,1,3,0];
 ([2,3],[1]) -> [3,2,1];
@@ -2371,47 +2210,18 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00857700000006 true true
+0.00833299999999 true true
 
-([2,1,1],[1,1,1]) -> [1,1,2,1,1,1];
-([2],[1,0,2]) -> [2,1,0,2];
-([2],[1,0,3]) -> [2,1,0,3];
-([0],[2,1]) -> [0,2,1];
-([2,0],[3,3,1]) -> [0,2,3,3,1];
-([3,0],[0,1]) -> [0,3,0,1];
-([1],[1,1,2]) -> [1,1,1,2];
-([1],[0,2,0]) -> [1,0,2,0];
-([0],[0]) -> [0,0];
-([0,0],[3,3,3]) -> [0,0,3,3,3];
-([], []) -> [];
-
-=================================
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let list_rev_tailcall = \xs -> \acc -> case xs of
-    Nil y1 -> 
-      acc
-
-    Cons y1 -> 
-      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00783299999989 true true
-
-([3,1],[2,3,3]) -> [1,3,2,3,3];
-([1,1,3],[0]) -> [3,1,1,0];
-([1,0],[3]) -> [0,1,3];
-([2],[3]) -> [2,3];
+([2],[0,2,1]) -> [2,0,2,1];
+([3,1,3],[2,3,1]) -> [3,1,3,2,3,1];
+([0],[2]) -> [0,2];
+([2,3,1],[2]) -> [1,3,2,2];
 ([0,3],[1]) -> [3,0,1];
-([3],[3,1,0]) -> [3,3,1,0];
-([3],[2,3,2]) -> [3,2,3,2];
-([2,3,2],[1,1,2]) -> [2,3,2,1,1,2];
-([3],[1]) -> [3,1];
-([3,3,0],[1]) -> [0,3,3,1];
+([0,1,3],[3]) -> [3,1,0,3];
+([0,0],[1,1,1]) -> [0,0,1,1,1];
+([0,0],[0,1]) -> [0,0,0,1];
+([3,2,3],[3,1,3]) -> [3,2,3,3,1,3];
+([1],[2]) -> [1,2];
 ([], []) -> [];
 
 =================================
@@ -2429,5 +2239,179 @@ list_rev_tailcall
 
     Cons y1 -> 
       list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
-0.00877700000001 true true
+0.0083810000001 true true
+
+([1],[2,2]) -> [1,2,2];
+([1,3,0],[0,3,1]) -> [0,3,1,0,3,1];
+([1,0],[1]) -> [0,1,1];
+([2,0],[2,0,1]) -> [0,2,2,0,1];
+([3,0],[1]) -> [0,3,1];
+([3],[1,3,1]) -> [3,1,3,1];
+([1,3],[3,0,2]) -> [3,1,3,0,2];
+([1,2],[3,0,3]) -> [2,1,3,0,3];
+([2,1,0],[3]) -> [0,1,2,3];
+([3,0],[3,1,3]) -> [0,3,3,1,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.009366 true true
+
+([3],[3,2]) -> [3,3,2];
+([3,0],[3]) -> [0,3,3];
+([3],[3,0,3]) -> [3,3,0,3];
+([0],[0,0]) -> [0,0,0];
+([2,3],[3]) -> [3,2,3];
+([2,3],[1,1,2]) -> [3,2,1,1,2];
+([0,3],[2,1,2]) -> [3,0,2,1,2];
+([2,0],[3,2,1]) -> [0,2,3,2,1];
+([3,2],[0,0,3]) -> [2,3,0,0,3];
+([1,2,2],[2,2]) -> [2,2,1,2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00925200000006 true true
+
+([1,3,3],[2,2,3]) -> [3,3,1,2,2,3];
+([0,3],[0,3,1]) -> [3,0,0,3,1];
+([0,0,3],[3,0]) -> [3,0,0,3,0];
+([1,3],[2]) -> [3,1,2];
+([1],[1,1,0]) -> [1,1,1,0];
+([1],[3]) -> [1,3];
+([2],[0,2]) -> [2,0,2];
+([3,3],[0]) -> [3,3,0];
+([3,1,0],[1]) -> [0,1,3,1];
+([2],[2,0,3]) -> [2,2,0,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00835099999995 true true
+
+([3],[1,2,0]) -> [3,1,2,0];
+([2,2,2],[3,3,2]) -> [2,2,2,3,3,2];
+([2],[3,1]) -> [2,3,1];
+([2,2,3],[3,1]) -> [3,2,2,3,1];
+([1,1,3],[1]) -> [3,1,1,1];
+([1,2],[2,2,0]) -> [2,1,2,2,0];
+([0],[3]) -> [0,3];
+([1,2,3],[1,3,1]) -> [3,2,1,1,3,1];
+([1,0,1],[2,3]) -> [1,0,1,2,3];
+([2],[2]) -> [2,2];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.009683 true true
+
+([2,2],[3,0]) -> [2,2,3,0];
+([0,2,0],[2,1,2]) -> [0,2,0,2,1,2];
+([3,1],[0]) -> [1,3,0];
+([0,1],[2,1]) -> [1,0,2,1];
+([1,2,0],[1]) -> [0,2,1,1];
+([0,1],[0,2]) -> [1,0,0,2];
+([3,2],[0,0]) -> [2,3,0,0];
+([2],[3]) -> [2,3];
+([0,0],[1,1,1]) -> [0,0,1,1,1];
+([2,2,3],[1,0,3]) -> [3,2,2,1,0,3];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00928799999997 true true
+
+([0,2],[0]) -> [2,0,0];
+([2],[3]) -> [2,3];
+([1],[3]) -> [1,3];
+([3,2,0],[0,3,1]) -> [0,2,3,0,3,1];
+([1,1],[2,2]) -> [1,1,2,2];
+([2,0,2],[1,1,0]) -> [2,0,2,1,1,0];
+([0],[3,1,1]) -> [0,3,1,1];
+([1,0,2],[2]) -> [2,0,1,2];
+([0,2],[3]) -> [2,0,3];
+([0,3,1],[2,3,1]) -> [1,3,0,2,3,1];
+([], []) -> [];
+
+=================================
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+(\list_rev_tailcall -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let list_rev_tailcall = \xs -> \acc -> case xs of
+    Nil y1 -> 
+      acc
+
+    Cons y1 -> 
+      list_rev_tailcall (#2.2 y1) (Cons (#2.1 y1, acc)) in list_rev_tailcall) : NatList -> NatList -> NatList)
+0.00930900000003 true true
 

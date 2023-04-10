@@ -1,5 +1,19 @@
-tree_inorder_bool
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [T (),F (),T (),T ()];
 Leaf () -> [];
 
 =================================
@@ -7,24 +21,12 @@ fix (f : tree -> list) =
   fun (x:tree) ->
     match x with
       | Leaf _ -> Nil
-      | Node _ -> (match Un_Node x . 2 with
-                     | Leaf _ -> Cons (Un_Node x . 1, Nil)
-                     | Node _ -> append (f (Un_Node x . 2))
-                                   (f (Un_Node x . 2)))
+      | Node _ -> Cons (Un_Node x . 1,
+                         append (f (Un_Node x . 2)) (f (Un_Node x . 0)))
 
-0.2113 false
+15.5081 false
 
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
@@ -32,22 +34,23 @@ fix (f : tree -> list) =
   fun (x:tree) ->
     match x with
       | Leaf _ -> Nil
-      | Node _ -> append (f (Un_Node x . 2))
-                    Cons (Un_Node x . 1, f (Un_Node x . 2))
+      | Node _ -> (match Un_Node x . 0 with
+                     | Leaf _ -> Cons (T, Nil)
+                     | Node _ -> (match Un_Cons (f (Un_Node x . 0)) . 1 with
+                                    | Nil _ -> Cons (F, f (Un_Node x . 0))
+                                    | Cons _ -> append
+                                                  (Un_Cons (f (Un_Node x . 0))
+                                                     . 1)
+                                                  (f (Un_Node x . 0))))
 
-0.5972 false
+12.8070 false
 
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),T (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
@@ -63,9 +66,9 @@ fix (f : tree -> list) =
       | Node _ -> append (f (Un_Node x . 0))
                     Cons (Un_Node x . 1, f (Un_Node x . 2))
 
-75.8097 true
+91.9957 true
 
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
 Leaf () -> [];
 
 =================================
@@ -81,85 +84,80 @@ fix (f : tree -> list) =
       | Node _ -> Cons (Un_Node x . 1,
                          Cons (Un_Node x . 1, f (Un_Node x . 2)))
 
-41.0005 false
+50.9833 false
 
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),T (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Leaf ())) -> [T (),F (),T (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [T (),F (),F (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),F (),T (),T ()];
+Leaf () -> [];
+
+=================================
+fix (f : tree -> list) =
+  fun (x:tree) ->
+    match x with
+      | Leaf _ -> Nil
+      | Node _ -> Cons (Un_Node x . 1,
+                         append (f (Un_Node x . 2)) (f (Un_Node x . 0)))
+
+1.9991 false
+
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),T (),F ()];
+Node (Leaf (),F (),Leaf ()) -> [F ()];
+Leaf () -> [];
+
+=================================
+fix (f : tree -> list) =
+  fun (x:tree) ->
+    match x with
+      | Leaf _ -> Nil
+      | Node _ -> append (f (Un_Node x . 2))
+                    Cons (Un_Node x . 1, f (Un_Node x . 0))
+
+53.6278 false
+
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()) -> [F (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [T (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),T (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ())) -> [T (),T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ())),F (),Leaf ()) -> [T (),T (),T (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))))) -> [F (),T (),T (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())))) -> [F (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),T (),F (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))))) -> [T (),T (),F (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
@@ -171,27 +169,6 @@ Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [F (),F (),T (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [F (),F (),T (),T (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),T (),T (),F ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),T (),T (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
 Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),F (),T (),F ()];
 Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
 Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
@@ -199,9 +176,30 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),T (),T (),F ()];
-Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()) -> [F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),F (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),F (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
@@ -213,153 +211,112 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),F (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))))) -> [T (),T (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()))) -> [F (),T (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),T ()];
-Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),F (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())))) -> [F (),T (),F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),T (),F (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [T (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),T (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [F (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),F (),T (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),F (),F ()];
-Leaf () -> [];
-
-=================================
-fix (f : tree -> list) =
-  fun (x:tree) ->
-    match x with
-      | Leaf _ -> Nil
-      | Node _ -> append (f (Un_Node x . 0))
-                    Cons (Un_Node x . 1, f (Un_Node x . 2))
-
-6.1318 true
-
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [F (),F (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F (),F ()];
-Node (Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),T (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()) -> [T (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F (),F (),F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())) -> [T (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),F (),F (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F (),T (),F ()];
 Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [T (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),F (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [T (),T (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),T (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()) -> [F (),F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()))) -> [F (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [T (),F (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),T (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())))) -> [T (),T (),T (),T (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()))) -> [T (),T (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [F (),T (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())) -> [T (),T (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),T (),T ()];
 Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),T (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))),F (),Leaf ()) -> [F (),T (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),T (),Leaf ()) -> [T (),T (),T (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),T (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [T (),T (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))),F (),Leaf ()) -> [T (),T (),T (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
@@ -373,40 +330,102 @@ Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ())) -> [F (),T (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),T (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()) -> [T (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),F (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()) -> [F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F (),F ()];
 Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())))) -> [T (),T (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()),T (),Leaf ()) -> [T (),F (),F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())))) -> [F (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Leaf ()) -> [T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+fix (f : tree -> list) =
+  fun (x:tree) ->
+    match x with
+      | Leaf _ -> Nil
+      | Node _ -> append (f (Un_Node x . 0))
+                    Cons (Un_Node x . 1, f (Un_Node x . 2))
+
+71.4271 true
+
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),T (),T (),F ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()))) -> [F (),F (),T (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),T (),T ()];
 Leaf () -> [];
 
 =================================
@@ -421,72 +440,127 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),T (),T (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [T (),F (),F (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),T (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())))) -> [T (),F (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),T (),T ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()) -> [F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Leaf ()) -> [T ()];
 Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()))) -> [T (),F (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),F (),Leaf ()) -> [T (),F (),T (),T (),F ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())))) -> [T (),T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ())) -> [F (),F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [F (),F (),T (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())))) -> [T (),F (),T (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [F (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Leaf ())) -> [F (),T (),T (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Leaf ())) -> [F (),F (),T (),T (),F ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [F (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()))) -> [F (),F (),F (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),F ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),T (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [F (),F (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),F (),T ()];
+Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))))) -> [T (),F (),T (),T (),T ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F ()];
+Node (Leaf (),T (),Leaf ()) -> [T ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),T (),T ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))))) -> [T (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),T (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()) -> [T (),F (),T (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),T (),F (),T ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))))) -> [F (),F (),T (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())))) -> [F (),T (),F (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),T (),T ()];
 Leaf () -> [];
 
 =================================
@@ -502,147 +576,94 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),T (),T (),T (),F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))))) -> [F (),F (),T (),T (),F ()];
-Node (Leaf (),T (),Leaf ()) -> [T ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [T (),T (),T (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F (),T (),F ()];
-Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),T (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [T (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ())) -> [F (),F (),T (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))))) -> [T (),T (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [F (),F (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),F (),F (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [F (),T (),T (),T (),F ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())))) -> [T (),T (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
-Node (Leaf (),T (),Leaf ()) -> [T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),F (),F (),F ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [F (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [T (),F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T ()];
-Leaf () -> [];
-
-=================================
-fix (f : tree -> list) =
-  fun (x:tree) ->
-    match x with
-      | Leaf _ -> Nil
-      | Node _ -> (match Un_Node x . 0 with
-                     | Leaf _ -> Cons (Un_Node x . 1, f (Un_Node x . 2))
-                     | Node _ -> append (f (Un_Node x . 0))
-                                   Cons (Un_Node x . 1, f (Un_Node x . 2)))
-
-43.8797 true
-
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),T (),F ()];
-Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),F (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())))) -> [T (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [F (),F (),F (),F ()];
 Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [T (),F (),F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [T (),F (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())))) -> [F (),T (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),T ()];
 Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),T (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),T (),T (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),T (),F (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [F (),F (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
+Node (Leaf (),F (),Leaf ()) -> [F ()];
+Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()))) -> [T (),T (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),F (),T (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),F (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [F (),T (),T (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [T (),F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))),F (),Leaf ()) -> [F (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),T ()];
 Leaf () -> [];
 
 =================================
@@ -659,155 +680,62 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),T (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [F (),F (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())))) -> [F (),F (),T (),F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()) -> [T (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [T (),T (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))) -> [F (),F (),T (),F (),F ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),T (),T (),F ()];
 Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))) -> [F (),T (),T (),F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [F (),T (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [F (),F (),T (),F (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [T (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())))) -> [F (),T (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),F (),F ()];
-Node (Leaf (),F (),Leaf ()) -> [F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),T (),Leaf ())) -> [F (),F (),F (),T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
-Node (Leaf (),T (),Leaf ()) -> [T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()) -> [F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [T (),F (),T (),T (),T ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [T (),T (),F (),T (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),T (),T ()];
-Leaf () -> [];
-
-=================================
-fix (f : tree -> list) =
-  fun (x:tree) ->
-    match x with
-      | Leaf _ -> Nil
-      | Node _ -> append (f (Un_Node x . 0))
-                    Cons (Un_Node x . 1, f (Un_Node x . 2))
-
-3.4005 true
-
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [T (),T (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))))) -> [F (),F (),F (),F (),F ()];
-Node (Leaf (),T (),Leaf ()) -> [T ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()))) -> [T (),F (),F (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [T (),T (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),F ()];
-Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),F (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),T (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [F (),F (),F (),T (),T ()];
 Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [T (),F (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
-fix (f : tree -> list) =
-  fun (x:tree) ->
-    match x with
-      | Leaf _ -> Nil
-      | Node _ -> append (f (Un_Node x . 0))
-                    Cons (Un_Node x . 1, f (Un_Node x . 2))
+None
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [T (),F (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),T (),F (),F ()];
+Leaf () -> [];
 
-65.3724 true
+=================================
+None
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),F (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
+Leaf () -> [];
 
-Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [T (),F (),T (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [F (),T (),T (),T ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [T (),F (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [T (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),T (),F ()];
+=================================
+None
+Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))))) -> [F (),T (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),F (),Leaf ()) -> [T (),T (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())) -> [F (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ())) -> [T (),T (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()) -> [F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))) -> [F (),F (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
@@ -825,15 +753,106 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [T (),F (),F (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [T (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),T (),T (),F ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [T (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [F (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()) -> [T (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
+Node (Leaf (),F (),Leaf ()) -> [F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),F ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [F (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())) -> [T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))))) -> [T (),T (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),T (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())))) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())) -> [F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),F (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [T (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),F (),Leaf ())) -> [F (),T (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),T (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()) -> [F (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ())) -> [T (),F (),F (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()))) -> [F (),F (),T (),F (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [F (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Node (Leaf (),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [F (),T (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
@@ -851,112 +870,72 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),F (),F (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),F (),T (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())))),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),T (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [T (),F (),T (),F ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),F (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()) -> [F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [T (),F (),T (),T (),T ()];
-Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),T (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),T (),F (),T ()];
-Leaf () -> [];
-
-=================================
-None
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),F (),F (),T (),T ()];
 Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))) -> [F (),F (),F (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),F ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [T (),T (),F (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())) -> [T (),T (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ())) -> [F (),T (),T (),T (),T ()];
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [F (),T (),T (),F (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()))) -> [F (),F (),F (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())),T (),Leaf ()) -> [F (),F (),F (),T (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),F ()];
+Node (Leaf (),F (),Leaf ()) -> [F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),T (),F ()];
+Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),T (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())) -> [F (),F (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())),F (),Leaf ()) -> [T (),T (),F (),T (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),T (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Leaf ())) -> [T (),F (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [T (),F (),T (),F ()];
-Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ())) -> [F (),F (),F (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [T (),T (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))),T (),Leaf ()) -> [T (),T (),F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [T (),F (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [F (),T (),F (),F ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [T (),F (),T (),F (),F ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Leaf ())) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()) -> [F (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),T (),F (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [T (),F (),T (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())) -> [T (),T ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ())) -> [F (),T (),F (),F (),F ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [F (),F (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ())) -> [T (),F (),T (),F (),T ()];
-Node (Leaf (),F (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))) -> [T (),F (),T (),F (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),T (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
+Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),F (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Leaf (),F (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [F (),T (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),F (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Node (Leaf (),T (),Leaf ())) -> [F (),F (),F (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),T (),T (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())) -> [T (),T (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),T (),F ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),T (),T (),F ()];
+Node (Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),F (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
+Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),F (),T ()];
+Node (Leaf (),T (),Leaf ()) -> [T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T ()];
 Leaf () -> [];
 
 =================================
@@ -975,44 +954,58 @@ Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ())) -> [T (),F (),T (),F (),F ()];
-Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))) -> [T (),F (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),F (),Leaf ()) -> [T (),F (),T (),T (),F ()];
-Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())) -> [F (),F ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),T (),T ()];
-Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))))) -> [F (),T (),F (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Leaf ()) -> [F (),T (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
+Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())),T (),Leaf ()) -> [T (),T (),T (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),F (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [T (),T (),T (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [F (),T (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()) -> [T (),T ()];
+Node (Leaf (),F (),Node (Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),F (),Leaf ()))) -> [F (),F (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),F (),T ()];
+Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()) -> [T (),F (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()) -> [T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),T (),Node (Leaf (),T (),Leaf ())) -> [T (),F (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
-Node (Leaf (),T (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),F (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())) -> [F (),F (),F (),T (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [F (),T (),T ()];
-Node (Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Leaf ()),T (),Leaf ()) -> [T (),T (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),F (),Node (Leaf (),T (),Leaf ())) -> [T (),T (),T (),F (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),F (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ())),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())))) -> [F (),T (),F (),F (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),F (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),T (),T (),F (),T ()];
+Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [F (),T (),T (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),T (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),F (),Leaf ()) -> [T (),T (),F (),F (),F ()];
+Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),T (),F ()];
+Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),T (),Leaf ())) -> [T (),T (),T (),T (),T ()];
 Leaf () -> [];
 
 =================================
 None
-Node (Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())) -> [F (),T (),F (),T (),T ()];
-Node (Node (Leaf (),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [F (),F (),T (),T (),T ()];
-Node (Node (Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),F (),Leaf ()),T (),Leaf ()),F (),Leaf ()) -> [F (),F (),F (),T (),F ()];
-Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()) -> [T (),T (),T (),F ()];
-Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [T (),T (),F (),F (),T ()];
-Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [F (),F (),T ()];
-Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),F (),Leaf ()))),F (),Leaf ()) -> [F (),F (),F (),F (),F ()];
-Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),F (),Leaf ()) -> [F (),T (),T (),F (),F ()];
-Node (Node (Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),F (),T (),T ()];
+Node (Leaf (),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),T (),Leaf ()))) -> [F (),T (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),T (),Leaf ()) -> [T (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
+Node (Node (Node (Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [T (),F (),T (),F (),T ()];
+Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ())))) -> [F (),T (),T (),F ()];
+Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),F (),Leaf ())) -> [T (),T (),F (),F (),F ()];
+Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),T (),Leaf ()))),T (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),T (),F ()];
+Node (Node (Node (Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()),F (),Leaf ()),F (),Leaf ()),T (),Leaf ()) -> [T (),T (),F (),F (),T ()];
+Node (Node (Leaf (),T (),Leaf ()),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Leaf (),T (),Leaf ()))) -> [T (),T (),T (),F (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Leaf ())),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ())) -> [T (),T (),T (),T (),F ()];
+Leaf () -> [];
+
+=================================
+None
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Node (Leaf (),T (),Leaf ())),T (),Leaf ()))) -> [T (),F (),F (),T (),T ()];
+Node (Node (Leaf (),F (),Node (Leaf (),F (),Node (Leaf (),T (),Leaf ()))),T (),Leaf ()) -> [F (),F (),T (),T ()];
+Node (Node (Leaf (),T (),Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))),F (),Leaf ()) -> [T (),T (),T (),T (),F ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),F (),Leaf ()),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))) -> [T (),F (),F (),T (),F ()];
+Node (Leaf (),T (),Node (Leaf (),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())))) -> [T (),F (),F (),T (),T ()];
+Node (Node (Node (Leaf (),T (),Leaf ()),T (),Node (Leaf (),F (),Leaf ())),T (),Leaf ()) -> [T (),T (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ()),F (),Node (Node (Leaf (),F (),Leaf ()),T (),Leaf ())) -> [F (),T (),F (),F (),T ()];
+Node (Node (Node (Leaf (),F (),Node (Leaf (),T (),Node (Leaf (),F (),Leaf ()))),T (),Leaf ()),T (),Leaf ()) -> [F (),T (),F (),T (),T ()];
+Node (Leaf (),T (),Node (Node (Leaf (),T (),Leaf ()),F (),Node (Node (Leaf (),T (),Leaf ()),T (),Leaf ()))) -> [T (),T (),F (),T (),T ()];
+Node (Node (Node (Leaf (),F (),Leaf ()),T (),Node (Leaf (),T (),Leaf ())),F (),Node (Leaf (),F (),Leaf ())) -> [F (),T (),T (),F (),F ()];
 Leaf () -> [];
 
 =================================

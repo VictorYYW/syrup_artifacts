@@ -1,5 +1,4 @@
-list_hd
-[1,3] -> 1;
+[1,0,1] -> 1;
 [] -> 0;
 
 =================================
@@ -11,9 +10,23 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0090 true
+0.0101 true
 
-[3,2,1] -> 3;
+[3] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0003 true
+
+[3,0,2] -> 3;
 [] -> 0;
 
 =================================
@@ -26,7 +39,55 @@ fix f0.fun x0.
   | hd1::tl1 ->
     ( Succ (f0 tl1) )
   
-0.0114 false
+0.0110 false
+
+[3,1] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0091 true
+
+[0,1] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0. ( Zero )
+0.0080 false
+
+[1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0003 true
+
+[0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0. ( Zero )
+0.0003 false
 
 [3,1,3] -> 3;
 [] -> 0;
@@ -41,21 +102,7 @@ fix f0.fun x0.
   | hd1::tl1 ->
     ( Succ (f0 tl1) )
   
-0.0114 false
-
-[3] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0005 true
+0.0119 false
 
 [3] -> 3;
 [] -> 0;
@@ -71,21 +118,7 @@ fix f0.fun x0.
   
 0.0003 true
 
-[2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0003 true
-
-[0,1] -> 0;
+[0,1,2] -> 0;
 [] -> 0;
 
 =================================
@@ -93,71 +126,7 @@ start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (
  (totalHeight 0))
 VSA done
 fix f0.fun x0. ( Zero )
-0.0083 false
-
-[0] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Zero )
-0.0003 false
-
-[1,2] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0091 true
-
-[0,0] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Zero )
-0.0083 false
-
-[0,3] -> 0;
-[2,2,1] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0110 true
-
-[3,0] -> 3;
-[3,2] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0107 true
+0.0088 false
 
 [3] -> 3;
 [2] -> 2;
@@ -173,107 +142,84 @@ fix f0.fun x0.
   | hd1::tl1 -> hd1
   
 0.0005 true
+
+[0,1,1] -> 0;
+[2,0] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0102 true
+
+[3] -> 3;
+[2,1,2] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0112 true
+
+[2] -> 2;
+[2,1,2] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0093 true
+
+[2] -> 2;
+[2,0] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0093 true
+
+[1,1] -> 1;
+[2,0,3] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0111 true
 
 [1] -> 1;
-[0,0] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0084 true
-
-[0,2] -> 0;
-[0,3,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Zero )
-0.0089 false
-
-[0,1,0] -> 0;
-[0,2,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Zero )
-0.0091 false
-
-[3] -> 3;
-[0,2,3] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0086 true
-
-[0,1] -> 0;
-[3,1] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0098 true
-
-[2,0] -> 2;
-[1,2,3] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0108 true
-
-[1,2,3] -> 1;
-[0,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0100 true
-
 [0] -> 0;
-[3] -> 3;
-[2,1,1] -> 2;
 [] -> 0;
 
 =================================
@@ -285,7 +231,100 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0110 true
+0.0004 true
+
+[1,0] -> 1;
+[2] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0097 true
+
+[1,0,1] -> 1;
+[3] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0094 true
+
+[2,0,3] -> 2;
+[1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0106 true
+
+[1,1,2] -> 1;
+[0,1,3] -> 0;
+[3,3,2] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0163 true
+
+[0,2,3] -> 0;
+[1,2] -> 1;
+[2,0,0] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0134 true
+
+[2,2] -> 2;
+[0] -> 0;
+[3,1,2] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0124 true
 
 [1,1,2] -> 1;
 [0] -> 0;
@@ -301,38 +340,10 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0104 true
-
-[0] -> 0;
-[2,1] -> 2;
-[2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0097 true
-
-[0,3,1] -> 0;
-[0,0] -> 0;
-[0,3] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Zero )
-0.0094 false
+0.0105 true
 
 [3] -> 3;
-[3,2] -> 3;
+[0] -> 0;
 [2] -> 2;
 [] -> 0;
 
@@ -345,7 +356,23 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0007 true
+0.0006 true
+
+[2] -> 2;
+[1] -> 1;
+[1,3,2] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0091 true
 
 [2,2] -> 2;
 [1,2,0] -> 1;
@@ -361,11 +388,11 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0182 true
+0.0157 true
 
-[0,3] -> 0;
-[1,1] -> 1;
-[3,3] -> 3;
+[0,3,1] -> 0;
+[0,1,1] -> 0;
+[3,2] -> 3;
 [] -> 0;
 
 =================================
@@ -377,11 +404,11 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0107 true
+0.0102 true
 
-[1,1] -> 1;
-[0,1] -> 0;
+[2] -> 2;
 [0,0] -> 0;
+[2,3,2] -> 2;
 [] -> 0;
 
 =================================
@@ -393,10 +420,44 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0098 true
+0.0097 true
 
-[0,0] -> 0;
-[1] -> 1;
+[0,3,3] -> 0;
+[1,3] -> 1;
+[3,1] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0106 true
+
+[2,1] -> 2;
+[2,2,1] -> 2;
+[1,3,3] -> 1;
+[2,3,2] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0170 true
+
+[2,3,2] -> 2;
+[3,1] -> 3;
+[2,0,2] -> 2;
 [3] -> 3;
 [] -> 0;
 
@@ -409,40 +470,7 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0087 true
-
-[2] -> 2;
-[3,1] -> 3;
-[0,2] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0099 true
-
-[1,2] -> 1;
-[1] -> 1;
-[2,0,1] -> 2;
-[3,0,2] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0166 true
+0.0197 true
 
 [2] -> 2;
 [1,3,2] -> 1;
@@ -459,63 +487,150 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0110 true
-
-[2,0] -> 2;
-[0,1,1] -> 0;
-[3,0,0] -> 3;
-[1,2] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0183 true
-
-[2] -> 2;
-[3,1,3] -> 3;
-[0,2] -> 0;
-[3,2,1] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0213 true
-
-[3] -> 3;
-[3,3,3] -> 3;
-[3,3] -> 3;
-[2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0010 true
+0.0114 true
 
 [1] -> 1;
-[0,0,3] -> 0;
-[3,0] -> 3;
+[0] -> 0;
+[1,0] -> 1;
+[0,0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0008 true
+
 [3] -> 3;
+[2] -> 2;
+[0,0,1] -> 0;
+[3,1,3] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0112 true
+
+[0,3] -> 0;
+[3,2] -> 3;
+[3] -> 3;
+[1,3,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0113 true
+
+[2,0,0] -> 2;
+[1,1,0] -> 1;
+[1,2,2] -> 1;
+[1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0208 true
+
+[0,1,3] -> 0;
+[1,2,1] -> 1;
+[0] -> 0;
+[1,3,3] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0134 true
+
+[0,3] -> 0;
+[2] -> 2;
+[2,0,1] -> 2;
+[0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0120 true
+
+[1,0,2] -> 1;
+[0,2,2] -> 0;
+[0] -> 0;
+[1,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0116 true
+
+[2] -> 2;
+[3] -> 3;
+[0,0,2] -> 0;
+[0] -> 0;
+[2,1] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0104 true
+
+[1,2] -> 1;
+[1] -> 1;
+[3,1] -> 3;
+[2] -> 2;
+[2,2,2] -> 2;
 [] -> 0;
 
 =================================
@@ -529,10 +644,11 @@ fix f0.fun x0.
   
 0.0103 true
 
-[0,1,3] -> 0;
-[3,2,2] -> 3;
+[1,0,3] -> 1;
+[1,0] -> 1;
 [3] -> 3;
-[1] -> 1;
+[0,3,0] -> 0;
+[0,3] -> 0;
 [] -> 0;
 
 =================================
@@ -544,46 +660,13 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0126 true
+0.0100 true
 
-[2] -> 2;
-[3,0,3] -> 3;
-[2,3,3] -> 2;
-[1,3] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0187 true
-
-[3,2] -> 3;
-[0,2,1] -> 0;
-[0,2,2] -> 0;
-[0,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0118 true
-
-[3] -> 3;
-[1,2,2] -> 1;
-[2] -> 2;
 [0] -> 0;
+[1,3] -> 1;
+[2,0] -> 2;
+[1,3,2] -> 1;
+[1,1] -> 1;
 [] -> 0;
 
 =================================
@@ -595,7 +678,7 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0096 true
+0.0124 true
 
 [3,3,1] -> 3;
 [3,2] -> 3;
@@ -613,13 +696,13 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0200 true
+0.0169 true
 
-[2,2,0] -> 2;
-[2,3] -> 2;
-[0,0,2] -> 0;
-[3,2,0] -> 3;
 [1] -> 1;
+[2] -> 2;
+[3,2,3] -> 3;
+[3] -> 3;
+[3,0] -> 3;
 [] -> 0;
 
 =================================
@@ -631,7 +714,43 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0246 true
+0.0110 true
+
+[0,0,0] -> 0;
+[2,0] -> 2;
+[1] -> 1;
+[1,0,3] -> 1;
+[3,2,3] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0269 true
+
+[1] -> 1;
+[3,3,1] -> 3;
+[2,1] -> 2;
+[3,0] -> 3;
+[1,3] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0126 true
 
 [1,1] -> 1;
 [3] -> 3;
@@ -649,13 +768,32 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0132 true
+0.0116 true
 
-[0] -> 0;
+[3,3] -> 3;
+[3,2,0] -> 3;
+[2,2] -> 2;
+[2,0,2] -> 2;
 [3] -> 3;
-[3,2,1] -> 3;
-[1,3,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0233 true
+
+[3,0,3] -> 3;
 [1] -> 1;
+[3] -> 3;
+[2,0] -> 2;
+[2,1,1] -> 2;
+[0] -> 0;
 [] -> 0;
 
 =================================
@@ -668,266 +806,6 @@ fix f0.fun x0.
   | hd1::tl1 -> hd1
   
 0.0112 true
-
-[3] -> 3;
-[0,1,1] -> 0;
-[1,2] -> 1;
-[2] -> 2;
-[0] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0093 true
-
-[3,0,1] -> 3;
-[3] -> 3;
-[3,0] -> 3;
-[1,2,3] -> 1;
-[1,2] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0346 true
-
-[0,1] -> 0;
-[2,3,0] -> 2;
-[0] -> 0;
-[2,1] -> 2;
-[2,2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0160 true
-
-[1,0,3] -> 1;
-[1,0] -> 1;
-[3] -> 3;
-[0,3,0] -> 0;
-[0,3] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0103 true
-
-[1,1] -> 1;
-[1] -> 1;
-[3,1,2] -> 3;
-[3,1,0] -> 3;
-[3] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0263 true
-
-[2,1] -> 2;
-[0,1] -> 0;
-[3] -> 3;
-[1,2] -> 1;
-[1] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0098 true
-
-[0,0] -> 0;
-[2,1,2] -> 2;
-[0,0,0] -> 0;
-[2] -> 2;
-[0] -> 0;
-[1,0] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0104 true
-
-[2,3] -> 2;
-[3] -> 3;
-[3,2] -> 3;
-[1,0] -> 1;
-[1,3,1] -> 1;
-[2,1] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0210 true
-
-[3,2,2] -> 3;
-[2,2] -> 2;
-[0,2,2] -> 0;
-[1,3,0] -> 1;
-[1,0] -> 1;
-[0,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0160 true
-
-[0,2,1] -> 0;
-[3,1] -> 3;
-[1] -> 1;
-[1,2] -> 1;
-[0,1,1] -> 0;
-[1,1] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0106 true
-
-[0,0,0] -> 0;
-[3] -> 3;
-[1,1,3] -> 1;
-[2,0] -> 2;
-[1,0] -> 1;
-[1,1,0] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0136 true
-
-[2,2] -> 2;
-[3] -> 3;
-[2] -> 2;
-[0,1] -> 0;
-[3,1,2] -> 3;
-[3,1,0] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0206 true
-
-[2,1] -> 2;
-[2] -> 2;
-[1,3,3] -> 1;
-[3] -> 3;
-[0] -> 0;
-[2,2,3] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0148 true
-
-[1,0,2] -> 1;
-[0] -> 0;
-[3,0] -> 3;
-[0,0] -> 0;
-[2] -> 2;
-[2,2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0100 true
 
 [1,3] -> 1;
 [2,1,3] -> 2;
@@ -946,34 +824,14 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0117 true
+0.0106 true
 
-[0,0] -> 0;
-[3,2] -> 3;
-[3,3,0] -> 3;
-[2,2,1] -> 2;
-[3,3] -> 3;
-[2,0,1] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-1.0947 true
-
-[0,2,3] -> 0;
-[0,0,2] -> 0;
-[3,2] -> 3;
-[2,2,0] -> 2;
 [2] -> 2;
-[0,3] -> 0;
 [2,1] -> 2;
+[3,1,0] -> 3;
+[1,3,1] -> 1;
+[0,3,1] -> 0;
+[1,1,2] -> 1;
 [] -> 0;
 
 =================================
@@ -985,14 +843,13 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0534 true
+0.0475 true
 
-[2,1,3] -> 2;
-[2,0] -> 2;
-[0,0,0] -> 0;
-[3,0,3] -> 3;
-[0,1,1] -> 0;
+[0] -> 0;
 [2] -> 2;
+[3,1] -> 3;
+[2,3,0] -> 2;
+[3] -> 3;
 [1,1] -> 1;
 [] -> 0;
 
@@ -1005,15 +862,14 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.1673 true
+0.0119 true
 
-[0,2] -> 0;
-[2,0] -> 2;
-[3,3,0] -> 3;
-[2,3,3] -> 2;
-[0] -> 0;
 [2,2] -> 2;
-[0,2,1] -> 0;
+[3] -> 3;
+[2] -> 2;
+[0,1] -> 0;
+[3,1,2] -> 3;
+[3,1,0] -> 3;
 [] -> 0;
 
 =================================
@@ -1025,15 +881,33 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0828 true
+0.0163 true
 
+[0,0] -> 0;
+[1,3,2] -> 1;
+[0] -> 0;
+[0,1] -> 0;
+[3,3] -> 3;
+[2,0] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0122 true
+
+[2,2,3] -> 2;
+[3,2,2] -> 3;
+[1,0,2] -> 1;
+[2,0] -> 2;
 [1,2] -> 1;
-[1] -> 1;
-[3] -> 3;
-[2,0,3] -> 2;
-[3,1,3] -> 3;
-[0,0,2] -> 0;
-[3,2] -> 3;
+[1,1] -> 1;
 [] -> 0;
 
 =================================
@@ -1045,75 +919,14 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0342 true
+0.3198 true
 
-[1,3,1] -> 1;
-[2] -> 2;
-[1,0] -> 1;
+[1,0,2] -> 1;
 [0] -> 0;
-[3] -> 3;
-[1,1,2] -> 1;
-[1] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0116 true
-
-[2,1] -> 2;
-[2] -> 2;
-[2,1,2] -> 2;
-[0] -> 0;
-[3] -> 3;
-[0,2,2] -> 0;
-[0,3,0] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0172 true
-
-[0,3,0] -> 0;
-[3,1,3] -> 3;
-[3,0,3] -> 3;
-[3,0,1] -> 3;
-[0,0] -> 0;
-[2] -> 2;
-[3,3,3] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-2.4689 true
-
-[3,1] -> 3;
-[1] -> 1;
 [3,0] -> 3;
-[1,1,0] -> 1;
 [0,0] -> 0;
-[2,0,0] -> 2;
 [2] -> 2;
+[2,2] -> 2;
 [] -> 0;
 
 =================================
@@ -1125,7 +938,65 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0135 true
+0.0098 true
+
+[2,2] -> 2;
+[2] -> 2;
+[1,0,0] -> 1;
+[0,2,3] -> 0;
+[0,2] -> 0;
+[1,1,0] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0212 true
+
+[0,0] -> 0;
+[3,3,2] -> 3;
+[1] -> 1;
+[1,0] -> 1;
+[3,2,2] -> 3;
+[2,0,1] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0879 true
+
+[3,2] -> 3;
+[0,3] -> 0;
+[2,1,3] -> 2;
+[0,0] -> 0;
+[0] -> 0;
+[1,1] -> 1;
+[1,3,2] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0247 true
 
 [1,1] -> 1;
 [0,1,0] -> 0;
@@ -1145,15 +1016,15 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0198 true
+0.0168 true
 
+[2,1,0] -> 2;
+[0] -> 0;
+[0,0] -> 0;
 [2,2] -> 2;
-[1] -> 1;
-[0,2,0] -> 0;
-[1,0,2] -> 1;
-[3,3,2] -> 3;
+[2,1] -> 2;
 [3,3] -> 3;
-[2,3,1] -> 2;
+[0,3] -> 0;
 [] -> 0;
 
 =================================
@@ -1165,37 +1036,15 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.4432 true
+0.0305 true
 
-[2,2,3] -> 2;
-[1,0,0] -> 1;
-[2,2,1] -> 2;
-[1,1] -> 1;
-[3,2,3] -> 3;
-[0,1,0] -> 0;
+[2] -> 2;
 [3,1] -> 3;
-[2,1,2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-11.2442 true
-
-[1,1] -> 1;
-[1,1,2] -> 1;
-[0] -> 0;
-[1,3,3] -> 1;
-[3,3,3] -> 3;
+[2,0] -> 2;
+[1,2] -> 1;
 [2,1] -> 2;
-[2,3,3] -> 2;
-[3,1,3] -> 3;
+[1,3,0] -> 1;
+[2,3] -> 2;
 [] -> 0;
 
 =================================
@@ -1207,37 +1056,15 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.5069 true
+0.0493 true
 
 [1] -> 1;
-[1,3,3] -> 1;
-[2,1] -> 2;
-[3,0] -> 3;
-[1,1,3] -> 1;
-[0] -> 0;
-[0,1] -> 0;
-[0,3,2] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0236 true
-
-[3,0,1] -> 3;
 [3] -> 3;
+[1,0,3] -> 1;
+[2,3,1] -> 2;
+[2,2,2] -> 2;
 [0,0,1] -> 0;
-[1,1,2] -> 1;
-[2] -> 2;
-[2,2] -> 2;
-[0,2] -> 0;
-[2,3,0] -> 2;
+[0] -> 0;
 [] -> 0;
 
 =================================
@@ -1249,7 +1076,191 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0999 true
+0.0287 true
+
+[1,3,2] -> 1;
+[1,2] -> 1;
+[3,3] -> 3;
+[3] -> 3;
+[3,2] -> 3;
+[2,3,0] -> 2;
+[1,1,0] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0313 true
+
+[0,1,3] -> 0;
+[3,2] -> 3;
+[3,1] -> 3;
+[0,0,3] -> 0;
+[0,3] -> 0;
+[3] -> 3;
+[0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0190 true
+
+[1] -> 1;
+[0] -> 0;
+[3,1,2] -> 3;
+[3,2] -> 3;
+[1,1,1] -> 1;
+[0,1] -> 0;
+[1,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0155 true
+
+[2] -> 2;
+[1] -> 1;
+[3] -> 3;
+[3,1,0] -> 3;
+[3,2] -> 3;
+[0,1,0] -> 0;
+[3,3,2] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0144 true
+
+[0,1] -> 0;
+[0,3] -> 0;
+[1,0,3] -> 1;
+[2,1] -> 2;
+[0,2] -> 0;
+[3,3] -> 3;
+[0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0136 true
+
+[0,2,3] -> 0;
+[2] -> 2;
+[2,1] -> 2;
+[3] -> 3;
+[3,2,1] -> 3;
+[2,1,0] -> 2;
+[3,2] -> 3;
+[0,1,3] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0230 true
+
+[2] -> 2;
+[0,3] -> 0;
+[3] -> 3;
+[1] -> 1;
+[3,0,1] -> 3;
+[1,1] -> 1;
+[3,1] -> 3;
+[0,2] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0109 true
+
+[3,2,3] -> 3;
+[1,3,1] -> 1;
+[1,1] -> 1;
+[0,1] -> 0;
+[1] -> 1;
+[3,1] -> 3;
+[2,3,0] -> 2;
+[0,3,1] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0296 true
+
+[3,2] -> 3;
+[0] -> 0;
+[0,2,2] -> 0;
+[0,2] -> 0;
+[2,3] -> 2;
+[3,0,1] -> 3;
+[0,1,3] -> 0;
+[0,2,1] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.1929 true
 
 [1] -> 1;
 [2,1,3] -> 2;
@@ -1270,16 +1281,16 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0125 true
+0.0117 true
 
 [1] -> 1;
-[0,0,3] -> 0;
-[3,0,2] -> 3;
-[3,3] -> 3;
-[1,0,1] -> 1;
-[3,1,2] -> 3;
-[2] -> 2;
 [0] -> 0;
+[1,3] -> 1;
+[0,1,1] -> 0;
+[2,3,3] -> 2;
+[2,3,0] -> 2;
+[0,2,0] -> 0;
+[0,2,2] -> 0;
 [] -> 0;
 
 =================================
@@ -1291,16 +1302,16 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0815 true
+0.0864 true
 
-[3] -> 3;
-[2,3,1] -> 2;
-[0,3] -> 0;
-[0,0] -> 0;
-[0] -> 0;
-[0,0,2] -> 0;
+[3,2] -> 3;
+[2,1,3] -> 2;
+[1,1,3] -> 1;
+[0,2,2] -> 0;
+[2] -> 2;
 [0,2] -> 0;
-[2] -> 2;
+[1,0,1] -> 1;
+[0] -> 0;
 [] -> 0;
 
 =================================
@@ -1312,7 +1323,7 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0128 true
+0.0325 true
 
 [2,0,3] -> 2;
 [3,0] -> 3;
@@ -1333,81 +1344,16 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0130 true
+0.0121 true
 
-[1,2,3] -> 1;
-[0] -> 0;
 [1,1] -> 1;
 [1,1,2] -> 1;
-[1] -> 1;
-[2,0] -> 2;
-[3] -> 3;
-[2,2] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0189 true
-
-[3,0] -> 3;
-[2] -> 2;
-[3,2,2] -> 3;
 [0] -> 0;
-[3,0,0] -> 3;
-[1,0,0] -> 1;
-[2,2] -> 2;
-[2,1,3] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0237 true
-
-[0,0] -> 0;
-[1,1,0] -> 1;
-[3,2] -> 3;
-[2] -> 2;
-[1] -> 1;
-[2,0] -> 2;
-[3,0,2] -> 3;
-[0] -> 0;
-[0,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0135 true
-
+[1,3,3] -> 1;
+[3,3,3] -> 3;
 [2,1] -> 2;
-[0,2] -> 0;
-[3,0,3] -> 3;
-[3,3] -> 3;
-[1,1,3] -> 1;
-[2,0,3] -> 2;
-[0,1] -> 0;
-[1,3] -> 1;
-[2,0,1] -> 2;
+[2,3,3] -> 2;
+[3,1,3] -> 3;
 [] -> 0;
 
 =================================
@@ -1419,16 +1365,103 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0646 true
+0.7393 true
 
 [0] -> 0;
-[2,1,2] -> 2;
+[1] -> 1;
+[2,2,2] -> 2;
+[3] -> 3;
+[1,1,3] -> 1;
 [0,1] -> 0;
+[0,2,2] -> 0;
+[1,0,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0161 true
+
+[2,2,1] -> 2;
+[0] -> 0;
+[2,1] -> 2;
+[1] -> 1;
+[3] -> 3;
+[1,1,1] -> 1;
+[0,0,3] -> 0;
+[3,2] -> 3;
+[2,2] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0240 true
+
+[1,0] -> 1;
+[3] -> 3;
 [2] -> 2;
-[3,3,2] -> 3;
-[2,0] -> 2;
-[3,0] -> 3;
-[1,2,0] -> 1;
+[1,1,2] -> 1;
+[3,1,0] -> 3;
+[3,2,1] -> 3;
+[2,3] -> 2;
+[2,1] -> 2;
+[1,3] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0158 true
+
+[1,0,2] -> 1;
+[0] -> 0;
+[2,0,2] -> 2;
+[1,3,2] -> 1;
+[2] -> 2;
+[1,1,1] -> 1;
+[3] -> 3;
+[1,1] -> 1;
+[1,2,2] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0314 true
+
+[1,1,3] -> 1;
+[2] -> 2;
+[0] -> 0;
+[0,1,1] -> 0;
+[3,2] -> 3;
+[1] -> 1;
+[1,1] -> 1;
+[0,0,2] -> 0;
 [3] -> 3;
 [] -> 0;
 
@@ -1441,39 +1474,17 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0176 true
+0.0110 true
 
 [0,1,2] -> 0;
+[1,2,2] -> 1;
 [1,1] -> 1;
-[0,0] -> 0;
-[2] -> 2;
-[0,0,3] -> 0;
-[2,0,0] -> 2;
-[3,0,1] -> 3;
-[2,1] -> 2;
-[3,2,2] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.2061 true
-
-[3,3] -> 3;
+[3] -> 3;
 [2,3] -> 2;
-[2,3,2] -> 2;
-[0,3,0] -> 0;
-[2,2,2] -> 2;
-[2] -> 2;
-[0] -> 0;
-[1] -> 1;
-[0,2] -> 0;
+[3,1] -> 3;
+[2,0] -> 2;
+[0,0,1] -> 0;
+[0,1,3] -> 0;
 [] -> 0;
 
 =================================
@@ -1485,7 +1496,51 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0556 true
+0.1515 true
+
+[0,3] -> 0;
+[0] -> 0;
+[1,3] -> 1;
+[3] -> 3;
+[3,0,2] -> 3;
+[1] -> 1;
+[0,0,1] -> 0;
+[2] -> 2;
+[1,0,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0131 true
+
+[0,1,0] -> 0;
+[0] -> 0;
+[1,3,1] -> 1;
+[2,2,0] -> 2;
+[2,2,2] -> 2;
+[0,3] -> 0;
+[3,3,1] -> 3;
+[2,0] -> 2;
+[2,0,0] -> 2;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.2791 true
 
 [1] -> 1;
 [3,3,2] -> 3;
@@ -1507,175 +1562,17 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.1013 true
+0.0780 true
 
+[0,3] -> 0;
 [0] -> 0;
-[3] -> 3;
-[2] -> 2;
-[0,3,0] -> 0;
-[1] -> 1;
-[0,0] -> 0;
-[3,1] -> 3;
-[1,1,0] -> 1;
-[0,1] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0115 true
-
-[2] -> 2;
-[1,1,0] -> 1;
-[1,1,2] -> 1;
-[1,3] -> 1;
-[1,0] -> 1;
-[1,2] -> 1;
-[0] -> 0;
-[2,2] -> 2;
-[1,3,3] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0141 true
-
-[0,2,1] -> 0;
-[2,2,0] -> 2;
-[1,0,3] -> 1;
-[1,2] -> 1;
-[3] -> 3;
-[2,3,0] -> 2;
-[3,2,0] -> 3;
-[3,3] -> 3;
-[1] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.2523 true
-
-[1] -> 1;
-[1,1] -> 1;
-[0,1] -> 0;
-[2,1,2] -> 2;
-[1,1,1] -> 1;
-[3,2] -> 3;
-[2,0] -> 2;
-[1,2,2] -> 1;
-[2,3] -> 2;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.2374 true
-
-[3,1] -> 3;
-[2,1] -> 2;
-[1,2,0] -> 1;
-[2,0] -> 2;
-[0,0] -> 0;
-[1,2] -> 1;
-[2] -> 2;
-[1,3,1] -> 1;
-[1,3,2] -> 1;
-[0] -> 0;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0177 true
-
-[1] -> 1;
-[1,2] -> 1;
-[2] -> 2;
-[0,0,3] -> 0;
-[2,0,3] -> 2;
-[3] -> 3;
-[0,1] -> 0;
-[3,3,2] -> 3;
-[2,2,3] -> 2;
-[3,1,0] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.3032 true
-
-[0,1] -> 0;
-[2,0] -> 2;
-[0,0,3] -> 0;
-[0,2] -> 0;
-[0] -> 0;
-[3,1,0] -> 3;
-[3,1,3] -> 3;
-[2] -> 2;
-[3,2] -> 3;
-[1,1,3] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0765 true
-
-[1,0] -> 1;
-[3,3] -> 3;
 [2] -> 2;
 [1,1] -> 1;
-[2,2] -> 2;
 [3,0] -> 3;
-[3,3,2] -> 3;
-[3,1,3] -> 3;
-[1,2] -> 1;
-[3,0,2] -> 3;
+[2,0,0] -> 2;
+[2,1] -> 2;
+[1] -> 1;
+[3,3] -> 3;
 [] -> 0;
 
 =================================
@@ -1687,7 +1584,75 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-1.7799 true
+0.0148 true
+
+[1] -> 1;
+[0,1] -> 0;
+[2,3] -> 2;
+[1,3,0] -> 1;
+[3,3] -> 3;
+[0,2,1] -> 0;
+[0] -> 0;
+[1,2,2] -> 1;
+[1,3] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0523 true
+
+[0] -> 0;
+[3,1] -> 3;
+[3] -> 3;
+[1] -> 1;
+[3,0,0] -> 3;
+[2,2] -> 2;
+[2] -> 2;
+[3,2] -> 3;
+[1,0,2] -> 1;
+[3,0] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0145 true
+
+[1,3,2] -> 1;
+[1,2] -> 1;
+[0,1] -> 0;
+[0,3] -> 0;
+[1,3] -> 1;
+[3] -> 3;
+[2] -> 2;
+[0] -> 0;
+[2,2] -> 2;
+[3,0,1] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0121 true
 
 [1] -> 1;
 [2,0,0] -> 2;
@@ -1710,87 +1675,18 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.0476 true
+0.0444 true
 
-[2,1] -> 2;
+[0,1,1] -> 0;
+[0,3,1] -> 0;
 [0] -> 0;
-[2] -> 2;
-[2,0,0] -> 2;
-[3,1,0] -> 3;
-[2,1,2] -> 2;
-[1,2,0] -> 1;
-[1,1,0] -> 1;
-[2,2] -> 2;
-[1,1] -> 1;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.3882 true
-
+[0,0,0] -> 0;
+[1] -> 1;
 [2,3] -> 2;
-[1,3] -> 1;
-[1,0] -> 1;
-[2,3,0] -> 2;
-[0,0,3] -> 0;
-[1] -> 1;
-[2,2,3] -> 2;
-[1,1,0] -> 1;
-[0,2] -> 0;
-[3] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.0265 true
-
-[0] -> 0;
-[1] -> 1;
-[1,1] -> 1;
-[1,2] -> 1;
-[2,0] -> 2;
-[1,3] -> 1;
-[1,1,0] -> 1;
-[1,0,3] -> 1;
-[1,3,1] -> 1;
-[3,2] -> 3;
-[] -> 0;
-
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> ( Zero )
-  | hd1::tl1 -> hd1
-  
-0.1815 true
-
-[1] -> 1;
-[0] -> 0;
-[3,0,2] -> 3;
-[1,2,2] -> 1;
-[1,1] -> 1;
-[2] -> 2;
+[0,3] -> 0;
+[2,0,0] -> 2;
 [2,2,0] -> 2;
-[3,2,1] -> 3;
-[2,1,2] -> 2;
-[0,2,2] -> 0;
+[2,2] -> 2;
 [] -> 0;
 
 =================================
@@ -1802,7 +1698,53 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.3430 true
+0.1746 true
+
+[1,1,0] -> 1;
+[2,2,1] -> 2;
+[0,2,1] -> 0;
+[0] -> 0;
+[1] -> 1;
+[3,1] -> 3;
+[2] -> 2;
+[3,2] -> 3;
+[3] -> 3;
+[3,0] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0140 true
+
+[0] -> 0;
+[2,1,3] -> 2;
+[0,1,0] -> 0;
+[3,3,3] -> 3;
+[1,2,3] -> 1;
+[3] -> 3;
+[1,2] -> 1;
+[1] -> 1;
+[0,1] -> 0;
+[0,2,0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0733 true
 
 [1,3] -> 1;
 [2,3,0] -> 2;
@@ -1825,5 +1767,74 @@ fix f0.fun x0.
   | [] -> ( Zero )
   | hd1::tl1 -> hd1
   
-0.1999 true
+0.1146 true
+
+[0,1,1] -> 0;
+[0] -> 0;
+[0,2,0] -> 0;
+[1,0] -> 1;
+[1,0,0] -> 1;
+[3,1,0] -> 3;
+[3,3,1] -> 3;
+[1] -> 1;
+[3,1] -> 3;
+[3,3,3] -> 3;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.0321 true
+
+[2,2] -> 2;
+[1] -> 1;
+[0,3,0] -> 0;
+[2,3,1] -> 2;
+[0,0,3] -> 0;
+[2,3] -> 2;
+[2,1,3] -> 2;
+[2] -> 2;
+[1,0,0] -> 1;
+[0] -> 0;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.1844 true
+
+[2,1] -> 2;
+[0] -> 0;
+[2] -> 2;
+[2,0,0] -> 2;
+[3,1,0] -> 3;
+[2,1,2] -> 2;
+[1,2,0] -> 1;
+[1,1,0] -> 1;
+[2,2] -> 2;
+[1,1] -> 1;
+[] -> 0;
+
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Zero )
+  | hd1::tl1 -> hd1
+  
+0.2577 true
 

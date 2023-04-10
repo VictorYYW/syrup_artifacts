@@ -8,41 +8,38 @@ fix (f : list -> natopt) = fun (x:list) -> None
 =================================
 fix (f : list -> natopt) = fun (x:list) -> Some (Un_Cons x . 0)
 
-0.0056 false
+0.0090 false
 
 [2] -> Some 2;
 =================================
 fix (f : list -> natopt) = fun (x:list) -> Some (Un_Cons x . 0)
 
-0.0034 false
+0.0053 false
 
 [2, 1] -> Some 1;
 =================================
 fix (f : list -> natopt) = fun (x:list) -> Some (Un_S (Un_Cons x . 0))
 
-0.0255 false
+0.0406 false
 
 [1, 2] -> Some 2;
 =================================
 fix (f : list -> natopt) = fun (x:list) -> Some (Un_Cons (Un_Cons x . 1) . 0)
 
-0.0163 false
+0.0215 false
 
 [3, 2, 1] -> Some 1;
 =================================
 fix (f : list -> natopt) = fun (x:list) -> Some 1
 
-0.1050 false
+0.1816 false
 
-[] -> None;
-[1] -> Some 1;
+[2] -> Some 2;
+[1, 2] -> Some 2;
 =================================
-fix (f : list -> natopt) =
-  fun (x:list) -> match x with
-                    | Nil _ -> None
-                    | Cons _ -> Some (Un_Cons x . 0)
+fix (f : list -> natopt) = fun (x:list) -> Some 2
 
-0.0046 false
+0.0106 false
 
 [] -> None;
 [2] -> Some 2;
@@ -52,7 +49,7 @@ fix (f : list -> natopt) =
                     | Nil _ -> None
                     | Cons _ -> Some (Un_Cons x . 0)
 
-0.0049 false
+0.0083 false
 
 [] -> None;
 [2, 1] -> Some 1;
@@ -63,7 +60,7 @@ fix (f : list -> natopt) =
       | Nil _ -> None
       | Cons _ -> Some (Un_S (Un_Cons x . 0))
 
-0.0268 false
+0.0300 false
 
 [] -> None;
 [1, 2] -> Some 2;
@@ -74,9 +71,96 @@ fix (f : list -> natopt) =
       | Nil _ -> None
       | Cons _ -> Some (Un_Cons (Un_Cons x . 1) . 0)
 
-0.0284 false
+0.0391 false
+
+[2] -> Some 2;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match Un_Cons x . 1 with
+      | Nil _ -> Some (Un_Cons x . 0)
+      | Cons _ -> f (Un_Cons x . 1)
+
+0.2101 false
+
+[1] -> Some 1;
+[2] -> Some 2;
+=================================
+fix (f : list -> natopt) = fun (x:list) -> Some (Un_Cons x . 0)
+
+0.0084 false
+
+[1] -> Some 1;
+[2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) = fun (x:list) -> Some 1
+
+0.0209 false
+
+[1] -> Some 1;
+[1, 2] -> Some 2;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match Un_Cons x . 1 with
+      | Nil _ -> Some (Un_Cons x . 0)
+      | Cons _ -> f (Un_Cons x . 1)
+
+0.0467 false
+
+[2, 1] -> Some 1;
+[1, 2] -> Some 2;
+=================================
+fix (f : list -> natopt) = fun (x:list) -> Some (Un_Cons (Un_Cons x . 1) . 0)
+
+0.0577 false
+
+[2] -> Some 2;
+[2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match Un_Cons x . 1 with
+      | Nil _ -> Some (Un_Cons x . 0)
+      | Cons _ -> f (Un_Cons x . 1)
+
+0.0917 false
+
+[1] -> Some 1;
+[2] -> Some 2;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match Un_Cons x . 1 with
+      | Nil _ -> Some (Un_Cons x . 0)
+      | Cons _ -> f (Un_Cons x . 1)
+
+0.0782 false
+
+[2, 1] -> Some 1;
+[1, 2] -> Some 2;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match Un_Cons x . 1 with
+      | Nil _ -> Some (Un_Cons x . 0)
+      | Cons _ -> f (Un_Cons x . 1)
+
+0.1704 false
+
+[1] -> Some 1;
+[2, 1] -> Some 1;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) = fun (x:list) -> Some 1
+
+0.0134 false
 
 [] -> None;
+[1] -> Some 1;
 [3, 2, 1] -> Some 1;
 =================================
 fix (f : list -> natopt) =
@@ -84,34 +168,10 @@ fix (f : list -> natopt) =
                     | Nil _ -> None
                     | Cons _ -> Some 1
 
-0.1242 false
+0.0294 false
 
 [2] -> Some 2;
-[1, 2] -> Some 2;
-=================================
-fix (f : list -> natopt) = fun (x:list) -> Some 2
-
-0.0074 false
-
 [2, 1] -> Some 1;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) = fun (x:list) -> Some 1
-
-0.0425 false
-
-[1] -> Some 1;
-[1, 2] -> Some 2;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match Un_Cons x . 1 with
-      | Nil _ -> Some (Un_Cons x . 0)
-      | Cons _ -> f (Un_Cons x . 1)
-
-0.0419 false
-
-[1, 2] -> Some 2;
 [3, 2, 1] -> Some 1;
 =================================
 fix (f : list -> natopt) =
@@ -120,18 +180,7 @@ fix (f : list -> natopt) =
       | Nil _ -> Some (Un_Cons x . 0)
       | Cons _ -> f (Un_Cons x . 1)
 
-0.8265 false
-
-[2] -> Some 2;
-[2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match Un_Cons x . 1 with
-      | Nil _ -> Some (Un_Cons x . 0)
-      | Cons _ -> f (Un_Cons x . 1)
-
-0.0771 false
+0.0522 false
 
 [1] -> Some 1;
 [2] -> Some 2;
@@ -143,67 +192,7 @@ fix (f : list -> natopt) =
       | Nil _ -> Some (Un_Cons x . 0)
       | Cons _ -> f (Un_Cons x . 1)
 
-0.0350 false
-
-[1] -> Some 1;
-[2, 1] -> Some 1;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) = fun (x:list) -> Some 1
-
-0.0129 false
-
-[] -> None;
-[1] -> Some 1;
-[1, 2] -> Some 2;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match f (Un_Cons x . 1) with
-                     | None _ -> Some (Un_Cons x . 0)
-                     | Some _ -> f (Un_Cons x . 1))
-
-0.0128 true
-
-[1] -> Some 1;
-[2, 1] -> Some 1;
-[1, 2] -> Some 2;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match Un_Cons x . 1 with
-      | Nil _ -> Some (Un_Cons x . 0)
-      | Cons _ -> f (Un_Cons x . 1)
-
-0.0318 false
-
-[] -> None;
-[2] -> Some 2;
-[2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.0123 true
-
-[2] -> Some 2;
-[1, 2] -> Some 2;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match Un_Cons x . 1 with
-      | Nil _ -> Some (Un_Cons x . 0)
-      | Cons _ -> f (Un_Cons x . 1)
-
-0.0353 false
+0.0540 false
 
 [] -> None;
 [2] -> Some 2;
@@ -217,11 +206,23 @@ fix (f : list -> natopt) =
                      | Nil _ -> Some (Un_Cons x . 0)
                      | Cons _ -> f (Un_Cons x . 1))
 
-0.0209 true
+0.0275 true
+
+[] -> None;
+[2, 1] -> Some 1;
+[1, 2] -> Some 2;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> Some (Un_Cons (Un_Cons x . 1) . 0)
+
+0.0842 false
 
 [1] -> Some 1;
 [2] -> Some 2;
-[3, 2, 1] -> Some 1;
+[2, 1] -> Some 1;
 =================================
 fix (f : list -> natopt) =
   fun (x:list) ->
@@ -229,9 +230,84 @@ fix (f : list -> natopt) =
       | Nil _ -> Some (Un_Cons x . 0)
       | Cons _ -> f (Un_Cons x . 1)
 
-0.0416 false
+0.0338 false
 
 [] -> None;
+[1, 2] -> Some 2;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+1.3409 true
+
+[] -> None;
+[1] -> Some 1;
+[2] -> Some 2;
+[2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+0.0214 true
+
+[] -> None;
+[1] -> Some 1;
+[2] -> Some 2;
+[1, 2] -> Some 2;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+0.0175 true
+
+[] -> None;
+[1] -> Some 1;
+[2] -> Some 2;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+0.0652 true
+
+[] -> None;
+[1] -> Some 1;
+[2, 1] -> Some 1;
+[1, 2] -> Some 2;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+0.0345 true
+
+[] -> None;
+[1] -> Some 1;
 [2, 1] -> Some 1;
 [3, 2, 1] -> Some 1;
 =================================
@@ -240,77 +316,7 @@ fix (f : list -> natopt) =
                     | Nil _ -> None
                     | Cons _ -> Some 1
 
-0.0405 false
-
-[] -> None;
-[1, 2] -> Some 2;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.7722 true
-
-[] -> None;
-[1] -> Some 1;
-[2] -> Some 2;
-[2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.0136 true
-
-[] -> None;
-[1] -> Some 1;
-[2] -> Some 2;
-[1, 2] -> Some 2;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.0102 true
-
-[1] -> Some 1;
-[2] -> Some 2;
-[2, 1] -> Some 1;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match Un_Cons x . 1 with
-      | Nil _ -> Some (Un_Cons x . 0)
-      | Cons _ -> f (Un_Cons x . 1)
-
-0.0208 false
-
-[1] -> Some 1;
-[2] -> Some 2;
-[1, 2] -> Some 2;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match Un_Cons x . 1 with
-      | Nil _ -> Some (Un_Cons x . 0)
-      | Cons _ -> f (Un_Cons x . 1)
-
-0.0164 false
+0.0160 false
 
 [1] -> Some 1;
 [2, 1] -> Some 1;
@@ -323,67 +329,7 @@ fix (f : list -> natopt) =
       | Nil _ -> Some (Un_Cons x . 0)
       | Cons _ -> f (Un_Cons x . 1)
 
-0.0302 false
-
-[] -> None;
-[1] -> Some 1;
-[1, 2] -> Some 2;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match f (Un_Cons x . 1) with
-                     | None _ -> Some (Un_Cons x . 0)
-                     | Some _ -> f (Un_Cons x . 1))
-
-0.0117 true
-
-[] -> None;
-[2] -> Some 2;
-[2, 1] -> Some 1;
-[1, 2] -> Some 2;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.0115 true
-
-[] -> None;
-[2] -> Some 2;
-[2, 1] -> Some 1;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.0115 true
-
-[] -> None;
-[2] -> Some 2;
-[1, 2] -> Some 2;
-[3, 2, 1] -> Some 1;
-=================================
-fix (f : list -> natopt) =
-  fun (x:list) ->
-    match x with
-      | Nil _ -> None
-      | Cons _ -> (match Un_Cons x . 1 with
-                     | Nil _ -> Some (Un_Cons x . 0)
-                     | Cons _ -> f (Un_Cons x . 1))
-
-0.0307 true
+0.0466 false
 
 [1] -> Some 1;
 [2] -> Some 2;
@@ -396,7 +342,50 @@ fix (f : list -> natopt) =
       | Nil _ -> Some (Un_Cons x . 0)
       | Cons _ -> f (Un_Cons x . 1)
 
-0.0206 false
+0.0238 false
+
+[] -> None;
+[2] -> Some 2;
+[2, 1] -> Some 1;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+0.0191 true
+
+[] -> None;
+[2] -> Some 2;
+[1, 2] -> Some 2;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match x with
+      | Nil _ -> None
+      | Cons _ -> (match Un_Cons x . 1 with
+                     | Nil _ -> Some (Un_Cons x . 0)
+                     | Cons _ -> f (Un_Cons x . 1))
+
+0.0407 true
+
+[1] -> Some 1;
+[2] -> Some 2;
+[2, 1] -> Some 1;
+[3, 2, 1] -> Some 1;
+=================================
+fix (f : list -> natopt) =
+  fun (x:list) ->
+    match Un_Cons x . 1 with
+      | Nil _ -> Some (Un_Cons x . 0)
+      | Cons _ -> f (Un_Cons x . 1)
+
+0.0347 false
 
 [] -> None;
 [1] -> Some 1;
@@ -412,7 +401,7 @@ fix (f : list -> natopt) =
                      | Nil _ -> Some (Un_Cons x . 0)
                      | Cons _ -> f (Un_Cons x . 1))
 
-0.0138 true
+0.0220 true
 
 [] -> None;
 [1] -> Some 1;
@@ -428,7 +417,7 @@ fix (f : list -> natopt) =
                      | None _ -> Some (Un_Cons x . 0)
                      | Some _ -> f (Un_Cons x . 1))
 
-0.0140 true
+0.0227 true
 
 [] -> None;
 [1] -> Some 1;
@@ -444,7 +433,7 @@ fix (f : list -> natopt) =
                      | Nil _ -> Some (Un_Cons x . 0)
                      | Cons _ -> f (Un_Cons x . 1))
 
-0.0102 true
+0.0168 true
 
 [] -> None;
 [1] -> Some 1;
@@ -460,7 +449,7 @@ fix (f : list -> natopt) =
                      | Nil _ -> Some (Un_Cons x . 0)
                      | Cons _ -> f (Un_Cons x . 1))
 
-0.0203 true
+0.0336 true
 
 [] -> None;
 [2] -> Some 2;
@@ -476,7 +465,7 @@ fix (f : list -> natopt) =
                      | Nil _ -> Some (Un_Cons x . 0)
                      | Cons _ -> f (Un_Cons x . 1))
 
-0.0115 true
+0.0167 true
 
 [1] -> Some 1;
 [2] -> Some 2;
@@ -490,7 +479,7 @@ fix (f : list -> natopt) =
       | Nil _ -> Some (Un_Cons x . 0)
       | Cons _ -> f (Un_Cons x . 1)
 
-0.0205 false
+0.0340 false
 
 [] -> None;
 [1] -> Some 1;
@@ -507,5 +496,5 @@ fix (f : list -> natopt) =
                      | None _ -> Some (Un_Cons x . 0)
                      | Some _ -> f (Un_Cons x . 1))
 
-0.0141 true
+0.0193 true
 

@@ -1,32 +1,20 @@
 [] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0. x0
 0.0002 false
 
 [0] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0. ( Nil )
-0.0004 false
+0.0003 false
 
 [1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0. ( Nil )
 0.0004 false
 
 [0, 1] -> [1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
   | [] -> ( Nil )
@@ -35,13 +23,10 @@ fix f0.fun x0.
       ( Cons hd1 ( Nil )
         ) )
   
-0.0015 false
+0.0022 false
 
 [1, 0] -> [0, 1];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
   | [] -> ( Nil )
@@ -50,99 +35,90 @@ fix f0.fun x0.
       ( Cons hd1 ( Nil )
         ) )
   
-0.0016 false
+0.0020 false
 
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0. ( Nil )
-0.0007 false
+0.0006 false
 
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    ( Cons
-      match (tl2) with
-      | [] -> ( Zero )
-      | hd1::tl1 -> hd1
-      (f0 tl2) )
+  | [] -> ( Nil )
+  | hd1::tl1 ->
+    ( Cons ( Succ hd1 )
+      ( Cons hd1
+        ( Cons
+          ( Succ hd1 )
+          ( Cons hd1
+            ( Nil ) ) ) )
+      )
   
-0.3277 false
+0.4062 false
 
 [] -> [];
 [0] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fix f0.fun x0. ( Nil )
 0.0004 false
 
-[1, 0] -> [0, 1];
+[] -> [];
+[1] -> [];
+=================================
+fix f0.fun x0. ( Nil )
+0.0003 false
+
+[1] -> [];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
+fix f0.fun x0. ( Nil )
+0.0006 false
+
+[1] -> [];
+[1, 0] -> [0, 1];
+=================================
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
-  | [] -> x0
+  | [] -> ( Nil )
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0850 false
+
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Nil )
   | hd2::tl2 ->
     match (tl2) with
     | [] -> tl2
@@ -155,895 +131,21 @@ fix f0.fun x0.
       then
         ( Cons hd1
           ( Cons hd2
-            (f0 tl1) ) )
-        else (f0 tl1)
+            ( Cons hd1
+              ( Cons hd2
+                tl1 ) ) )
+          ) else (f0 tl1)
     
   
-0.1633 false
+1.7678 false
 
-[0] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      ( Cons hd1
-        ( Cons hd2
-          (f0 tl1) ) )
-    
-  
-0.4529 false
-
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-0.8370 false
-
-[] -> [];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Nil )
-0.0007 false
-
-[0, 1] -> [1, 0];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    ( Cons
-      match (tl2) with
-      | [] -> ( Zero )
-      | hd1::tl1 -> hd1
-      (f0 tl2) )
-  
-0.3687 false
-
-[0] -> [];
-[1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Nil )
-0.0008 false
-
-[0] -> [];
-[0, 1] -> [1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd1::tl1 ->
-    if
-      match (tl1) with
-      | [] -> ( True )
-      | hd'1::tl'1 ->
-        ( False )
-    then (f0 tl1)
-      else
-        ( Cons
-          ( Succ hd1 )
-          ( Cons hd1
-            ( Nil ) ) )
-  
-0.0653 false
-
-[1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      ( Cons hd1
-        ( Cons hd2
-          (f0 tl1) ) )
-    
-  
-0.1655 false
-
-[0] -> [];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Nil )
-0.0011 false
-
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-8.7317 false
-
-[] -> [];
-[0] -> [];
-[0, 1] -> [1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd1::tl1 ->
-    if
-      match (tl1) with
-      | [] -> ( True )
-      | hd'1::tl'1 ->
-        ( False )
-    then tl1
-      else
-        ( Cons
-          ( Succ hd1 )
-          ( Cons hd1
-            ( Nil ) ) )
-  
-0.0349 false
-
-[0] -> [];
-[1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      ( Cons hd1
-        ( Cons hd2
-          (f0 tl1) ) )
-    
-  
-0.2222 false
-
-[] -> [];
-[0] -> [];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun x0. ( Nil )
-0.0009 false
-
-[0] -> [];
-[1] -> [];
-[1, 0] -> [0, 1];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd1::tl1 ->
-    if
-      match (tl1) with
-      | [] -> ( True )
-      | hd'1::tl'1 ->
-        ( False )
-    then (f0 tl1)
-      else
-        ( Cons ( Zero )
-          ( Cons hd1
-            ( Nil ) ) )
-  
-0.0204 false
-
-[0] -> [];
-[0, 1] -> [1, 0];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      ( Cons hd1
-        ( Cons hd2
-          (f0 tl1) ) )
-    
-  
-0.4633 false
-
-[] -> [];
-[1] -> [];
-[1, 0] -> [0, 1];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd1::tl1 ->
-    if
-      match (tl1) with
-      | [] -> ( True )
-      | hd'1::tl'1 ->
-        ( False )
-    then tl1
-      else
-        ( Cons ( Zero )
-          ( Cons hd1
-            ( Nil ) ) )
-  
-0.0299 false
-
-[] -> [];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      if
-        match (tl1) with
-        | [] -> ( True )
-        | hd'1::tl'1 ->
-          ( False )
-      then
-        ( Cons hd1
-          ( Cons hd2 tl1
-            ) )
-        else (f0 tl1)
-    
-  
-0.0856 false
-
-[0] -> [];
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-2.4279 false
-
-[1] -> [];
-[0, 1] -> [1, 0];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      if
-        match (tl1) with
-        | [] -> ( True )
-        | hd'1::tl'1 ->
-          ( False )
-      then
-        ( Cons hd1
-          ( Cons hd2
-            (f0 tl1) ) )
-        else ( Nil )
-    
-  
-0.0330 false
-
-[] -> [];
-[0] -> [];
-[1] -> [];
-[0, 1] -> [1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd1::tl1 ->
-    if
-      match (tl1) with
-      | [] -> ( True )
-      | hd'1::tl'1 ->
-        ( False )
-    then tl1
-      else
-        ( Cons
-          ( Succ hd1 )
-          ( Cons hd1
-            ( Nil ) ) )
-  
-0.0069 false
-
-[] -> [];
-[0, 1] -> [1, 0];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      if
-        match (tl1) with
-        | [] -> ( True )
-        | hd'1::tl'1 ->
-          ( False )
-      then
-        ( Cons hd1
-          ( Cons hd2 tl1
-            ) )
-        else (f0 tl1)
-    
-  
-0.1200 false
-
-[] -> [];
-[1] -> [];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      if
-        match (tl1) with
-        | [] -> ( True )
-        | hd'1::tl'1 ->
-          ( False )
-      then
-        ( Cons hd1
-          ( Cons hd2 tl1
-            ) )
-        else ( Nil )
-    
-  
-0.0859 false
-
-[] -> [];
-[0, 1] -> [1, 0];
 [1, 0] -> [0, 1];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1056,150 +158,21 @@ fix f0.fun x0.
           (f0 tl1) ) )
     
   
-0.5697 false
-
-[0] -> [];
-[0, 1] -> [1, 0];
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-1.0989 false
-
-[1] -> [];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-5.9571 false
+0.5208 false
 
 [0] -> [];
 [1] -> [];
-[0, 1] -> [1, 0];
-[1, 0] -> [0, 1];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
+fix f0.fun x0. ( Nil )
+0.0006 false
+
+[0] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1212,40 +185,223 @@ fix f0.fun x0.
           (f0 tl1) ) )
     
   
-0.0510 false
+0.4273 false
+
+[0] -> [];
+[1, 0] -> [0, 1];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Nil )
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0192 false
+
+[0] -> [];
+[1, 0, 1] -> [];
+=================================
+fix f0.fun x0. ( Nil )
+0.0018 false
+
+[0] -> [];
+[1, 0] -> [0, 1];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2
+          (f0 tl1) ) )
+    
+  
+0.4346 false
 
 [] -> [];
 [0] -> [];
+[0, 1] -> [1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0406 false
+
+[] -> [];
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      if
+        match (tl1) with
+        | [] -> ( True )
+        | hd'1::tl'1 ->
+          ( False )
+      then
+        ( Cons hd1
+          ( Cons hd2
+            ( Cons hd1
+              ( Cons hd2
+                tl1 ) ) )
+          ) else (f0 tl1)
+    
+  
+1.2323 false
+
+[0] -> [];
+[0, 1] -> [1, 0];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2
+          (f0 tl1) ) )
+    
+  
+0.1513 false
+
+[1] -> [];
 [1, 0] -> [0, 1];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2
+          (f0 tl1) ) )
+    
+  
+0.2503 false
+
+[] -> [];
+[1] -> [];
+[0, 1] -> [1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0050 false
+
+[] -> [];
+[1] -> [];
+[1, 0] -> [0, 1];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0373 false
+
+[] -> [];
+[0, 1] -> [1, 0];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1265,95 +421,80 @@ fix f0.fun x0.
         else (f0 tl1)
     
   
-0.0523 false
+0.3867 false
 
-[] -> [];
+[0] -> [];
+[1] -> [];
 [0, 1] -> [1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> ( Nil )
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0261 false
+
+[1] -> [];
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
 fail to find a solution
-0.2182 false
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] ->
+    ( Cons ( Zero ) x0 )
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      if
+        match (tl1) with
+        | [] -> ( True )
+        | hd'1::tl'1 ->
+          ( False )
+      then
+        ( Cons hd1
+          ( Cons hd2
+            ( Cons hd1
+              (f0 tl1) )
+            ) )
+        else (f0 tl1)
+    
+  
+1.2963 false
 
 [] -> [];
+[0] -> [];
 [1] -> [];
 [0, 1] -> [1, 0];
-[1, 0] -> [0, 1];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1366,200 +507,25 @@ fix f0.fun x0.
         )
     
   
-0.0522 false
+0.0065 false
 
 [] -> [];
-[0] -> [];
 [1] -> [];
 [0, 1] -> [1, 0];
-[1, 0] -> [0, 1];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fix f0.fun x0.
-  match (x0) with
-  | [] -> x0
-  | hd2::tl2 ->
-    match (tl2) with
-    | [] -> tl2
-    | hd1::tl1 ->
-      ( Cons hd1
-        ( Cons hd2 tl1 )
-        )
-    
-  
-0.0188 false
-
-[1] -> [];
-[0, 1] -> [1, 0];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-2.3313 false
-
-[] -> [];
-[1] -> [];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
-[0, 1, 0, 1] -> [1, 0, 1, 0];
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-1.3460 false
-
-[] -> [];
-[0] -> [];
-[1] -> [];
-[1, 0] -> [0, 1];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1579,41 +545,56 @@ fix f0.fun x0.
         else ( Nil )
     
   
-0.0553 false
+0.1084 false
 
 [] -> [];
 [0] -> [];
 [1] -> [];
-[1, 0] -> [0, 1];
+[1, 0, 1] -> [];
+=================================
+fix f0.fun x0. ( Nil )
+0.0015 false
+
+[] -> [];
+[0, 1] -> [1, 0];
+[1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+12.0710 false
+
+[] -> [];
+[1] -> [];
+[0, 1] -> [1, 0];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1626,97 +607,69 @@ fix f0.fun x0.
           (f0 tl1) ) )
     
   
-0.2106 false
+0.0689 false
 
-[] -> [];
-[0] -> [];
 [1] -> [];
+[1, 0] -> [0, 1];
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-0.8901 false
-
+None
 [] -> [];
-[0] -> [];
-[0, 1] -> [1, 0];
+[1] -> [];
 [1, 0] -> [0, 1];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      if
+        match (tl1) with
+        | [] -> ( True )
+        | hd'1::tl'1 ->
+          ( False )
+      then
+        ( Cons hd1
+          ( Cons hd2 tl1
+            ) )
+        else ( Nil )
+    
+  
+0.6877 false
+
+[] -> [];
+[0] -> [];
+[1, 0] -> [0, 1];
+[1, 0, 1] -> [];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1736,41 +689,118 @@ fix f0.fun x0.
         else (f0 tl1)
     
   
-0.0713 false
+0.2998 false
+
+[0] -> [];
+[1] -> [];
+[0, 1] -> [1, 0];
+[1, 0, 1] -> [];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] ->
+    ( Cons
+      ( Succ ( Zero ) )
+      ( Cons ( Zero ) x0
+        ) )
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      (f0 tl1)
+    
+  
+0.0593 false
 
 [] -> [];
+[0] -> [];
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      if
+        match (tl1) with
+        | [] -> ( True )
+        | hd'1::tl'1 ->
+          ( False )
+      then
+        ( Cons hd1
+          ( Cons hd2
+            ( Cons hd1
+              ( Cons hd2
+                tl1 ) ) )
+          ) else (f0 tl1)
+    
+  
+1.7879 false
+
+[] -> [];
+[0] -> [];
 [1] -> [];
 [0, 1] -> [1, 0];
 [1, 0] -> [0, 1];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2 tl1 )
+        )
+    
+  
+0.0142 false
+
+[] -> [];
+[0] -> [];
+[1] -> [];
+[0, 1] -> [1, 0];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1790,63 +820,31 @@ fix f0.fun x0.
         else ( Nil )
     
   
-0.0612 false
+0.1573 false
 
+[] -> [];
 [0] -> [];
 [1] -> [];
-[1, 0] -> [0, 1];
-[1, 0, 1] -> [];
+[0, 1] -> [1, 0];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-7.8953 false
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2
+          (f0 tl1) ) )
+    
+  
+0.0709 false
 
 [0] -> [];
 [1] -> [];
@@ -1854,33 +852,18 @@ fail to find a solution
 [1, 0] -> [0, 1];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1900,8 +883,159 @@ fix f0.fun x0.
         else ( Nil )
     
   
-0.1817 false
+0.9121 false
 
+[0] -> [];
+[1] -> [];
+[0, 1] -> [1, 0];
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+18.6308 false
+
+[] -> [];
+[0] -> [];
+[1] -> [];
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      if
+        match (tl1) with
+        | [] -> ( True )
+        | hd'1::tl'1 ->
+          ( False )
+      then
+        ( Cons hd1
+          ( Cons hd2
+            ( Cons hd1
+              ( Cons hd2
+                tl1 ) ) )
+          ) else (f0 tl1)
+    
+  
+1.1783 false
+
+[] -> [];
+[0] -> [];
+[0, 1] -> [1, 0];
+[1, 0] -> [0, 1];
+[1, 0, 1] -> [];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      if
+        match (tl1) with
+        | [] -> ( True )
+        | hd'1::tl'1 ->
+          ( False )
+      then
+        ( Cons hd1
+          ( Cons hd2 tl1
+            ) )
+        else (f0 tl1)
+    
+  
+0.8154 false
+
+[] -> [];
+[0] -> [];
+[0, 1] -> [1, 0];
+[1, 0] -> [0, 1];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fix f0.fun x0.
+  match (x0) with
+  | [] -> x0
+  | hd2::tl2 ->
+    match (tl2) with
+    | [] -> tl2
+    | hd1::tl1 ->
+      ( Cons hd1
+        ( Cons hd2
+          (f0 tl1) ) )
+    
+  
+0.1133 false
+
+[1] -> [];
+[0, 1] -> [1, 0];
+[1, 0] -> [0, 1];
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+None
+[] -> [];
+[0] -> [];
+[1, 0] -> [0, 1];
+[1, 0, 1] -> [];
+[0, 1, 0, 1] -> [1, 0, 1, 0];
+=================================
+None
 [] -> [];
 [0] -> [];
 [1] -> [];
@@ -1909,33 +1043,18 @@ fix f0.fun x0.
 [1, 0] -> [0, 1];
 [1, 0, 1] -> [];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -1955,7 +1074,7 @@ fix f0.fun x0.
         else ( Nil )
     
   
-0.0295 false
+0.3609 false
 
 [] -> [];
 [0] -> [];
@@ -1964,33 +1083,10 @@ fix f0.fun x0.
 [1, 0] -> [0, 1];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fix f0.fun x0.
   match (x0) with
   | [] -> x0
@@ -2003,7 +1099,7 @@ fix f0.fun x0.
           (f0 tl1) ) )
     
   
-0.1034 false
+0.0812 false
 
 [] -> [];
 [0] -> [];
@@ -2012,55 +1108,31 @@ fix f0.fun x0.
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
 fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
 fail to find a solution
-0.2252 false
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+fail to find a solution
+16.8154 false
 
 [] -> [];
 [0] -> [];
@@ -2069,56 +1141,7 @@ fail to find a solution
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-1.2624 false
-
+None
 [] -> [];
 [0] -> [];
 [0, 1] -> [1, 0];
@@ -2126,56 +1149,7 @@ fail to find a solution
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-0.7214 false
-
+None
 [] -> [];
 [1] -> [];
 [0, 1] -> [1, 0];
@@ -2183,56 +1157,7 @@ fail to find a solution
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-0.3970 false
-
+None
 [0] -> [];
 [1] -> [];
 [0, 1] -> [1, 0];
@@ -2240,56 +1165,7 @@ fail to find a solution
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-2.6668 false
-
+None
 [] -> [];
 [0] -> [];
 [1] -> [];
@@ -2298,53 +1174,4 @@ fail to find a solution
 [1, 0, 1] -> [];
 [0, 1, 0, 1] -> [1, 0, 1, 0];
 =================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 6) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 7) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 2)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 4) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 5) (matchDepth 2) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 2) (ctorDepth 0) (condWidth 3)
- (totalHeight 0))
-VSA done
-fail to find a solution
-0.3466 false
-
+None

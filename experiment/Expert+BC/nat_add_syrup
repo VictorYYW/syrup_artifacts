@@ -1,4 +1,3 @@
-nat_add
 (0, 1) -> 1;
 (0, 0) -> 0;
 =================================
@@ -6,7 +5,7 @@ start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (
  (totalHeight 0))
 VSA done
 fix f0.fun (x0, x1). x1
-0.0004 false
+0.0007 false
 
 (0, 2) -> 2;
 (0, 0) -> 0;
@@ -15,7 +14,7 @@ start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (
  (totalHeight 0))
 VSA done
 fix f0.fun (x0, x1). x1
-0.0010 false
+0.0014 false
 
 (1, 0) -> 1;
 (0, 0) -> 0;
@@ -24,7 +23,7 @@ start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (
  (totalHeight 0))
 VSA done
 fix f0.fun (x0, x1). x0
-0.0005 false
+0.0008 false
 
 (1, 1) -> 2;
 (0, 0) -> 0;
@@ -39,7 +38,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0017 true
+0.0023 true
 
 (1, 2) -> 3;
 (0, 0) -> 0;
@@ -54,7 +53,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0029 true
+0.0060 true
 
 (2, 0) -> 2;
 (0, 0) -> 0;
@@ -63,7 +62,7 @@ start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (
  (totalHeight 0))
 VSA done
 fix f0.fun (x0, x1). x0
-0.0010 false
+0.0014 false
 
 (2, 1) -> 3;
 (0, 0) -> 0;
@@ -78,7 +77,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0029 true
+0.0043 true
 
 (2, 2) -> 4;
 (0, 0) -> 0;
@@ -93,7 +92,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0051 true
+0.0047 true
 
 (0, 1) -> 1;
 (0, 2) -> 2;
@@ -103,10 +102,10 @@ start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (
  (totalHeight 0))
 VSA done
 fix f0.fun (x0, x1). x1
-0.0009 false
+0.0008 false
 
-(1, 1) -> 2;
-(1, 2) -> 3;
+(0, 1) -> 1;
+(1, 0) -> 1;
 (0, 0) -> 0;
 =================================
 start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
@@ -115,13 +114,11 @@ VSA done
 fix f0.fun (x0, x1).
   match (x0) with
   | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
+  | Sn1 -> x0
   
-0.0030 true
+0.0007 false
 
-(0, 2) -> 2;
+(2, 0) -> 2;
 (2, 1) -> 3;
 (0, 0) -> 0;
 =================================
@@ -135,7 +132,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0036 true
+0.0038 true
 
 (0, 1) -> 1;
 (1, 2) -> 3;
@@ -153,23 +150,7 @@ fix f0.fun (x0, x1).
   
 0.0027 true
 
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0075 true
-
-(2, 0) -> 2;
+(1, 2) -> 3;
 (2, 1) -> 3;
 (0, 0) -> 0;
 =================================
@@ -183,9 +164,41 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0034 true
+0.0053 true
 
 (0, 1) -> 1;
+(2, 1) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0029 true
+
+(1, 0) -> 1;
+(1, 1) -> 2;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0015 true
+
+(2, 1) -> 3;
 (2, 2) -> 4;
 (0, 0) -> 0;
 =================================
@@ -199,10 +212,107 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0045 true
+0.0066 true
+
+(0, 2) -> 2;
+(2, 0) -> 2;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0019 true
+
+(1, 0) -> 1;
+(2, 1) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0027 true
+
+(0, 1) -> 1;
+(1, 0) -> 1;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0041 true
+
+(0, 1) -> 1;
+(1, 1) -> 2;
+(2, 1) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 -> ( Succ x0 )
+  
+0.0033 false
+
+(0, 1) -> 1;
+(0, 2) -> 2;
+(1, 2) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 -> ( Succ x1 )
+  
+0.0031 false
+
+(1, 0) -> 1;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0069 true
 
 (0, 2) -> 2;
 (1, 0) -> 1;
+(1, 1) -> 2;
 (0, 0) -> 0;
 =================================
 start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
@@ -211,10 +321,81 @@ VSA done
 fix f0.fun (x0, x1).
   match (x0) with
   | Z -> x1
-  | Sn1 -> x0
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
   
-0.0013 false
+0.0026 true
 
+(1, 0) -> 1;
+(1, 1) -> 2;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0050 true
+
+(0, 2) -> 2;
+(1, 0) -> 1;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0050 true
+
+(1, 2) -> 3;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0066 true
+
+(2, 0) -> 2;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0095 true
+
+(0, 1) -> 1;
 (1, 0) -> 1;
 (2, 1) -> 3;
 (0, 0) -> 0;
@@ -229,8 +410,152 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0028 true
+0.0024 true
 
+(0, 1) -> 1;
+(1, 0) -> 1;
+(1, 1) -> 2;
+(2, 0) -> 2;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0019 true
+
+(0, 1) -> 1;
+(0, 2) -> 2;
+(1, 0) -> 1;
+(1, 2) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 -> ( Succ x1 )
+  
+0.0025 false
+
+(1, 0) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0036 true
+
+(0, 1) -> 1;
+(0, 2) -> 2;
+(1, 2) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0088 true
+
+(0, 1) -> 1;
+(0, 2) -> 2;
+(1, 0) -> 1;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0041 true
+
+(0, 1) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0040 true
+
+(0, 2) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0090 true
+
+(1, 0) -> 1;
+(1, 1) -> 2;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0064 true
+
+(0, 1) -> 1;
+(0, 2) -> 2;
 (1, 1) -> 2;
 (2, 2) -> 4;
 (0, 0) -> 0;
@@ -248,8 +573,9 @@ fix f0.fun (x0, x1).
 0.0058 true
 
 (0, 1) -> 1;
-(2, 1) -> 3;
-(2, 2) -> 4;
+(1, 0) -> 1;
+(1, 2) -> 3;
+(2, 0) -> 2;
 (0, 0) -> 0;
 =================================
 start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
@@ -262,8 +588,10 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0095 true
+0.0028 true
 
+(0, 1) -> 1;
+(1, 0) -> 1;
 (1, 1) -> 2;
 (2, 0) -> 2;
 (2, 2) -> 4;
@@ -279,10 +607,12 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0077 true
+0.0051 true
 
 (0, 1) -> 1;
-(2, 0) -> 2;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 1) -> 3;
 (2, 2) -> 4;
 (0, 0) -> 0;
 =================================
@@ -296,10 +626,12 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0053 true
+0.0070 true
 
 (0, 2) -> 2;
+(1, 1) -> 2;
 (2, 0) -> 2;
+(2, 1) -> 3;
 (2, 2) -> 4;
 (0, 0) -> 0;
 =================================
@@ -313,10 +645,88 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0054 true
+0.0100 true
+
+(0, 1) -> 1;
+(1, 0) -> 1;
+(1, 2) -> 3;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0071 true
+
+(0, 1) -> 1;
+(1, 1) -> 2;
+(2, 0) -> 2;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0094 true
+
+(0, 2) -> 2;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0147 true
 
 (0, 1) -> 1;
 (0, 2) -> 2;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0081 true
+
+(0, 2) -> 2;
+(1, 0) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
 (2, 1) -> 3;
 (0, 0) -> 0;
 =================================
@@ -330,8 +740,49 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0030 true
+0.0075 true
 
+(0, 1) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
+(2, 1) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0052 true
+
+(0, 1) -> 1;
+(1, 0) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 1) -> 3;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0041 true
+
+(0, 1) -> 1;
+(0, 2) -> 2;
+(1, 0) -> 1;
 (1, 1) -> 2;
 (1, 2) -> 3;
 (2, 0) -> 2;
@@ -347,10 +798,13 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0043 true
+0.0034 true
 
+(0, 2) -> 2;
 (1, 0) -> 1;
 (1, 1) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
 (2, 1) -> 3;
 (0, 0) -> 0;
 =================================
@@ -364,10 +818,33 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0026 true
+0.0067 true
+
+(0, 2) -> 2;
+(1, 1) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
+(2, 1) -> 3;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0110 true
 
 (0, 1) -> 1;
+(1, 0) -> 1;
 (1, 1) -> 2;
+(1, 2) -> 3;
+(2, 0) -> 2;
 (2, 1) -> 3;
 (0, 0) -> 0;
 =================================
@@ -377,13 +854,18 @@ VSA done
 fix f0.fun (x0, x1).
   match (x0) with
   | Z -> x1
-  | Sn1 -> ( Succ x0 )
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
   
-0.0032 false
+0.0052 true
 
 (0, 1) -> 1;
-(1, 0) -> 1;
+(0, 2) -> 2;
+(1, 1) -> 2;
 (2, 0) -> 2;
+(2, 1) -> 3;
+(2, 2) -> 4;
 (0, 0) -> 0;
 =================================
 start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
@@ -392,12 +874,17 @@ VSA done
 fix f0.fun (x0, x1).
   match (x0) with
   | Z -> x1
-  | Sn1 -> x0
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
   
-0.0012 false
+0.0091 true
 
+(0, 1) -> 1;
 (0, 2) -> 2;
 (1, 2) -> 3;
+(2, 0) -> 2;
+(2, 1) -> 3;
 (2, 2) -> 4;
 (0, 0) -> 0;
 =================================
@@ -416,23 +903,9 @@ fix f0.fun (x0, x1).
 (0, 1) -> 1;
 (0, 2) -> 2;
 (1, 0) -> 1;
-(1, 1) -> 2;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 -> ( Succ x1 )
-  
-0.0018 false
-
-(0, 1) -> 1;
-(1, 1) -> 2;
+(1, 2) -> 3;
 (2, 0) -> 2;
-(2, 2) -> 4;
+(2, 1) -> 3;
 (0, 0) -> 0;
 =================================
 start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
@@ -445,26 +918,10 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0064 true
+0.0048 true
 
-(0, 1) -> 1;
 (1, 0) -> 1;
-(2, 0) -> 2;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0043 true
-
+(1, 1) -> 2;
 (1, 2) -> 3;
 (2, 0) -> 2;
 (2, 1) -> 3;
@@ -481,83 +938,13 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0104 true
-
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0057 true
+0.0180 true
 
 (0, 1) -> 1;
-(1, 1) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0056 true
-
-(0, 1) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 1) -> 3;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0043 true
-
 (0, 2) -> 2;
 (1, 0) -> 1;
-(1, 1) -> 2;
-(2, 0) -> 2;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0029 true
-
-(1, 0) -> 1;
 (1, 2) -> 3;
-(2, 0) -> 2;
+(2, 1) -> 3;
 (2, 2) -> 4;
 (0, 0) -> 0;
 =================================
@@ -571,12 +958,14 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0056 true
+0.0084 true
 
+(0, 1) -> 1;
 (0, 2) -> 2;
 (1, 0) -> 1;
-(1, 1) -> 2;
+(2, 0) -> 2;
 (2, 1) -> 3;
+(2, 2) -> 4;
 (0, 0) -> 0;
 =================================
 start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
@@ -589,47 +978,13 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0035 true
+0.0070 true
 
 (0, 1) -> 1;
 (0, 2) -> 2;
 (1, 0) -> 1;
 (1, 1) -> 2;
 (1, 2) -> 3;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 -> ( Succ x1 )
-  
-0.0026 false
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 1) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0059 true
-
-(0, 1) -> 1;
-(1, 0) -> 1;
-(1, 2) -> 3;
 (2, 0) -> 2;
 (2, 1) -> 3;
 (0, 0) -> 0;
@@ -644,11 +999,34 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0046 true
+0.0069 true
 
 (0, 1) -> 1;
+(0, 2) -> 2;
 (1, 0) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
 (2, 0) -> 2;
+(2, 2) -> 4;
+(0, 0) -> 0;
+=================================
+start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
+ (totalHeight 0))
+VSA done
+fix f0.fun (x0, x1).
+  match (x0) with
+  | Z -> x1
+  | Sn1 ->
+    ( Succ
+      (f0 ( n1, x1 )) )
+  
+0.0075 true
+
+(0, 1) -> 1;
+(0, 2) -> 2;
+(1, 0) -> 1;
+(1, 1) -> 2;
+(1, 2) -> 3;
 (2, 1) -> 3;
 (2, 2) -> 4;
 (0, 0) -> 0;
@@ -663,88 +1041,14 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0080 true
+0.0097 true
 
 (0, 1) -> 1;
 (0, 2) -> 2;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0039 true
-
-(0, 1) -> 1;
 (1, 0) -> 1;
 (1, 1) -> 2;
-(1, 2) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0053 true
-
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0081 true
-
-(1, 1) -> 2;
-(1, 2) -> 3;
 (2, 0) -> 2;
 (2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0078 true
-
-(0, 2) -> 2;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
 (2, 2) -> 4;
 (0, 0) -> 0;
 =================================
@@ -760,309 +1064,6 @@ fix f0.fun (x0, x1).
   
 0.0079 true
 
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0061 true
-
-(0, 1) -> 1;
-(1, 0) -> 1;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0064 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 1) -> 3;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0039 true
-
-(0, 1) -> 1;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0041 true
-
-(0, 1) -> 1;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0061 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0094 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0065 true
-
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0060 true
-
-(0, 2) -> 2;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0082 true
-
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0045 true
-
-(0, 1) -> 1;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0049 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0040 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 0) -> 2;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0054 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(1, 2) -> 3;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0057 true
-
-(0, 1) -> 1;
-(0, 2) -> 2;
-(1, 0) -> 1;
-(1, 1) -> 2;
-(2, 0) -> 2;
-(2, 1) -> 3;
-(2, 2) -> 4;
-(0, 0) -> 0;
-=================================
-start synthesis with ((mode SyRup) (atomicSize 3) (matchDepth 1) (ctorDepth 0) (condWidth 1)
- (totalHeight 0))
-VSA done
-fix f0.fun (x0, x1).
-  match (x0) with
-  | Z -> x1
-  | Sn1 ->
-    ( Succ
-      (f0 ( n1, x1 )) )
-  
-0.0058 true
-
 (0, 1) -> 1;
 (0, 2) -> 2;
 (1, 0) -> 1;
@@ -1082,7 +1083,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0066 true
+0.0089 true
 
 (0, 1) -> 1;
 (0, 2) -> 2;
@@ -1103,7 +1104,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0067 true
+0.0121 true
 
 (0, 1) -> 1;
 (1, 0) -> 1;
@@ -1124,7 +1125,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0058 true
+0.0107 true
 
 (0, 2) -> 2;
 (1, 0) -> 1;
@@ -1145,7 +1146,7 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0064 true
+0.0124 true
 
 (0, 1) -> 1;
 (0, 2) -> 2;
@@ -1167,5 +1168,5 @@ fix f0.fun (x0, x1).
     ( Succ
       (f0 ( n1, x1 )) )
   
-0.0058 true
+0.0137 true
 

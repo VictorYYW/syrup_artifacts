@@ -42,19 +42,19 @@ Assuming you have `opam` installed, you may build the tools (i.e.,
 Alternatively, you may use the pre-built [Docker](https://www.docker.com/get-started/) image.
 
 ```
-docker pull victoryuan/syrup_artifacts:pldi23phase1
+docker pull victoryuan/syrup_artifacts:pldi23final
 ```
 
 Or build the the Docker image on your own.
 
 ```
-docker build . -t victoryuan/syrup_artifacts:pldi23phase1
+docker build . -t victoryuan/syrup_artifacts:pldi23final
 ```
 
 And run a Docker container in background.
 
 ```
-docker run -itd --name syrup victoryuan/syrup_artifacts:pldi23phase1
+docker run -itd --name syrup victoryuan/syrup_artifacts:pldi23final
 ```
 
 To execute command in the docker container,
@@ -145,10 +145,9 @@ generate the exact visualizations in the paper.
 
 ```shell
 cd experiment
-./visualize_learnability.py # Fig. 7, learnability.pdf
-./gen_table.py # Table 1, learnability.csv
-./visualize_sensitivity.py # Fig. 8, sensitivity3.pdf
-./visualize_learnability.py --ablation --rec # Fig. 9, learnability-ablation-rec.pdf
+./visualize_learnability.py # Fig. 7 learnability-individual.pdf + Fig. 8 learnability.pdf
+./visualize_sensitivity.py # Fig. 9, sensitivity.pdf
+./visualize_learnability.py --ablation --rec # Fig. 10, learnability-ablation-rec.pdf
 ```
 
 ## Run SyRup on Individual Tasks

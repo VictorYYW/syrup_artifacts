@@ -7,7 +7,7 @@ Leaf () -> [];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.00920900000006 false false
+0.00961499999994 false false
 
 Node (Leaf (), 1, Leaf ()) -> [1];
 =================================
@@ -18,7 +18,7 @@ Node (Leaf (), 1, Leaf ()) -> [1];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.00966999999991 false false
+0.0100580000001 false false
 
 Node (Leaf (), 2, Leaf ()) -> [2];
 =================================
@@ -29,7 +29,7 @@ Node (Leaf (), 2, Leaf ()) -> [2];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.00966900000003 false false
+0.017194 false false
 
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 =================================
@@ -40,7 +40,7 @@ Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.0099439999999 false false
+0.0110769999999 false false
 
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
 =================================
@@ -51,7 +51,7 @@ Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.0102549999999 false false
+0.0108869999999 false false
 
 Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 =================================
@@ -62,7 +62,7 @@ Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.010248 false false
+0.0110669999999 false false
 
 Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 =================================
@@ -73,7 +73,7 @@ Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.00977200000011 false false
+0.010878 false false
 
 Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
 =================================
@@ -84,7 +84,7 @@ Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.0104940000001 false false
+0.013326 false false
 
 Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
 =================================
@@ -95,195 +95,30 @@ Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.0101709999999 false false
-
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      Cons
-        ( #3.2 y1
-        , tree_postorder (#3.1 y1)
-        )
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.013414 false false
-
-Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      Cons
-        ( #3.2 y1
-        , tree_postorder (#3.1 y1)
-        )
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.013923 false false
-
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-=================================
-NOSOL
+0.0105269999999 false false
 
 Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
-
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 =================================
 NOSOL
 
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-=================================
-NOSOL
-
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
-
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
-
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-=================================
-NOSOL
-
-Leaf () -> [];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
 =================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.3 y1 of
-        Node y2 -> 
-          [2, #3.2 y2, 0]
+NOSOL
 
-        Leaf y2 -> 
-          [1, 2]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.3 y1 of
-        Node y2 -> 
-          Cons
-            ( 2
-            , Cons
-                ( #3.2 y2
-                , Cons (0, tree_postorder (#3.1 y2))
-                )
-            )
-
-        Leaf y2 -> 
-          [1, 2]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.254592 false false
-
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
 =================================
 NOSOL
 
 Leaf () -> [];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 =================================
 (\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let tree_postorder = \tree -> case tree of
     Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          [2, 1, 0]
-
-        Leaf y2 -> 
-          [2, 1]
+      [S (#3.2 y1), #3.2 y1]
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -296,7 +131,62 @@ Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 (\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let tree_postorder = \tree -> case tree of
     Node y1 -> 
-      case #3.1 y1 of
+      Cons
+        ( S (#3.2 y1)
+        , Cons
+            ( #3.2 y1
+            , tree_postorder (#3.1 y1)
+            )
+        )
+
+    Leaf y1 -> 
+      [] in tree_postorder) : NatTree -> NatList))
+  ((let append = \l1 -> \l2 -> case l1 of
+    Nil _ -> 
+      l2
+
+    Cons p -> 
+      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
+0.0143599999999 false false
+
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+=================================
+NOSOL
+
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let tree_postorder = \tree -> case tree of
+    Node y1 -> 
+      case #3.3 y1 of
         Node y2 -> 
           Cons
             ( 2
@@ -307,7 +197,7 @@ Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
             )
 
         Leaf y2 -> 
-          [2, 1]
+          [2]
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -317,7 +207,67 @@ Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.386843 false false
+(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let tree_postorder = \tree -> case tree of
+    Node y1 -> 
+      case #3.3 y1 of
+        Node y2 -> 
+          Cons
+            ( 2
+            , Cons
+                ( 1
+                , Cons (0, tree_postorder (#3.1 y2))
+                )
+            )
+
+        Leaf y2 -> 
+          [2]
+
+    Leaf y1 -> 
+      [] in tree_postorder) : NatTree -> NatList))
+  ((let append = \l1 -> \l2 -> case l1 of
+    Nil _ -> 
+      l2
+
+    Cons p -> 
+      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
+0.397628 false false
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+=================================
+NOSOL
+
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+=================================
+NOSOL
+
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+=================================
+NOSOL
 
 Leaf () -> [];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
@@ -368,197 +318,66 @@ Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.555747 false false
+0.535334 false false
 
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
-
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-=================================
-NOSOL
-
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
-
-Leaf () -> [];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
 =================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.3 y1 of
-        Node y2 -> 
-          [1, 2, 0]
+NOSOL
 
-        Leaf y2 -> 
-          case #3.2 y1 of
-            Z y3 -> 
-              [2, 1, 0, 0]
-
-            S y3 -> 
-              [1, 2]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.3 y1 of
-        Node y2 -> 
-          [1, 2, 0]
-
-        Leaf y2 -> 
-          case #3.2 y1 of
-            Z y3 -> 
-              Cons
-                ( 2
-                , Cons
-                    ( 1
-                    , Cons
-                        ( 0
-                        , Cons (0, tree_postorder (#3.3 y1))
-                        )
-                    )
-                )
-
-            S y3 -> 
-              [1, 2]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-55.396031 false false
-
-Leaf () -> [];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          case #3.3 y1 of
-            Node y3 -> 
-              [1, 2, 0]
-
-            Leaf y3 -> 
-              [1, 2]
-
-        Leaf y2 -> 
-          [2, 1, 0, #3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          case #3.3 y1 of
-            Node y3 -> 
-              [1, 2, 0]
-
-            Leaf y3 -> 
-              [1, 2]
-
-        Leaf y2 -> 
-          Cons
-            ( 2
-            , Cons
-                ( 1
-                , Cons
-                    ( 0
-                    , Cons
-                        ( #3.2 y1
-                        , tree_postorder (#3.1 y1)
-                        )
-                    )
-                )
-            )
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-89.478548 false false
-
-Leaf () -> [];
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+=================================
+NOSOL
+
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+NOSOL
+
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
 =================================
 (\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let tree_postorder = \tree -> case tree of
     Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          [1, S (#3.2 y2), 0]
+      Cons
+        ( case #3.1 y1 of
+            Node y2 -> 
+              #3.2 y2
 
-        Leaf y2 -> 
-          [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          Cons
-            ( 1
-            , Cons
-                ( S (#3.2 y2)
+            Leaf y2 -> 
+              2
+        , case #3.3 y1 of
+            Node y2 -> 
+              Cons
+                ( 1
                 , Cons (0, tree_postorder (#3.1 y2))
                 )
-            )
 
-        Leaf y2 -> 
-          [#3.2 y1]
+            Leaf y2 -> 
+              tree_postorder (#3.1 y1)
+        )
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -568,46 +387,47 @@ Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-0.281297 false false
+(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let tree_postorder = \tree -> case tree of
+    Node y1 -> 
+      Cons
+        ( case #3.1 y1 of
+            Node y2 -> 
+              #3.2 y2
 
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
+            Leaf y2 -> 
+              2
+        , case #3.3 y1 of
+            Node y2 -> 
+              Cons
+                ( 1
+                , Cons (0, tree_postorder (#3.1 y2))
+                )
+
+            Leaf y2 -> 
+              tree_postorder (#3.1 y1)
+        )
+
+    Leaf y1 -> 
+      [] in tree_postorder) : NatTree -> NatList))
+  ((let append = \l1 -> \l2 -> case l1 of
+    Nil _ -> 
+      l2
+
+    Cons p -> 
+      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
+1.101273 false false
 
 Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
 =================================
-NOSOL
-
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
+None
 Leaf () -> [];
 Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
 Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
 =================================
 (\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let tree_postorder = \tree -> case tree of
@@ -617,112 +437,12 @@ Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf
           [2, 1, 0, 0]
 
         Leaf y2 -> 
-          append (tree_postorder (#3.3 y1)) (Cons (#3.2 y1, Nil y2))
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          [2, 1, 0, 0]
-
-        Leaf y2 -> 
-          append (tree_postorder (#3.3 y1)) (Cons (#3.2 y1, Nil y2))
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-1.384502 false false
-
-Leaf () -> [];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          Cons
-            ( #3.2 y2
-            , append (tree_postorder (#3.3 y1)) [#3.2 y1]
-            )
-
-        Leaf y2 -> 
-          append (tree_postorder (#3.3 y1)) [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          Cons
-            ( #3.2 y2
-            , append (tree_postorder (#3.3 y1)) [#3.2 y1]
-            )
-
-        Leaf y2 -> 
-          append (tree_postorder (#3.3 y1)) [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-12.281654 false false
-
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          case #3.1 y2 of
+          case #3.3 y1 of
             Node y3 -> 
-              [2, 1, 0, 0]
+              [2, 1, 0, #3.2 y1]
 
             Leaf y3 -> 
-              [2, 1, 0]
-
-        Leaf y2 -> 
-          [#3.2 y1]
+              [1]
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -737,7 +457,10 @@ Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf
     Node y1 -> 
       case #3.1 y1 of
         Node y2 -> 
-          case #3.1 y2 of
+          [2, 1, 0, 0]
+
+        Leaf y2 -> 
+          case #3.3 y1 of
             Node y3 -> 
               Cons
                 ( 2
@@ -745,13 +468,122 @@ Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf
                     ( 1
                     , Cons
                         ( 0
-                        , Cons (0, tree_postorder (#3.1 y3))
+                        , Cons
+                            ( #3.2 y1
+                            , tree_postorder (#3.1 y1)
+                            )
                         )
                     )
                 )
 
             Leaf y3 -> 
-              [2, 1, 0]
+              [1]
+
+    Leaf y1 -> 
+      [] in tree_postorder) : NatTree -> NatList))
+  ((let append = \l1 -> \l2 -> case l1 of
+    Nil _ -> 
+      l2
+
+    Cons p -> 
+      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
+104.462759 false false
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+NOSOL
+
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+=================================
+(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let tree_postorder = \tree -> case tree of
+    Node y1 -> 
+      case #3.1 y1 of
+        Node y2 -> 
+          [2, 1, 0]
+
+        Leaf y2 -> 
+          append (tree_postorder (#3.3 y1)) (Cons (#3.2 y1, Nil y2))
+
+    Leaf y1 -> 
+      [] in tree_postorder) : NatTree -> NatList))
+  ((let append = \l1 -> \l2 -> case l1 of
+    Nil _ -> 
+      l2
+
+    Cons p -> 
+      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
+(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let tree_postorder = \tree -> case tree of
+    Node y1 -> 
+      case #3.1 y1 of
+        Node y2 -> 
+          [2, 1, 0]
+
+        Leaf y2 -> 
+          append (tree_postorder (#3.3 y1)) (Cons (#3.2 y1, Nil y2))
+
+    Leaf y1 -> 
+      [] in tree_postorder) : NatTree -> NatList))
+  ((let append = \l1 -> \l2 -> case l1 of
+    Nil _ -> 
+      l2
+
+    Cons p -> 
+      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
+2.55212 false false
+
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+=================================
+(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
+  ((let tree_postorder = \tree -> case tree of
+    Node y1 -> 
+      case #3.1 y1 of
+        Node y2 -> 
+          Cons
+            ( #3.2 y2
+            , append (tree_postorder (#3.3 y1)) [#3.2 y1]
+            )
 
         Leaf y2 -> 
           [#3.2 y1]
@@ -764,184 +596,18 @@ Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-77.472449 false false
-
-Leaf () -> [];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.2 y1 of
-        Z y2 -> 
-          [2, 1, 0, 0]
-
-        S y2 -> 
-          append (tree_postorder (#3.1 y1)) [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.2 y1 of
-        Z y2 -> 
-          [2, 1, 0, 0]
-
-        S y2 -> 
-          append (tree_postorder (#3.1 y1)) [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-4.727886 false false
-
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Leaf () -> [];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.2 y1 of
-        Z y2 -> 
-          Cons
-            ( case #3.3 y1 of
-                Node y3 -> 
-                  1
-
-                Leaf y3 -> 
-                  2
-            , Cons
-                ( case #3.3 y1 of
-                    Node y3 -> 
-                      2
-
-                    Leaf y3 -> 
-                      1
-                , Cons
-                    ( 0
-                    , case #3.3 y1 of
-                        Node y3 -> 
-                          []
-
-                        Leaf y3 -> 
-                          [0]
-                    )
-                )
-            )
-
-        S y2 -> 
-          case y2 of
-            Z y3 -> 
-              [2, 1]
-
-            S y3 -> 
-              [2, 1, 0, 2]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.2 y1 of
-        Z y2 -> 
-          Cons
-            ( case #3.3 y1 of
-                Node y3 -> 
-                  1
-
-                Leaf y3 -> 
-                  2
-            , Cons
-                ( case #3.3 y1 of
-                    Node y3 -> 
-                      2
-
-                    Leaf y3 -> 
-                      1
-                , Cons
-                    ( 0
-                    , case tree_postorder (#3.3 y1) of
-                        Nil y3 -> 
-                          [0]
-
-                        Cons y3 -> 
-                          []
-                    )
-                )
-            )
-
-        S y2 -> 
-          case y2 of
-            Z y3 -> 
-              [2, 1]
-
-            S y3 -> 
-              [2, 1, 0, 2]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-112.575412 false false
-
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-=================================
 (\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
   ((let tree_postorder = \tree -> case tree of
     Node y1 -> 
       case #3.1 y1 of
         Node y2 -> 
-          [2, 1, 0]
+          Cons
+            ( #3.2 y2
+            , append (tree_postorder (#3.3 y1)) [#3.2 y1]
+            )
 
         Leaf y2 -> 
-          append (tree_postorder (#3.3 y1)) (Cons (#3.2 y1, Nil y2))
+          [#3.2 y1]
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -951,146 +617,10 @@ Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          [2, 1, 0]
-
-        Leaf y2 -> 
-          append (tree_postorder (#3.3 y1)) (Cons (#3.2 y1, Nil y2))
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-1.749821 false false
+3.071859 false false
 
 Leaf () -> [];
 Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-None
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-NOSOL
-
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-=================================
-NOSOL
-
-Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case tree_postorder (#3.1 y1) of
-        Nil y2 -> 
-          append (tree_postorder (#3.3 y1)) [#3.2 y1]
-
-        Cons y2 -> 
-          append
-            (Cons
-              ( #2.1 y2
-              , tree_postorder (#3.3 y1)
-              )) (Cons (#3.2 y1, #2.2 y2))
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case tree_postorder (#3.1 y1) of
-        Nil y2 -> 
-          append (tree_postorder (#3.3 y1)) [#3.2 y1]
-
-        Cons y2 -> 
-          append
-            (Cons
-              ( #2.1 y2
-              , tree_postorder (#3.3 y1)
-              )) (Cons (#3.2 y1, #2.2 y2))
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-60.265826 false false
-
-Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
@@ -1113,7 +643,7 @@ Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()
               [2, 1, 0, #3.2 y1]
 
             Leaf y3 -> 
-              [#3.2 y1]
+              [1]
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -1153,7 +683,7 @@ Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()
                 )
 
             Leaf y3 -> 
-              [#3.2 y1]
+              [1]
 
     Leaf y1 -> 
       [] in tree_postorder) : NatTree -> NatList))
@@ -1163,92 +693,9 @@ Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()
 
     Cons p -> 
       Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-97.24247 false false
+110.860009 false false
 
 Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-=================================
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          case #3.1 y2 of
-            Node y3 -> 
-              [2, 1, 0, 0]
-
-            Leaf y3 -> 
-              [2, 1, 0]
-
-        Leaf y2 -> 
-          case #3.3 y1 of
-            Node y3 -> 
-              [2, 1]
-
-            Leaf y3 -> 
-              [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-(\append -> (\tree_postorder -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> (\_ -> ()) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ())) ({ASSERTION} : ()))
-  ((let tree_postorder = \tree -> case tree of
-    Node y1 -> 
-      case #3.1 y1 of
-        Node y2 -> 
-          case #3.1 y2 of
-            Node y3 -> 
-              Cons
-                ( 2
-                , Cons
-                    ( 1
-                    , Cons
-                        ( 0
-                        , Cons (0, tree_postorder (#3.1 y3))
-                        )
-                    )
-                )
-
-            Leaf y3 -> 
-              [2, 1, 0]
-
-        Leaf y2 -> 
-          case #3.3 y1 of
-            Node y3 -> 
-              [2, 1]
-
-            Leaf y3 -> 
-              [#3.2 y1]
-
-    Leaf y1 -> 
-      [] in tree_postorder) : NatTree -> NatList))
-  ((let append = \l1 -> \l2 -> case l1 of
-    Nil _ -> 
-      l2
-
-    Cons p -> 
-      Cons (#2.1 p, append (#2.2 p) l2) in append) : NatList -> NatList -> NatList)
-96.072831 false false
-
-Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
 Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
@@ -1257,8 +704,193 @@ Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()
 None
 Leaf () -> [];
 Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+NOSOL
+
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
+Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
+Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
+Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
+Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
+=================================
+None
+Leaf () -> [];
+Node (Leaf (), 1, Leaf ()) -> [1];
+Node (Leaf (), 2, Leaf ()) -> [2];
+Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
 Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
@@ -1275,74 +907,9 @@ Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()
 NOSOL
 
 Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
 Node (Leaf (), 1, Leaf ()) -> [1];
 Node (Leaf (), 2, Leaf ()) -> [2];
 Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-NOSOL
-
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 2, Leaf ()) -> [2];
-Node (Node (Leaf (), 1, Leaf ()), 2, Leaf ()) -> [1, 2];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
-Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
-Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
-=================================
-None
-Leaf () -> [];
-Node (Leaf (), 1, Leaf ()) -> [1];
-Node (Leaf (), 1, Node (Leaf (), 2, Leaf ())) -> [2, 1];
-Node (Node (Leaf (), 1, Leaf ()), 0, Node (Leaf (), 2, Leaf ()) ) -> [1, 2, 0];
 Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ) -> [2, 1, 0];
 Node (Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) ), 0, Leaf ()) -> [2, 1, 0, 0];
 Node (Leaf (), 2, Node (Node (Leaf (), 2, Leaf ()), 0, Node (Leaf (), 1, Leaf ()) )) -> [2, 1, 0, 2];
